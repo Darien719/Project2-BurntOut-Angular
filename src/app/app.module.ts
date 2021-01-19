@@ -11,6 +11,7 @@ import { JobService } from './services/job.service';
 import {HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePageComponent } from './home-page/home-page.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     CandidateDashboardComponent,
     SearchForJobComponent,
     HomePageComponent,
+    NavigationBarComponent,
    
   ],
   imports: [
