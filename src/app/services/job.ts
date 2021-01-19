@@ -6,5 +6,6 @@ export interface Job {
     description : string;
     tagList : Tag [];
     postingId : number;
+    locationName: string;
     applicationList : Application [];
 }
