@@ -25,21 +25,3 @@
         </div>
     </div>
 </div>
-
-
-
-<div class="login-container" style="width:50%; border:30px; border-color:blue; margin:auto" >
-    <br>
-    <h3>User Login</h3>
-
-    <form [formGroup] = "logingroup" (submit) = 'loginPost'>
-        <input type="text" placeholder="Username" formControlName="username">
-        <br>
-        <input type="password" placeholder="Password" formControlName="password">
-        <a href="#">Forgot Password?</a>
-        <br><br>
-        <div>
-            <button class="btn btn-lg btn-primary" (click)="loginPost(logingroup)">Log In</button>
-        </div>
-    </form>
-</div>
