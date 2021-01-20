@@ -16,6 +16,7 @@ import { LoginService } from './services/login.service';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { CreateJobPostingComponent } from './create-job-posting/create-job-posting.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
   LoginComponent,
     HomePageComponent,
     NavigationBarComponent,
-    SignUpComponent
+    SignUpComponent,
+    CreateJobPostingComponent
    
   ],
   imports: [
@@ -37,6 +39,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
       {path: "jobs", component: SearchForJobComponent},
       {path: "login", component: LoginComponent},
       {path: "sign-up", component: SignUpComponent},
+      {path: "create-posting", component: CreateJobPostingComponent},
       {path: "**", component: HomePageComponent}
 
     ]), HttpClientModule, FormsModule, ReactiveFormsModule,
