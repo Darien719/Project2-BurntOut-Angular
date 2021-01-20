@@ -9,7 +9,7 @@ import { CandidateDashboardComponent } from './candidate-dashboard/candidate-das
 import { SearchForJobComponent } from './search-for-job/search-for-job.component';
 import { JobService } from './services/job.service';
 
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './services/login.service';
@@ -17,7 +17,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CreateJobPostingComponent } from './create-job-posting/create-job-posting.component';
-import { ApplicationFormPageComponent } from './application-form-page/application-form-page.component';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -25,25 +25,25 @@ import { ApplicationFormPageComponent } from './application-form-page/applicatio
     CompanyDashboardComponent,
     CandidateDashboardComponent,
     SearchForJobComponent,
-  LoginComponent,
+    LoginComponent,
     HomePageComponent,
     NavigationBarComponent,
     SignUpComponent,
     CreateJobPostingComponent,
-    ApplicationFormPageComponent
-   
+    BlogComponent
+
   ],
   imports: [
     BrowserModule, RouterModule.forRoot([
-      
-      {path: "company-dashboard", component: CompanyDashboardComponent},
-      {path: "candidate-dashboard", component: CandidateDashboardComponent},
-      {path: "jobs", component: SearchForJobComponent},
-      {path: "login", component: LoginComponent},
-      {path: "sign-up", component: SignUpComponent},
-      {path: "create-posting", component: CreateJobPostingComponent},
-      {path: "jobs/application", component: ApplicationFormPageComponent},
-      {path: "**", component: HomePageComponent}
+
+      { path: "company-dashboard", component: CompanyDashboardComponent },
+      { path: "candidate-dashboard", component: CandidateDashboardComponent },
+      { path: "jobs", component: SearchForJobComponent },
+      { path: "login", component: LoginComponent },
+      { path: "sign-up", component: SignUpComponent },
+      { path: "create-posting", component: CreateJobPostingComponent },
+      { path: "blog", component: BlogComponent },
+      { path: "**", component: HomePageComponent }
 
     ]), HttpClientModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule
