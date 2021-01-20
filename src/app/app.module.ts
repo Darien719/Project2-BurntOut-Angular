@@ -18,6 +18,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CreateJobPostingComponent } from './create-job-posting/create-job-posting.component';
 import { BlogComponent } from './blog/blog.component';
+import { ApplicationFormPageComponent } from './application-form-page/application-form-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BlogComponent } from './blog/blog.component';
     NavigationBarComponent,
     SignUpComponent,
     CreateJobPostingComponent,
-    BlogComponent
+    BlogComponent,
+    ApplicationFormPageComponent
 
   ],
   imports: [
@@ -43,7 +45,8 @@ import { BlogComponent } from './blog/blog.component';
       { path: "sign-up", component: SignUpComponent },
       { path: "create-posting", component: CreateJobPostingComponent },
       { path: "blog", component: BlogComponent },
-      { path: "**", component: HomePageComponent }
+      {path: "jobs/application", component: ApplicationFormPageComponent},
+      { path: "**", component: HomePageComponent },
 
     ]), HttpClientModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule
