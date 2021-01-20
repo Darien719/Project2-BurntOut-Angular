@@ -8,4 +8,6 @@ export interface Job {
     postingId : number;
     locationName: string;
     applicationList : Application [];
+    companyName: string;
+    industryName: string;
 }

@@ -34,8 +34,11 @@ export class SearchForJobComponent implements OnInit {
 
 performFilter(filterBy:string) : Job[] {
     filterBy = filterBy.toLowerCase();
-    return this.jobs.filter((hero:Job)=> {
-        return hero.title.toLowerCase().indexOf(filterBy) !==-1;
+    return this.jobs.filter((job:Job)=> {
+        return (job.title.toLowerCase().indexOf(filterBy) !==-1) 
+                || (job.locationName.toLowerCase().indexOf(filterBy) !==-1)
+                || (job.companyName.toLowerCase().indexOf(filterBy) !==-1)
+                || (job.industryName.toLowerCase().indexOf(filterBy) !==-1);
     });
 }
 
@@ -59,4 +62,7 @@ performFilter(filterBy:string) : Job[] {
     )
   }
 
+  goToAppFormPage() : void {
+    this.router.navigate(['jobs/application']);
+  }
 }

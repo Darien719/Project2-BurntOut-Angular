@@ -1,13 +1,15 @@
 <!-- <button type="button" class="btn btn-info" (click) = getAllJobs()>Get All Jobs</button> -->
 <div class = 'table responsive'>
-<h1>{{pageTitle}}</h1>
 <div class = "card-body">
+    <h1>{{pageTitle}}</h1>
+    <input type = "text" [(ngModel)] = 'jobsByNameFilter'
+            placeholder = "Enter any keyword here">
     <div class = "row">
         <div class = "col">
-            <h3>Filter jobs by title:</h3>
+            <!-- <h3>Filter jobs by title:</h3> -->
         </div>
         <div class = "col">
-            <input type = "text" [(ngModel)] = 'jobsByNameFilter'>{{jobsByNameFilterString}}
+            
         </div>
     </div>
 </div>
@@ -17,6 +19,9 @@
             <th>Title</th>
             <th>Description</th>
             <th>Location</th>
+            <th>Company</th>
+            <th>Industry</th>
+            <th>Apply</th>
         </tr>
     </thead>
     <tbody>
@@ -30,6 +35,16 @@
             <td>
                 {{temp.locationName}}
             </td>
+            <td>
+                {{temp.companyName}}
+            </td>
+            <td>
+                {{temp.industryName}}
+            </td>
+            <td>
+                <button type="button" class="btn btn-warning"
+                (click) = "goToAppFormPage()">Apply</button>
+            </td>"
         </tr>
     </tbody>
 </table>
