@@ -1,0 +1,65 @@
+
+.container{
+    position:fixed;
+	top: 50%;
+	left: 50%;
+	width: calc(100% - 10px);
+	height: 325px;
+	background-color: #343a40;
+	border-radius: 10px;
+	box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
+	transform: translate(-50%, -50%);
+	padding: 20px 150px 0px 150px;
+}
+
+#blog-message{
+    position: fixed;
+    top: 10px;
+    left:10px;
+    background-color: #535c66;
+    color: white;
+    height: 250px;
+    width: calc(100% - 20px);
+    border-radius: 10px;
+    resize: none;
+    padding: 10px;
+    border: none;
+}
+
+#blog-message:focus {
+    outline: none;
+}
+#blog-message::placeholder{
+    color: lightgray;
+}
+
+#post-btn{
+    position: fixed;
+    width: 100px;
+    height: 35px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    font-weight: 400;
+    top: 280px;
+    left: calc(100% - 110px); 
+}
+
+#post-btn:hover{
+    position: fixed;
+    width: 100px;
+    height: 35px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    background-color: #025cbd;
+    color: white;
+    font-size: 1rem;
+    font-weight: 400;
+    top: 280px;
+    left: calc(100% - 110px); 
+}
+

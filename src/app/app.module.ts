@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -22,17 +23,19 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     SearchForJobComponent,
     HomePageComponent,
     NavigationBarComponent,
-    SignUpComponent
-   
+    SignUpComponent,
+    BlogComponent
+
   ],
   imports: [
     BrowserModule, RouterModule.forRoot([
-      
-      {path: "company-dashboard", component: CompanyDashboardComponent},
-      {path: "candidate-dashboard", component: CandidateDashboardComponent},
-      {path: "jobs", component: SearchForJobComponent},
-      {path: "sign-up", component: SignUpComponent},
-      {path: "**", component: HomePageComponent}
+
+      { path: "company-dashboard", component: CompanyDashboardComponent },
+      { path: "candidate-dashboard", component: CandidateDashboardComponent },
+      { path: "jobs", component: SearchForJobComponent },
+      { path: "sign-up", component: SignUpComponent },
+      { path: "Blog", component: BlogComponent },
+      { path: "**", component: HomePageComponent }
     ]), HttpClientModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule
   ],
