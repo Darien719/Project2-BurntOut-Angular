@@ -8,10 +8,11 @@ import { RouterModule } from '@angular/router';
 import { CandidateDashboardComponent } from './candidate-dashboard/candidate-dashboard.component';
 import { SearchForJobComponent } from './search-for-job/search-for-job.component';
 import { JobService } from './services/job.service';
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
     SearchForJobComponent,
     HomePageComponent,
     NavigationBarComponent,
+    SignUpComponent
    
   ],
   imports: [
@@ -29,6 +31,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
       {path: "company-dashboard", component: CompanyDashboardComponent},
       {path: "candidate-dashboard", component: CandidateDashboardComponent},
       {path: "jobs", component: SearchForJobComponent},
+      {path: "sign-up", component: SignUpComponent},
       {path: "**", component: HomePageComponent}
     ]), HttpClientModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule
