@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   username:string;
   password:string;
   usercred:UserCreds = {'username':'', 'password':''};
+  badLogCount:number = 0;
 
   logingroup = new FormGroup({
     username: new FormControl(''),
@@ -36,11 +37,12 @@ export class LoginComponent implements OnInit {
          if(response.includes(substr)){
            console.log("status is cool");
            this.goHome();
-         } else{
-           console.log('issue');
-           
          }
-      }
+      },
+      error =>{
+        console.log("Problem Logging in", error)
+        window.alert('Unable to find user with that Username and Password');
+      } 
     );
   }
 
