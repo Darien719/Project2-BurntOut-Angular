@@ -13,10 +13,10 @@ export class SearchForJobComponent implements OnInit {
 
   jobs : Job [];
 
-  jobsFilteredByName : Job [];
+  jobsFilteredByName : Job [] = [];
 
   constructor(private router : Router, private jobServ : JobService) {
-    this.jobsFilteredByName = this.jobs;
+    //this.jobsFilteredByName = this.jobs;
    }
 
  
@@ -28,22 +28,17 @@ export class SearchForJobComponent implements OnInit {
 
   set jobsByNameFilter(temp:string) {
     this.jobsByNameFilterString = temp;
-    this.jobsFilteredByName = this.jobsByNameFilterString ? this.performFilter(this.jobsByNameFilterString) : this.jobs;
-  }
+    this.jobsFilteredByName = this.jobsByNameFilterString ? 
+    this.performFilter(this.jobsByNameFilterString) : this.jobs;
+}
 
-
-
-  performFilter(filterBy:string) : Job [] {
-    let index : number;
+performFilter(filterBy:string) : Job[] {
     filterBy = filterBy.toLowerCase();
-    return this.jobs.filter((job: Job) => {
-      index = job.title.toLowerCase().indexOf(filterBy);
-      console.log(index);
-      return job.title.toLowerCase().indexOf(filterBy)!=-1;
-    }
-    );
+    return this.jobs.filter((hero:Job)=> {
+        return hero.title.toLowerCase().indexOf(filterBy) !==-1;
+    });
+}
 
-  }
   ngOnInit(): void {
     this.getAllJobs();
   }

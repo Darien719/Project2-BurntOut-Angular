@@ -16,15 +16,19 @@
         <tr>
             <th>Title</th>
             <th>Description</th>
+            <th>Location</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor = "let temp of jobs">
+        <tr *ngFor = "let temp of jobsFilteredByName">
             <td>
                 {{temp.title}}
             </td>
             <td>
                 {{temp.description}}
+            </td>
+            <td>
+                {{temp.locationName}}
             </td>
         </tr>
     </tbody>

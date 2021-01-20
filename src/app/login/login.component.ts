@@ -29,7 +29,11 @@ export class LoginComponent implements OnInit {
     console.log(login.get('password').value);
     this.usercred.username = login.get('username').value;
     this.usercred.password = login.get('password').value; 
-    this.loginserv.postLogin(this.usercred);
+    this.loginserv.postLogin(this.usercred).subscribe(
+//      response =>{
+//        console.log(response.username);
+//      }
+    );
   }
 
   ngOnInit(): void {

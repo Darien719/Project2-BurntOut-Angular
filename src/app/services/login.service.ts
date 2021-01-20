@@ -1,5 +1,6 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { UserCreds } from "./usercreds";
 
 @Injectable({
@@ -11,7 +12,11 @@ export class LoginService {
 
     constructor(private httpCli: HttpClient) {  }
 
-    postLogin(login:UserCreds){
-        this.httpCli.post<UserCreds>(this.url, JSON.stringify(login));
+    postLogin(login:UserCreds): Observable<UserCreds>{
+        return this.httpCli.post<UserCreds>(this.url, JSON.stringify(login), {
+            headers: new HttpHeaders({
+                'Content-Type':'application/json'
+            }
+        )});
     }
 }

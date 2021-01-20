@@ -8,10 +8,14 @@ import { RouterModule } from '@angular/router';
 import { CandidateDashboardComponent } from './candidate-dashboard/candidate-dashboard.component';
 import { SearchForJobComponent } from './search-for-job/search-for-job.component';
 import { JobService } from './services/job.service';
+
 import {HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './services/login.service';
+import { HomePageComponent } from './home-page/home-page.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -19,15 +23,22 @@ import { LoginService } from './services/login.service';
     CompanyDashboardComponent,
     CandidateDashboardComponent,
     SearchForJobComponent,
-    LoginComponent,
+  LoginComponent,
+    HomePageComponent,
+    NavigationBarComponent,
+    SignUpComponent
    
   ],
   imports: [
     BrowserModule, RouterModule.forRoot([
+      
       {path: "company-dashboard", component: CompanyDashboardComponent},
       {path: "candidate-dashboard", component: CandidateDashboardComponent},
       {path: "jobs", component: SearchForJobComponent},
-      {path: "login", component: LoginComponent}
+      {path: "login", component: LoginComponent},
+      {path: "sign-up", component: SignUpComponent},
+      {path: "**", component: HomePageComponent}
+
     ]), HttpClientModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule
   ],

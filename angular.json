@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "Project2-BurntOut"
+  "defaultProject": "Project2-BurntOut",
+  "cli": {
+    "analytics": false
+  }
 }
