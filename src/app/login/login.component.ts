@@ -25,15 +25,26 @@ export class LoginComponent implements OnInit {
   
   loginPost(login: FormGroup){
 
-    console.log(login.get('username').value);
-    console.log(login.get('password').value);
+    // console.log(login.get('username').value);
+    // console.log(login.get('password').value);
     this.usercred.username = login.get('username').value;
     this.usercred.password = login.get('password').value; 
     this.loginserv.postLogin(this.usercred).subscribe(
-//      response =>{
-//        console.log(response.username);
-//      }
+      response =>{
+        console.log(response);
+        let substr = "successfully verified";
+         if(response.includes(substr)){
+           console.log("status is cool");
+           this.goHome();
+         } else{
+           console.log('issue');
+         }
+      }
     );
+  }
+
+  goHome():void {
+    this.router.navigate([''])
   }
 
   ngOnInit(): void {

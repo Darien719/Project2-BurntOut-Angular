@@ -16,6 +16,7 @@ import { LoginService } from './services/login.service';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { CreateJobPostingComponent } from './create-job-posting/create-job-posting.component';
 import { ApplicationFormPageComponent } from './application-form-page/application-form-page.component';
 
 @NgModule({
@@ -28,6 +29,7 @@ import { ApplicationFormPageComponent } from './application-form-page/applicatio
     HomePageComponent,
     NavigationBarComponent,
     SignUpComponent,
+    CreateJobPostingComponent,
     ApplicationFormPageComponent
    
   ],
@@ -39,6 +41,7 @@ import { ApplicationFormPageComponent } from './application-form-page/applicatio
       {path: "jobs", component: SearchForJobComponent},
       {path: "login", component: LoginComponent},
       {path: "sign-up", component: SignUpComponent},
+      {path: "create-posting", component: CreateJobPostingComponent},
       {path: "jobs/application", component: ApplicationFormPageComponent},
       {path: "**", component: HomePageComponent}
 
