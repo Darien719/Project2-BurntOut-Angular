@@ -19,6 +19,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { CreateJobPostingComponent } from './create-job-posting/create-job-posting.component';
 import { BlogComponent } from './blog/blog.component';
 import { BlogService } from './services/blog.service';
+import { CreateJobService } from './services/create-job.service';
 import { ApplicationFormPageComponent } from './application-form-page/application-form-page.component';
 
 @NgModule({
@@ -52,7 +53,7 @@ import { ApplicationFormPageComponent } from './application-form-page/applicatio
     ]), HttpClientModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [JobService, LoginService, BlogService],
+  providers: [JobService, LoginService, BlogService, CreateJobService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
