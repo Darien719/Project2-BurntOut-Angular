@@ -22,6 +22,7 @@ import { BlogService } from './services/blog.service';
 import { CreateJobService } from './services/create-job.service';
 import { ApplicationFormPageComponent } from './application-form-page/application-form-page.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { ApplicationFormPageComponent } from './application-form-page/applicatio
     SignUpComponent,
     CreateJobPostingComponent,
     BlogComponent,
-    ApplicationFormPageComponent
+    ApplicationFormPageComponent,
+    
 
   ],
   imports: [
