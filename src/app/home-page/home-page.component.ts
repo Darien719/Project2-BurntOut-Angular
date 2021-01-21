@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
+  firstName:string;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.firstName = sessionStorage.getItem('userfName');
   }
 
 }
