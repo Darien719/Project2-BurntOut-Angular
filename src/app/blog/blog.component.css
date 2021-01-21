@@ -4,7 +4,7 @@
 	top: 50%;
 	left: 50%;
 	width: calc(100% - 10px);
-	height: 325px;
+	height: 425px;
 	background-color: #343a40;
 	border-radius: 10px;
 	box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
@@ -14,11 +14,11 @@
 
 #blog-message{
     position: fixed;
-    top: 10px;
+    top: 80px;
     left:10px;
     background-color: #535c66;
     color: white;
-    height: 250px;
+    height: 280px;
     width: calc(100% - 20px);
     border-radius: 10px;
     resize: none;
@@ -26,10 +26,27 @@
     border: none;
 }
 
-#blog-message:focus {
+#title-field{
+    position: absolute;
+    top: 10px;
+    left:10px;
+    background-color: #535c66;
+    color: white;
+    width: calc(50%);
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+    padding: 10px;
+}
+
+#title-field, #blog-message:focus {
     outline: none;
 }
 #blog-message::placeholder{
+    color: lightgray;
+}
+
+#title-field::placeholder{
     color: lightgray;
 }
 
@@ -44,7 +61,7 @@
     color: white;
     font-size: 1rem;
     font-weight: 400;
-    top: 280px;
+    top: 380px;
     left: calc(100% - 110px); 
 }
 
@@ -59,7 +76,7 @@
     color: white;
     font-size: 1rem;
     font-weight: 400;
-    top: 280px;
+    top: 380px;
     left: calc(100% - 110px); 
 }
 

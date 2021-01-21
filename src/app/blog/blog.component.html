@@ -1,6 +1,7 @@
 <h1>{{pageTitle}}</h1>
 <div class="container">
+    <input type="text" [(ngModel)]="blogTitle" id="title-field" placeholder="Insert title...">
     <textarea [(ngModel)]="blogMessage" id="blog-message" cols="30" rows="10"
         placeholder="Insert your message..."></textarea>
-    <button (click)="setTittle()" id="post-btn">Post</button>
+    <button (click)="sendData()" id="post-btn">Post</button>
 </div>
