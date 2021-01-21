@@ -1,3 +1,4 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateJobPostingComponent implements OnInit {
 
+  company_id:number;
+  poster_id:number;
+  posting_title:string;
+  location_id:number;
+  industry_id:number;
+  description:string;
+
   constructor() { }
 
   ngOnInit(): void {
+   
   }
 
 }
