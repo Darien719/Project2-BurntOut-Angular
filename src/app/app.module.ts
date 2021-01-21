@@ -18,6 +18,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CreateJobPostingComponent } from './create-job-posting/create-job-posting.component';
 import { BlogComponent } from './blog/blog.component';
+import { BlogService } from './services/blog.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { BlogComponent } from './blog/blog.component';
     ]), HttpClientModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [JobService, LoginService],
+  providers: [JobService, LoginService, BlogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
