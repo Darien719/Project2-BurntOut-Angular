@@ -12,6 +12,8 @@ import { User } from '../services/user';
 export class SignUpComponent implements OnInit {
 
   pageTitle = "Register for BurntOut!";
+  errorMessage = "User with that username or email already exists"
+  errorOccurred = false;
   firstName: string;
   lastName: string;
   email: string;
@@ -44,7 +46,10 @@ export class SignUpComponent implements OnInit {
          } else{
            console.log('issue');
          }
-      }
+      },
+      error =>{
+        this.errorOccurred = true;
+      } 
     );
   }
 

@@ -6,6 +6,9 @@
         <form>
             <h3 style="text-align: center;">To register, please enter the necessary info below: </h3>
             <br>
+            <div [hidden]="!errorOccurred" class="alert alert-danger">
+                {{errorMessage}}
+            </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="firstName">First name</label>
