@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { SessionService } from '../services/session.service';
+=======
+import { FormGroup, FormControl } from '@angular/forms';
+import { Application } from '../services/application';
+import { CreateApplicationService } from '../services/create-application.service';
+>>>>>>> 1a26b42f11c40f0bb9e87a80ee90c6d085a63ede
 
 @Component({
   selector: 'app-application-form-page',
@@ -7,7 +13,10 @@ import { SessionService } from '../services/session.service';
   styleUrls: ['./application-form-page.component.css']
 })
 export class ApplicationFormPageComponent implements OnInit {
+  pageTitle = "Blog"
+  constructor(private createAppServ: CreateApplicationService) { }
 
+<<<<<<< HEAD
   constructor(private sessServ:SessionService) { }
 
   ngOnInit(): void {
@@ -16,6 +25,51 @@ export class ApplicationFormPageComponent implements OnInit {
     } else {
       window.location.href = '/login';
     }
+=======
+  username:string;
+  posting_id:number;
+  status:string;
+  resume: File
+  application:Application = {
+  'posting_id': 0,
+  'username': '',
+  'status' : 'Pending',
+  'resume' : null
+};
+
+  applicationgroup = new FormGroup({
+    posting_id: new FormControl(''),
+    username: new FormControl(''),
+    //resume: new FormControl(''),
+  })
+
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+>>>>>>> 1a26b42f11c40f0bb9e87a80ee90c6d085a63ede
   }
 
+/*   jobPost(jobgroup :FormGroup){
+
+    this.application.posting_id = this.applicationgroup.get('posting_id').value;
+    this.application.username = this.applicationgroup.get('username').value;
+  } */
+
+  /* handleFileInput(files: FileList) {
+    this.resume = files.item(0);
+  } */
+
+  submitApplication(apgroup : FormGroup) : void {
+    this.application.posting_id = this.applicationgroup.get('posting_id').value;
+    this.application.username = this.applicationgroup.get('username').value;
+    this.createAppServ.postApplication(this.application).subscribe(
+      response=>{
+        console.log("In response");
+        console.log(response);
+      },error=>{
+          console.log("Problem posting application");
+          console.log(error);
+      }
+    )
+  }
+  
 }
