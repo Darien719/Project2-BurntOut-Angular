@@ -12,7 +12,7 @@ export class HomePageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.firstName = JSON.parse(localStorage.getItem('user')).firstName;
+    this.firstName = sessionStorage.getItem('userfName');
   }
 
 }
