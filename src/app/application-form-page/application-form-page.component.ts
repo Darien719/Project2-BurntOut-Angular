@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionService } from '../services/session.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Application } from '../services/application';
 import { CreateApplicationService } from '../services/create-application.service';
@@ -10,7 +11,7 @@ import { CreateApplicationService } from '../services/create-application.service
 })
 export class ApplicationFormPageComponent implements OnInit {
   pageTitle = "Blog"
-  constructor(private createAppServ: CreateApplicationService) { }
+  constructor(private createAppServ: CreateApplicationService, private sessServ:SessionService) { }
 
   username:string;
   posting_id:number;
@@ -30,6 +31,11 @@ export class ApplicationFormPageComponent implements OnInit {
   })
 
   ngOnInit(): void {
+      if(this.sessServ.verifySession()){
+  
+      } else {
+        window.location.href = '/login';
+      }
     throw new Error('Method not implemented.');
   }
 

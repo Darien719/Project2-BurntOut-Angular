@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
-import { User } from '../services/user';
 import { UserCreds } from '../services/usercreds';
 
 @Component({
@@ -46,7 +45,6 @@ export class LoginComponent implements OnInit {
 
   goHome():void {
     window.location.href='/';
-
   }
 
   ngOnInit(): void {
