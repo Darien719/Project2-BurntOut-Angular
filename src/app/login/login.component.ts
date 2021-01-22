@@ -46,10 +46,14 @@ export class LoginComponent implements OnInit {
   }
 
   goHome():void {
-    this.router.navigate([''])
+    window.location.href='/';
+
   }
 
   ngOnInit(): void {
+    // if (localStorage.getItem('user')!=null){
+    //   this.goHome();
+    // }
   }
 
 }
