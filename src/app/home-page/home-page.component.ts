@@ -14,14 +14,7 @@ export class HomePageComponent implements OnInit {
   constructor(private router:Router, private sessServ: SessionService) { }
 
   ngOnInit(): void {
-    if(this.sessServ.verifySession()){
-      this.firstName = JSON.parse(localStorage.getItem('user')).firstName;
-    } else {
-      window.location.href = '/login';
-    }
-    // if(localStorage.getItem('user')){
-    //   this.firstName = JSON.parse(localStorage.getItem('user')).firstName;
-    // }
+    
   }
 
 }
