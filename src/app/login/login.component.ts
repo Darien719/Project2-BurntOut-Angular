@@ -26,28 +26,22 @@ export class LoginComponent implements OnInit {
 
   
   loginPost(login: FormGroup){
-
-    // console.log(login.get('username').value);
-    // console.log(login.get('password').value);
+    
     this.usercred.username = login.get('username').value;
     this.usercred.password = login.get('password').value; 
     this.loginserv.postLogin(this.usercred).subscribe(
       response =>{
-        console.log(this.userfName);
-        console.log(response);
-        console.log("status is cool");
         localStorage.setItem('user', JSON.stringify(response));
         this.goHome();
       },
       error =>{
-        console.log("Problem Logging in", error)
         window.alert('Unable to find user with that Username and Password');
       } 
     );
   }
 
   goHome():void {
-    this.router.navigate([''])
+    window.location.href='/';
   }
 
   ngOnInit(): void {

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -6,10 +7,13 @@ import { Injectable } from '@angular/core';
 })
 export class LogOutServService {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   logOut(){
     localStorage.removeItem('user');
     console.log("Logged out");
+    this.router.navigate([''])
+    location.reload();
+    
   }
 }
