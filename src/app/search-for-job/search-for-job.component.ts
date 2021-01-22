@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Job } from '../services/job';
 import { JobService } from '../services/job.service';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-search-for-job',
@@ -15,7 +16,7 @@ export class SearchForJobComponent implements OnInit {
 
   jobsFilteredByName : Job [] = [];
 
-  constructor(private router : Router, private jobServ : JobService) {
+  constructor(private router : Router, private jobServ : JobService, private sessServ: SessionService) {
     //this.jobsFilteredByName = this.jobs;
    }
 
@@ -43,6 +44,11 @@ performFilter(filterBy:string) : Job[] {
 }
 
   ngOnInit(): void {
+    if(this.sessServ.verifySession()){
+
+    } else {
+      window.location.href = '/login';
+    }
     this.getAllJobs();
   }
 

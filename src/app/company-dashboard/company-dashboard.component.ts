@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-company-dashboard',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sessServ: SessionService) { }
 
   ngOnInit(): void {
+    if(this.sessServ.verifySession()){
+
+    } else {
+      window.location.href = '/login';
+    }
   }
 
 }
