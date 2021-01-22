@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { SessionService } from '../services/session.service';
-=======
 import { FormGroup, FormControl } from '@angular/forms';
 import { Application } from '../services/application';
 import { CreateApplicationService } from '../services/create-application.service';
->>>>>>> 1a26b42f11c40f0bb9e87a80ee90c6d085a63ede
 
 @Component({
   selector: 'app-application-form-page',
@@ -14,18 +11,8 @@ import { CreateApplicationService } from '../services/create-application.service
 })
 export class ApplicationFormPageComponent implements OnInit {
   pageTitle = "Blog"
-  constructor(private createAppServ: CreateApplicationService) { }
+  constructor(private createAppServ: CreateApplicationService, private sessServ:SessionService) { }
 
-<<<<<<< HEAD
-  constructor(private sessServ:SessionService) { }
-
-  ngOnInit(): void {
-    if(this.sessServ.verifySession()){
-
-    } else {
-      window.location.href = '/login';
-    }
-=======
   username:string;
   posting_id:number;
   status:string;
@@ -44,8 +31,12 @@ export class ApplicationFormPageComponent implements OnInit {
   })
 
   ngOnInit(): void {
+      if(this.sessServ.verifySession()){
+  
+      } else {
+        window.location.href = '/login';
+      }
     throw new Error('Method not implemented.');
->>>>>>> 1a26b42f11c40f0bb9e87a80ee90c6d085a63ede
   }
 
 /*   jobPost(jobgroup :FormGroup){
