@@ -9,25 +9,41 @@
             <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="exampleInputEmail1">First name</label>
-                <input type="text" class="form-control" id="inputFirstName1" aria-describedby="firstNameHelp" placeholder="Enter first name">
+                <input type="text" class="form-control" id="inputFirstName1" aria-describedby="firstNameHelp"
+                    placeholder="Enter first name" formControlName="firstName">
             </div>
             <div class="form-group col-md-6">
                 <label for="exampleInputEmail1">Last name</label>
-                <input type="text" class="form-control" id="inputLastName1" aria-describedby="lastNameHelp" placeholder="Enter last name">
+                <input type="text" class="form-control" id="inputLastName1" aria-describedby="lastNameHelp"
+                    placeholder="Enter last name" formControlName="lastName">
             </div>
         </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Enter email" formControlName="email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+            </div>
+            <div class="form-group">
+                Are you an employee or employer?<br><div style="height: 5px;"></div>
+                <label class="radio-inline"><input type="radio" formControlName="userRole" value="Candidate"> Employee</label>&nbsp;
+                <label class="radio-inline"><input type="radio" formControlName="userRole" value="Company"> Employer</label>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputCompany1">Which company are you affiliated with?</label>
+                <input type="text" class="form-control" id="inputCompany1" placeholder="Enter company"
+                    formControlName="company">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Username</label>
-                <input type="text" class="form-control" id="inputUsername1" aria-describedby="usernameHelp" placeholder="Enter email">
+                <input type="text" class="form-control" id="inputUsername1" aria-describedby="usernameHelp"
+                    placeholder="Enter username" formControlName="username">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="inputPassword1" placeholder="Enter assword">
+                <input type="password" class="form-control" id="inputPassword1" placeholder="Enter password"
+                    formControlName="password">
             </div>
             <button type="submit" class="btn btn-primary" (click)="signUpPost(signUpForm)">Submit</button>
         </form>
