@@ -1,1 +1,40 @@
-<p>application-form-page works!</p>
+<br><br><br>
+
+<h1 style="text-align: center;">Submit Application </h1>
+
+<br><br><br>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+
+        </div>
+        <div class="col-lg">
+            <form [formGroup] = "applicationgroup" (submit) = 'submitApplication' style = "display:table">
+                <div class="form-row" display = "table-row">
+                    <div class="form-group col-md-8">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="username_textbox">Username</label>
+                        <input type="text" class="form-control" id="username_textbox" formControlName="username">
+                    </div>
+                </div>
+                <div class="form-row" display = "table-row">
+                    <div class="form-group col-md-8">
+                    </div>
+                    <div class="form-group col-md-8">
+                        <label for="posting_id">Posting ID</label>
+                        <input type="text" class="form-control" id="posting_id" formControlName="posting_id">
+                    </div>
+                </div>
+                
+                <br>
+                <button class="btn btn-primary" (click)="submitApplication(applicationgroup)">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-5">
+
+        </div>
+        </div>
+</div>
