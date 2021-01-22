@@ -7,6 +7,7 @@ import { blogInfo } from "./blogInfo";
 })
 export class BlogService {
   private url = "http://localhost:9025/blogs/add";
+  private allPostsurl = "http://localhost:9025/blogs/all";
 
   constructor(private httpCli: HttpClient) {
   }
@@ -18,5 +19,9 @@ export class BlogService {
       }),
       responseType: 'text' as 'json'
     });
+  }
+
+  retrieveAllPosts(): Observable<blogInfo> {
+    return this.httpCli.get<blogInfo>(this.allPostsurl);
   }
 }

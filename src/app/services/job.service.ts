@@ -11,7 +11,7 @@ export class JobService {
 
   constructor(private httpCli: HttpClient) { }
 
-  retrieveAllJobs() : Observable<Job> {
+  retrieveAllJobs(): Observable<Job> {
     return this.httpCli.get<Job>(this.allJobsUrl);
   }
 }

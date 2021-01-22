@@ -24,7 +24,6 @@ import { CreateJobService } from './services/create-job.service';
 import { ApplicationFormPageComponent } from './application-form-page/application-form-page.component';
 import { LoggedOutNavbarComponent } from './logged-out-navbar/logged-out-navbar.component';
 import { LoggedInCompanyNavbarComponent } from './logged-in-company-navbar/logged-in-company-navbar.component';
-import { PostComponent } from './post/post.component';
 
 
 @NgModule({
@@ -42,8 +41,7 @@ import { PostComponent } from './post/post.component';
     ApplicationFormPageComponent,
     LoggedOutNavbarComponent,
     LoggedInCompanyNavbarComponent,
-    PostComponent,
-    
+
 
   ],
   imports: [
