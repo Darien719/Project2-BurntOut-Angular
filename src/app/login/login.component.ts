@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
     this.usercred.password = login.get('password').value; 
     this.loginserv.postLogin(this.usercred).subscribe(
       response =>{
-        console.log(this.userfName);
         console.log(response);
            console.log("status is cool");
            localStorage.setItem('user', JSON.stringify(response));

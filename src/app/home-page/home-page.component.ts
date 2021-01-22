@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -9,10 +10,19 @@ export class HomePageComponent implements OnInit {
 
   firstName:string;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
     this.firstName = JSON.parse(localStorage.getItem('user')).firstName;
+    if(!this.firstName){
+
+    }
+  }
+
+  verifySession(){
+    if (!JSON.parse(localStorage.getItem('user'))){
+      this.router.navigate(['login']);
+    }
   }
 
 }
