@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
+import { SessionService } from '../services/session.service';
 import { UserCreds } from '../services/usercreds';
 
 @Component({
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl(''),
   })
 
-  constructor(private router: Router, private loginserv: LoginService) { }
+  constructor(private router: Router, private loginserv: LoginService, private sessServ: SessionService) { }
 
   
   loginPost(login: FormGroup){
@@ -48,9 +49,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // if (localStorage.getItem('user')!=null){
-    //   this.goHome();
-    // }
+    if(this.sessServ.verifySession()){
+      window.location.href = '/';
+    }
   }
 
 }
