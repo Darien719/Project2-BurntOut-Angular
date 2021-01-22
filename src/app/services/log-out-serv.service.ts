@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class LogOutServService {
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   logOut(){
     localStorage.removeItem('user');
