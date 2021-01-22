@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CreateJobService } from '../services/create-job.service';
 import { JobPosting } from '../services/jobPosting';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-create-job-posting',
@@ -33,7 +34,7 @@ export class CreateJobPostingComponent implements OnInit {
     description: new FormControl(''),
   })
 
-  constructor(private createJobServ: CreateJobService) { }
+  constructor(private createJobServ: CreateJobService, private sessServ: SessionService) { }
 
   jobPost(jobgroup :FormGroup){
 
@@ -61,6 +62,11 @@ export class CreateJobPostingComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if(this.sessServ.verifySession()){
+
+    } else {
+      window.location.href = '/login';
+    }
    
   }
 
