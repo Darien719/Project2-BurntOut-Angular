@@ -34,9 +34,9 @@ export class LoginComponent implements OnInit {
     this.loginserv.postLogin(this.usercred).subscribe(
       response =>{
         console.log(response);
-           console.log("status is cool");
-           localStorage.setItem('user', JSON.stringify(response));
-           this.goHome();
+        console.log("status is cool");
+        localStorage.setItem('user', JSON.stringify(response));
+        this.goHome();
       },
       error =>{
         console.log("Problem Logging in", error)
@@ -53,3 +53,4 @@ export class LoginComponent implements OnInit {
   }
 
 }
+ 

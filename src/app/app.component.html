@@ -1,2 +1,4 @@
-<app-navigation-bar></app-navigation-bar>
+<app-navigation-bar *ngIf='userRoleName=="Candidate"'></app-navigation-bar>
+<app-logged-in-company-navbar *ngIf='userRoleName=="Company"'></app-logged-in-company-navbar>
+<app-logged-out-navbar *ngIf='userRoleName==""'></app-logged-out-navbar>
 <router-outlet></router-outlet>
