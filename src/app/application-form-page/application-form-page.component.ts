@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Application } from '../services/application';
 import { CreateApplicationService } from '../services/create-application.service';
-import { CreateJobService } from '../services/create-job.service';
 
 @Component({
   selector: 'app-application-form-page',
@@ -10,22 +9,17 @@ import { CreateJobService } from '../services/create-job.service';
   styleUrls: ['./application-form-page.component.css']
 })
 export class ApplicationFormPageComponent implements OnInit {
-
-  createAppServ: CreateApplicationService 
-  constructor(createAppServ) { }
+  pageTitle = "Blog"
+  constructor(private createAppServ: CreateApplicationService) { }
 
   username:string;
   posting_id:number;
-  title:string;
-  location_id:number;
-  industry_id:number;
-  description:string;
+  status:string;
   resume: File
   application:Application = {
-
   'posting_id': 0,
   'username': '',
-  'status' : '',
+  'status' : 'Pending',
   'resume' : null
 };
 
@@ -39,32 +33,20 @@ export class ApplicationFormPageComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
 
-  jobPost(jobgroup :FormGroup){
+/*   jobPost(jobgroup :FormGroup){
 
     this.application.posting_id = this.applicationgroup.get('posting_id').value;
     this.application.username = this.applicationgroup.get('username').value;
-  }
+  } */
 
-  handleFileInput(files: FileList) {
+  /* handleFileInput(files: FileList) {
     this.resume = files.item(0);
-  }
+  } */
 
-  submitApplication() : void {
-
-  this.createAppServ.postApplication(this.application).subscribe(
-    response=>{
-      console.log("In response");
-      console.log(response);
-    },error=>{
-        console.log("Problem posting application");
-        console.log(error);
-    }
-    
-  )
-  }
-
-
-    /* this.createAppServ.postApplication(this.application).subscribe(
+  submitApplication(apgroup : FormGroup) : void {
+    this.application.posting_id = this.applicationgroup.get('posting_id').value;
+    this.application.username = this.applicationgroup.get('username').value;
+    this.createAppServ.postApplication(this.application).subscribe(
       response=>{
         console.log("In response");
         console.log(response);
@@ -72,8 +54,7 @@ export class ApplicationFormPageComponent implements OnInit {
           console.log("Problem posting application");
           console.log(error);
       }
-    ); */
-
-    
-
+    )
   }
+  
+}

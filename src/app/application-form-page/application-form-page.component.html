@@ -7,70 +7,34 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-1">
+        <div class="col-md-5">
 
         </div>
         <div class="col-lg">
-            <form [formGroup] = "jobgroup" (submit) = 'jobPost'>
-                <div class="form-row">
-                    <div class="form-group col-md-2">
-                        <label for="inputCompanyId">Company ID</label>
-                        <input type="text" class="form-control" id="company_id_textbox" formControlName="company_id">
+            <form [formGroup] = "applicationgroup" (submit) = 'submitApplication' style = "display:table">
+                <div class="form-row" display = "table-row">
+                    <div class="form-group col-md-8">
                     </div>
-                    <div class="form-group col-md-2">
-                        <label for="inputPosterId">Poster ID</label>
-                        <input type="text" class="form-control" id="poster_id_textbox" formControlName="poster_id">
+                    <div class="form-group col-md-12">
+                        <label for="username_textbox">Username</label>
+                        <input type="text" class="form-control" id="username_textbox" formControlName="username">
+                    </div>
+                </div>
+                <div class="form-row" display = "table-row">
+                    <div class="form-group col-md-8">
                     </div>
                     <div class="form-group col-md-8">
-                        <label for="inputTitle">Posting Title</label>
-                        <input type="text" class="form-control" id="title_textbox" formControlName="title">
+                        <label for="posting_id">Posting ID</label>
+                        <input type="text" class="form-control" id="posting_id" formControlName="posting_id">
                     </div>
                 </div>
                 
-                <div class="form-row">
-                    
-                    <div class="form-group col-md-4">
-                        <label for="inputLocation">Location</label>
-                        <select id="location_select" formControlName="location" class="form-control">
-                            <option selected>Choose...</option>
-                            <option value="1">Reston</option>
-                            <option value="2">Phoenix</option>
-                            <option value="3">Tampa</option>
-                            <option value="4">Austin</option>
-                            <option value="5">Menlo Park</option>
-                            <option value="6">Seattle</option>
-                            <option value="7">Cupertino</option>
-                            <option value="8">Chicago</option>
-                            <option value="9">Los Angeles</option>
-                            <option value="10">San Francisco</option>
-                        
-                        </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputIndustry">Industry</label>
-                        <select id="industry_select" formControlName="industry" class="form-control">
-                            <option selected>Choose...</option>
-                            <option value="1">Information Technology</option>
-                            <option value="2">Computer Software</option>
-                            <option value="3">Cyber Security</option>
-                            <option value="4">Data Science</option>
-                        </select>
-                    </div>
-                   
-                </div>
-                <label for="lbl_description" class="form-label">Description</label>
-					<div class="form-floating">
-
-						<textarea class="form-control" style="height: 300px"
-							placeholder="Description" id="description-textarea"
-							formControlName="description" form="create-reimb"></textarea>
-                    </div>
                 <br>
-                <button class="btn btn-primary" (click)="jobPost(jobgroup)">Submit</button>
+                <button class="btn btn-primary" (click)="submitApplication(applicationgroup)">Submit</button>
             </form>
         </div>
-        <div class="col-sm-1">
+        <div class="col-md-5">
 
         </div>
-    </div>
+        </div>
 </div>
