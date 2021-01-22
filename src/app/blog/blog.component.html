@@ -1,19 +1,21 @@
 <br><br>
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>
+
+<div *ngFor="let post of posts">
+    <br><br>
+    <div class="container-post">
+        <p id="username">@{{post.owner}}</p>
+        <hr>
+        <p id="title">{{post.blogTitle}}</p>
+        <p id="content">
+            {{post.blogContent}}
+        </p>
+        <hr id="bottom">
+        <p id="date">Posted on: {{post.date}}</p>
+    </div>
+    <br><br><br><br><br>
+</div>
+
+
 <!-- <div class="container">
     <input type="text" [(ngModel)]="blogTitle" id="title-field" placeholder="Insert title...">
     <textarea [(ngModel)]="blogMessage" id="blog-message" cols="30" rows="10"
