@@ -1,14 +1,11 @@
-import { Company } from "./company";
-import { UserRole } from "./userRole";
-
 export interface User {
-    id : number;
+    id: number;
     firstName: string;
     lastName: string;
     email: string;
+    userRole: string;
+    company: string;
     username: string;
     password: string;
     salt: string;
-    userRole: UserRole;
-    company: Company;
 }
