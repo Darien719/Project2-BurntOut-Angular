@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
+import { User } from '../services/user';
 import { UserCreds } from '../services/usercreds';
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   username:string;
   password:string;
   usercred:UserCreds = {'username':'', 'password':''};
-  badLogCount:number = 0;
+  userfName:string;
 
   logingroup = new FormGroup({
     username: new FormControl(''),
@@ -32,12 +33,12 @@ export class LoginComponent implements OnInit {
     this.usercred.password = login.get('password').value; 
     this.loginserv.postLogin(this.usercred).subscribe(
       response =>{
+        this.userfName = response.firstName;
+        console.log(this.userfName);
         console.log(response);
-        let substr = "successfully verified";
-         if(response.includes(substr)){
            console.log("status is cool");
+           sessionStorage.setItem('user', this.userfName);
            this.goHome();
-         }
       },
       error =>{
         console.log("Problem Logging in", error)

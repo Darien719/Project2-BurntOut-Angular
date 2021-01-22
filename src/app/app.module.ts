@@ -18,7 +18,10 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CreateJobPostingComponent } from './create-job-posting/create-job-posting.component';
 import { BlogComponent } from './blog/blog.component';
+import { BlogService } from './services/blog.service';
+import { CreateJobService } from './services/create-job.service';
 import { ApplicationFormPageComponent } from './application-form-page/application-form-page.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import { ApplicationFormPageComponent } from './application-form-page/applicatio
     SignUpComponent,
     CreateJobPostingComponent,
     BlogComponent,
-    ApplicationFormPageComponent
+    ApplicationFormPageComponent,
+    
 
   ],
   imports: [
@@ -45,13 +49,13 @@ import { ApplicationFormPageComponent } from './application-form-page/applicatio
       { path: "sign-up", component: SignUpComponent },
       { path: "create-posting", component: CreateJobPostingComponent },
       { path: "blog", component: BlogComponent },
-      {path: "jobs/application", component: ApplicationFormPageComponent},
+      { path: "jobs/application", component: ApplicationFormPageComponent },
       { path: "**", component: HomePageComponent },
 
     ]), HttpClientModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [JobService, LoginService],
+  providers: [JobService, LoginService, BlogService, CreateJobService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,24 +1,29 @@
 <br><br><br>
 
+<h1 style="text-align: center;">Create a Job Posting</h1>
+
+<br><br><br>
+
+
 <div class="container">
     <div class="row">
         <div class="col-sm-1">
 
         </div>
         <div class="col-lg">
-            <form>
+            <form [formGroup] = "jobgroup" (submit) = 'jobPost'>
                 <div class="form-row">
                     <div class="form-group col-md-2">
                         <label for="inputCompanyId">Company ID</label>
-                        <input type="text" class="form-control" id="company_id_textbox" name="company_id">
+                        <input type="text" class="form-control" id="company_id_textbox" formControlName="company_id">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="inputPosterId">Poster ID</label>
-                        <input type="text" class="form-control" id="poster_id_textbox" name="poster">
+                        <input type="text" class="form-control" id="poster_id_textbox" formControlName="poster_id">
                     </div>
                     <div class="form-group col-md-8">
                         <label for="inputTitle">Posting Title</label>
-                        <input type="text" class="form-control" id="title_textbox" name="title">
+                        <input type="text" class="form-control" id="title_textbox" formControlName="title">
                     </div>
                 </div>
                 
@@ -26,7 +31,7 @@
                     
                     <div class="form-group col-md-4">
                         <label for="inputLocation">Location</label>
-                        <select id="location_select" name="location" class="form-control">
+                        <select id="location_select" formControlName="location" class="form-control">
                             <option selected>Choose...</option>
                             <option value="1">Reston</option>
                             <option value="2">Phoenix</option>
@@ -43,7 +48,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputIndustry">Industry</label>
-                        <select id="industry_select" name="industry" class="form-control">
+                        <select id="industry_select" formControlName="industry" class="form-control">
                             <option selected>Choose...</option>
                             <option value="1">Information Technology</option>
                             <option value="2">Computer Software</option>
@@ -58,10 +63,10 @@
 
 						<textarea class="form-control" style="height: 300px"
 							placeholder="Description" id="description-textarea"
-							name="description" form="create-reimb"></textarea>
+							formControlName="description" form="create-reimb"></textarea>
                     </div>
                 <br>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button class="btn btn-primary" (click)="jobPost(jobgroup)">Submit</button>
             </form>
         </div>
         <div class="col-sm-1">
