@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionService } from '../services/session.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Application } from '../services/application';
 import { CreateApplicationService } from '../services/create-application.service';
@@ -12,8 +13,10 @@ import {FileUploadService} from '../services/file-upload.service';
 export class ApplicationFormPageComponent implements OnInit {
   pageTitle = "Application Form";
   toFile;
-  constructor(private createAppServ: CreateApplicationService, 
-    private fileUploadServ: FileUploadService) { }
+ 
+    //private fileUploadServ: FileUploadService;
+
+  constructor(private createAppServ: CreateApplicationService, private sessServ:SessionService) { }
 
   username:string;
   posting_id:number;
@@ -33,6 +36,11 @@ export class ApplicationFormPageComponent implements OnInit {
   })
 
   ngOnInit(): void {
+      if(this.sessServ.verifySession()){
+  
+      } else {
+        window.location.href = '/login';
+      }
     throw new Error('Method not implemented.');
   }
 

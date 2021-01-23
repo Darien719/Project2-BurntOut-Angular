@@ -1,5 +1,7 @@
 export interface blogInfo {
-    'username': string;
-    'message': string;
+    'blogId': number;
     'title': string;
+    'date': Date;
+    'message': string;
+    'username': string;
 }

@@ -41,7 +41,7 @@ import { LoggedInCompanyNavbarComponent } from './logged-in-company-navbar/logge
     ApplicationFormPageComponent,
     LoggedOutNavbarComponent,
     LoggedInCompanyNavbarComponent,
-    
+
 
   ],
   imports: [

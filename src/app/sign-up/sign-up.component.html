@@ -3,49 +3,90 @@
 <br><br>
 <div class="card" style="width: 50rem;">
     <div class="card-body">
-        <form [formGroup] = "signUpForm" (submit) = "signUpPost">
+        <form>
             <h3 style="text-align: center;">To register, please enter the necessary info below: </h3>
             <br>
+            <div [hidden]="!errorOccurred" class="alert alert-danger">
+                {{errorMessage}}
+            </div>
             <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="exampleInputEmail1">First name</label>
-                <input type="text" class="form-control" id="inputFirstName1" aria-describedby="firstNameHelp"
-                    placeholder="Enter first name" formControlName="firstName">
+                <div class="form-group col-md-6">
+                    <label for="firstName">First name</label>
+                    <input type="text" class="form-control" id="firstName" aria-describedby="firstNameHelp"
+                        placeholder="Enter first name" required minlength=1 [(ngModel)]="newUser.firstName"
+                        name="firstName" #firstName="ngModel">
+                    <small>
+                        <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">
+                            First name is required.
+                        </div>
+                    </small>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastName">Last name</label>
+                    <input type="text" class="form-control" id="lastName" aria-describedby="lastNameHelp"
+                        placeholder="Enter last name" required minlength=1 [(ngModel)]="newUser.lastName"
+                        name="lastName" #lastName="ngModel">
+                    <small>
+                        <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger">
+                            Last name is required.
+                        </div>
+                    </small>
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                <label for="exampleInputEmail1">Last name</label>
-                <input type="text" class="form-control" id="inputLastName1" aria-describedby="lastNameHelp"
-                    placeholder="Enter last name" formControlName="lastName">
-            </div>
-        </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Enter email" formControlName="email">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    placeholder="Enter email" required minlength=1 [(ngModel)]="newUser.email" name="email"
+                    #email="ngModel" [email]="true">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                    else.</small>
+                    else.
+                </small>
+                <small>
+                    <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                        Email is incorrect format or empty.
+                    </div>
+                </small>
+            </div>
+            <div class="form-group" required>
+                Are you an employee or employer?<br>
+                <div style="height: 5px;"></div>
+                <label class="radio-inline">
+                    <input type="radio" value="Candidate" required [(ngModel)]="newUser.userRole" name="userRole"
+                        #userRole="ngModel">
+                    Employee</label>&nbsp;
+                <label class=" radio-inline">
+                    <input type="radio" value="Company" required [(ngModel)]="newUser.userRole" name="userRole"
+                        #userRole="ngModel">
+                    Employer</label>
             </div>
             <div class="form-group">
-                Are you an employee or employer?<br><div style="height: 5px;"></div>
-                <label class="radio-inline"><input type="radio" formControlName="userRole" value="Candidate"> Employee</label>&nbsp;
-                <label class="radio-inline"><input type="radio" formControlName="userRole" value="Company"> Employer</label>
+                <label for="company">Which company are you affiliated with?</label>
+                <input type="text" class="form-control" id="company" placeholder="Enter company" required
+                    [(ngModel)]="newUser.company" name="company" #company="ngModel">
             </div>
             <div class="form-group">
-                <label for="exampleInputCompany1">Which company are you affiliated with?</label>
-                <input type="text" class="form-control" id="inputCompany1" placeholder="Enter company"
-                    formControlName="company">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter password" required
+                    [(ngModel)]="newUser.username" name="username" minlength=6 #username="ngModel">
+                <small>
+                    <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+                        Username is required and must be more than 6 characters.
+                    </div>
+                </small>
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Username</label>
-                <input type="text" class="form-control" id="inputUsername1" aria-describedby="usernameHelp"
-                    placeholder="Enter username" formControlName="username">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" required
+                    [(ngModel)]="newUser.password" name="password" minlength=6 #password="ngModel">
+                <small>
+                    <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                        Password is required and must be more than 6 characters.
+                    </div>
+                </small>
             </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="inputPassword1" placeholder="Enter password"
-                    formControlName="password">
-            </div>
-            <button type="submit" class="btn btn-primary" (click)="signUpPost(signUpForm)">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!firstName.valid || !lastName.valid || !email.valid || 
+                            !userRole.valid || !username.valid || !password.valid"
+                (click)="signUpPost()">Submit</button>
         </form>
     </div>
 </div>

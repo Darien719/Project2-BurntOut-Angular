@@ -1,8 +1,25 @@
 <br><br>
-<h1 style="text-align: center;">Create a Blog Post</h1>
-<div class="container">
+
+<div *ngFor="let post of posts">
+    <br><br>
+    <div class="container-post">
+        <p id="username">@{{post.owner}}</p>
+        <hr>
+        <p id="title">{{post.blogTitle}}</p>
+        <p id="content">
+            {{post.blogContent}}
+        </p>
+        <hr id="bottom">
+        <p id="date">Posted on: {{post.date}}</p>
+    </div>
+    <br><br><br><br><br>
+</div>
+
+
+<!-- <div class="container">
     <input type="text" [(ngModel)]="blogTitle" id="title-field" placeholder="Insert title...">
     <textarea [(ngModel)]="blogMessage" id="blog-message" cols="30" rows="10"
         placeholder="Insert your message..."></textarea>
+    <hr>
     <button (click)="sendData()" id="post-btn">Post</button>
-</div>
+</div> -->

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../services/blog.service';
 import { blogInfo } from '../services/blogInfo';
+import { SessionService } from '../services/session.service';
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
@@ -9,13 +10,20 @@ import { blogInfo } from '../services/blogInfo';
 export class BlogComponent implements OnInit {
 
   pageTitle = "Blog";
-  bInfo: blogInfo = { "username": "", "message": "", "title": "" }
+  bInfo: blogInfo = { "blogId": null, "date": null, "message": "", "title": "", "username": "" }
 
-  constructor(private blogService: BlogService) { }
+  constructor(private blogService: BlogService, private sessServ: SessionService) { }
 
   ngOnInit(): void {
+    this.getallPosts();
+    if (this.sessServ.verifySession()) {
+
+    } else {
+      window.location.href = '/login';
+    }
   }
 
+  posts: blogInfo[];
   blogMessageText = "";
   blogTitleText = "";
 
@@ -44,6 +52,12 @@ export class BlogComponent implements OnInit {
         console.log(response);
       }
     );
+  }
 
+  getallPosts(): void {
+    this.blogService.retrieveAllPosts().subscribe(response => {
+      this.posts = Object.values(response);
+      console.log(this.posts);
+    })
   }
 }
