@@ -10,11 +10,14 @@ import { SessionService } from '../services/session.service';
 export class BlogComponent implements OnInit {
 
   pageTitle = "Blog";
+  isNewPostVisible = true;
+  isNewPostFormVisible = false;
   bInfo: blogInfo = { "blogId": null, "date": null, "message": "", "title": "", "username": "" }
 
   constructor(private blogService: BlogService, private sessServ: SessionService) { }
 
   ngOnInit(): void {
+
     this.getallPosts();
     if (this.sessServ.verifySession()) {
 
@@ -26,6 +29,16 @@ export class BlogComponent implements OnInit {
   posts: blogInfo[];
   blogMessageText = "";
   blogTitleText = "";
+
+  newPostClicked() {
+    this.isNewPostVisible = false;
+    this.isNewPostFormVisible = true;
+  }
+
+  closeButtonClicked() {
+    this.isNewPostFormVisible = false;
+    this.isNewPostVisible = true;
+  }
 
   get blogMessage(): string {
     return this.blogMessageText;
@@ -45,19 +58,24 @@ export class BlogComponent implements OnInit {
 
 
   sendData() {
+    let user = localStorage.getItem("user");
+    user = JSON.parse(user);
+    this.bInfo.blogId = user["userId"];
     this.bInfo.message = this.blogMessageText;
     this.bInfo.title = this.blogTitleText;
+    this.bInfo.username = user["username"];
+
     this.blogService.postBlog(this.bInfo).subscribe(
       response => {
-        console.log(response);
+        window.location.reload();
       }
     );
+
   }
 
   getallPosts(): void {
     this.blogService.retrieveAllPosts().subscribe(response => {
       this.posts = Object.values(response);
-      console.log(this.posts);
     })
   }
 }
