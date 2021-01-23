@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Application } from '../services/application';
 import { CreateApplicationService } from '../services/create-application.service';
+import {FileUploadService} from '../services/file-upload.service';
 
 @Component({
   selector: 'app-application-form-page',
@@ -9,8 +10,10 @@ import { CreateApplicationService } from '../services/create-application.service
   styleUrls: ['./application-form-page.component.css']
 })
 export class ApplicationFormPageComponent implements OnInit {
-  pageTitle = "Blog"
-  constructor(private createAppServ: CreateApplicationService) { }
+  pageTitle = "Application Form";
+  toFile;
+  constructor(private createAppServ: CreateApplicationService, 
+    private fileUploadServ: FileUploadService) { }
 
   username:string;
   posting_id:number;
@@ -56,5 +59,17 @@ export class ApplicationFormPageComponent implements OnInit {
       }
     )
   }
+
+/*   submit() {
+    const file = this.toFile.item(0);
+    this.fileUploadServ.fileUpload(file);
+  }
+
+  onChange(event) {
+    this.toFile = event.target.files;
+
+  } */
+
+  
   
 }
