@@ -15,11 +15,11 @@
     <br><br><br><br><br>
 </div>
 
-
-<!-- <div class="container">
+<button *ngIf="isNewPostVisible" id="post-blog" (click)="newPostClicked()">+</button>
+<div *ngIf="isNewPostFormVisible" class="container">
+    <button id="close" (click)="closeButtonClicked()">x</button>
     <input type="text" [(ngModel)]="blogTitle" id="title-field" placeholder="Insert title...">
     <textarea [(ngModel)]="blogMessage" id="blog-message" cols="30" rows="10"
         placeholder="Insert your message..."></textarea>
-    <hr>
     <button (click)="sendData()" id="post-btn">Post</button>
-</div> -->
+</div>

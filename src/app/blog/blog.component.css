@@ -1,9 +1,9 @@
 
 .container{
     position:fixed;
-	top: 50%;
-	left: 50%;
-	width: calc(100% - 10px);
+	top: 76%;
+	left: 85%;
+    width: 450px;
 	height: 425px;
 	background-color: #343a40;
 	border-radius: 10px;
@@ -79,10 +79,12 @@
     top: 380px;
     left: calc(100% - 110px); 
 }
-
+/**
+    Post element
+*/
 .container-post{
     position:absolute;
-    left: 50%;
+    left: 40%;
 	width: calc(100% - 800px);
 	height: 150px;
 	background-color: white;
@@ -134,3 +136,50 @@ hr{
     padding-left: 10px;
 }
 
+#post-blog{
+    position: fixed;
+    top: 93%;
+    left: 85%;
+    border: none;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bolder;
+    background-color: #007bff;
+    color: white;
+    padding: 0px;
+    padding-bottom: 5px;
+}
+
+
+#close{
+    position: absolute;
+    left: 90%;
+    top: 10px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border:none;
+    background-color: #535c66;
+    color:white;
+    padding:0px;
+    padding-bottom: 5px;
+}
+
+#close:focus{
+   outline: none;
+}
+
+#close:hover{
+    background-color: rgb(70, 77, 87);
+}
+
+#post-blog:focus{
+    outline: none;
+ }
+
+ #post-blog:hover{
+    background-color: #0155af;
+ }
