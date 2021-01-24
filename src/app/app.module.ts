@@ -26,6 +26,8 @@ import { LoggedOutNavbarComponent } from './logged-out-navbar/logged-out-navbar.
 import { LoggedInCompanyNavbarComponent } from './logged-in-company-navbar/logged-in-company-navbar.component';
 import { ReviewApplicantsComponent } from './review-applicants/review-applicants.component';
 import { ViewApplicantsService } from './services/view-applicants.service';
+import { AccountRecoveryComponent } from './account-recovery/account-recovery.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 
 @NgModule({
@@ -44,6 +46,8 @@ import { ViewApplicantsService } from './services/view-applicants.service';
     LoggedOutNavbarComponent,
     LoggedInCompanyNavbarComponent,
     ReviewApplicantsComponent,
+    AccountRecoveryComponent,
+    PasswordResetComponent,
 
 
   ],
@@ -54,6 +58,8 @@ import { ViewApplicantsService } from './services/view-applicants.service';
       { path: "candidate-dashboard", component: CandidateDashboardComponent },
       { path: "jobs", component: SearchForJobComponent },
       { path: "login", component: LoginComponent },
+      { path: "recover", component: AccountRecoveryComponent },
+      { path: "passwordreset", component: PasswordResetComponent },
       { path: "sign-up", component: SignUpComponent },
       { path: "create-posting", component: CreateJobPostingComponent },
       { path: "blog", component: BlogComponent },
