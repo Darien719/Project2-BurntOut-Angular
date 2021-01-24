@@ -23,6 +23,7 @@ export class ApplicationFormPageComponent implements OnInit {
   status:string;
   resume: File
   application:Application = {
+  'application_id':0,
   'posting_id': 0,
   'username': '',
   'status' : 'Pending',
