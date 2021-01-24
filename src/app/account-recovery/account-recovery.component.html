@@ -1,0 +1,39 @@
+<br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-lg">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                
+              </div>
+              <div class="col-lg">
+                <img src="assets/fire-logo.png" width="100%">
+              </div>
+              <div class="col-sm">
+                
+              </div>
+            </div>
+          </div>
+          <br>
+            <div class="card" style="width: 110%;">
+              <div class="card-body">
+                <h3 style="text-align: center;">Please Enter the Email Associated with Your Account</h3><br>
+                <form [formGroup] = "recovergroup" (submit) = 'recoverAccount'>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email</label>
+                      <input type="text" placeholder="Email" class="form-control" formControlName="email">
+                    </div>
+                    <button class="btn btn-md btn-primary" (click)="recoverAccount(recovergroup)">Send Recovery Email</button>
+                </form>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+
+        </div>
+    </div>
+</div>
