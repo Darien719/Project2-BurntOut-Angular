@@ -33,6 +33,7 @@ export class PasswordResetComponent implements OnInit {
       error =>{
         console.log(error);
         console.log('issues');
+        window.location.href='/login'
       }
     )
   }
