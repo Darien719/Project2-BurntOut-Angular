@@ -76,6 +76,7 @@ export class BlogComponent implements OnInit {
   getallPosts(): void {
     this.blogService.retrieveAllPosts().subscribe(response => {
       this.posts = Object.values(response);
+      this.posts = this.posts.reverse();
     })
   }
 }
