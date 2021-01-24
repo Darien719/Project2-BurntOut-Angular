@@ -12,6 +12,7 @@ export class AppComponent {
   userRoleName:string="";
   firstName: string = "";
   lastName: string = "";
+  username: string = "";
   
 
   constructor() { }
@@ -21,8 +22,10 @@ export class AppComponent {
       this.userRoleName = JSON.parse(localStorage.getItem('user')).userRoleName;
       this.firstName = JSON.parse(localStorage.getItem('user')).firstName;
       this.lastName = JSON.parse(localStorage.getItem('user')).lastName;
+      this.username = JSON.parse(localStorage.getItem('user')).username;
       localStorage.setItem("firstName", this.firstName);
       localStorage.setItem("lastName", this.lastName);
+      localStorage.setItem("username", this.username);
     }
   }
 

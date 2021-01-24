@@ -15,7 +15,7 @@ export class FileUploadService {
     throw new Error('Method not implemented.');
   }
 
-  uploadFile(file, username) {
+  uploadFile(file, firstName, lastName, postingId) {
     const contentType = file.type;
     const bucket = new S3(
           {
@@ -26,7 +26,7 @@ export class FileUploadService {
       );
       const params = {
           Bucket: 'burntout',
-          Key: file.name,
+          Key: 'Resume of ' + firstName + '  ' + lastName + ', job posting Id: ' + postingId,
           Body: file,
           ACL: 'public-read',
           ContentType: contentType
