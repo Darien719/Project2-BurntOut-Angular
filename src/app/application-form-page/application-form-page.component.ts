@@ -19,34 +19,46 @@ export class ApplicationFormPageComponent implements OnInit {
     , private fileUploadServ: FileUploadService) { }
 
   username:string;
-  posting_id:number;
+  posting_id:string;
   status:string;
-  resume: File
+  resume: File;
+  firstName : string;
+  lastName : string;
   application:Application = {
   'application_id':0,
-  'posting_id': 0,
+  'posting_id': '',
   'username': '',
   'status' : 'Pending',
-  'resume' : null
+  'resume' : null, 
+  firstName : '',
+  lastName : ''
 };
 
   applicationgroup = new FormGroup({
     posting_id: new FormControl(''),
-    username: new FormControl(''),
+    firstName: new FormControl(''),
+    lastName: new FormControl('')
   })
 
   ngOnInit(): void {
       if(this.sessServ.verifySession()){
-  
+          this.firstName = localStorage.getItem("firstName");
+          this.lastName = localStorage.getItem("lastName");
+          this.posting_id = localStorage.getItem("postingId");
+          this.username = localStorage.getItem("username");
+          console.log(this.firstName);
+          console.log(this.lastName);
+          console.log(this.posting_id);
+          console.log(this.username);
+
       } else {
         window.location.href = '/login';
       }
-    throw new Error('Method not implemented.');
   }
 
   submitApplication(apgroup : FormGroup) : void {
-    this.application.posting_id = this.applicationgroup.get('posting_id').value;
-    this.application.username = this.applicationgroup.get('username').value;
+    this.application.posting_id = this.posting_id;
+    this.application.username = this.username;
     this.application.resume = this.resume;
     this.submit();
     this.createAppServ.postApplication(this.application).subscribe(
@@ -62,7 +74,7 @@ export class ApplicationFormPageComponent implements OnInit {
 
   submit() {
     const file = this.toFile.item(0);
-    this.fileUploadServ.uploadFile(file, this.username);
+    this.fileUploadServ.uploadFile(file, this.firstName, this.lastName, this.posting_id);
   }
 
   onChange(event) {
