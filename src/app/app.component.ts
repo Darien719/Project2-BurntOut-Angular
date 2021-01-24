@@ -10,6 +10,8 @@ export class AppComponent {
   title = 'Project2-BurntOut';
 
   userRoleName:string="";
+  firstName: string = "";
+  lastName: string = "";
   
 
   constructor() { }
@@ -17,6 +19,10 @@ export class AppComponent {
   ngOnInit(): void {
     if(this.verifySession()){
       this.userRoleName = JSON.parse(localStorage.getItem('user')).userRoleName;
+      this.firstName = JSON.parse(localStorage.getItem('user')).firstName;
+      this.lastName = JSON.parse(localStorage.getItem('user')).lastName;
+      localStorage.setItem("firstName", this.firstName);
+      localStorage.setItem("lastName", this.lastName);
     }
   }
 

@@ -11,6 +11,9 @@ import { SessionService } from '../services/session.service';
 })
 export class SearchForJobComponent implements OnInit {
   pageTitle = "Search for a job";
+  firstName : string = "";
+  lastName : string = "";
+  postingId : number;
 
   jobs : Job [];
 
@@ -45,6 +48,10 @@ performFilter(filterBy:string) : Job[] {
 
   ngOnInit(): void {
     if(this.sessServ.verifySession()){
+      this.firstName = localStorage.getItem("firstName");
+      this.lastName = localStorage.getItem("lastName");
+      console.log(this.firstName);
+      console.log(this.lastName);
 
     } else {
       window.location.href = '/login';
