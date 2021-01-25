@@ -29,7 +29,6 @@ export class ReviewApplicantsComponent implements OnInit {
       response => {
       thisArray = Object.values(response);
       this.applicants = thisArray;
-      console.log(this.applicants);
       }
     )
   }
@@ -37,7 +36,10 @@ export class ReviewApplicantsComponent implements OnInit {
   approveApplicant(applicationId: number): void{
     this.viewAppServ.postApproveApplicant(applicationId).subscribe (
       response => {
-        location.reload();
+        
+      },
+      error => {
+       
       }
     )
   }
@@ -45,10 +47,11 @@ export class ReviewApplicantsComponent implements OnInit {
   rejectApplicant(applicationId: number): void{
     this.viewAppServ.postRejectApplicant(applicationId).subscribe (
       response => {
-        location.reload();
+        
       }
     )
   }
 
  
 }
+ 

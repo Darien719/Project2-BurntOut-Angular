@@ -12,8 +12,8 @@ export class CreateApplicationService {
 
   constructor(private httpCli: HttpClient) { }
 
-  postApplication(application:Application): Observable<String>{
-    return this.httpCli.post<String>(this.url, JSON.stringify(application), {
+  postApplication(application:Application): Observable<string>{
+    return this.httpCli.post<string>(this.url, JSON.stringify(application), {
         headers: new HttpHeaders({
             'Content-Type':'application/json'
         }),
@@ -21,3 +21,4 @@ export class CreateApplicationService {
     });
   }
 }
+ 

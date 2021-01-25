@@ -7,22 +7,18 @@ import { Application } from '../services/application';
   providedIn: 'root'
 })
 export class ViewApplicantsService {
-  "http://localhost:9025/users/login";
-
-
-  private urlGetApplicants = "http://localhost:9025/application/jobposting/";
-  private urlApproveApplicant = "http://localhost:9025/application/approve/";
-  private urlRejectApplicant = "http://localhost:9025/application/reject/";
-
+  
   constructor(private httpCli: HttpClient) { }
 
   retrieveAllApplicants(postingId: Number): Observable<Application> {
-    this.urlGetApplicants = this.urlGetApplicants + postingId;
-    return this.httpCli.get<Application>(this.urlGetApplicants);
+    var urlGetApplicants = "http://localhost:9025/application/jobposting/";
+    urlGetApplicants = urlGetApplicants + postingId;
+    return this.httpCli.get<Application>(urlGetApplicants);
   }
 
   postApproveApplicant(applicantId: number): Observable<string> {
-    return this.httpCli.post<string>(this.urlApproveApplicant + applicantId, {
+    var urlApproveApplicant = "http://localhost:9025/application/approve/";
+    return this.httpCli.post<string>(urlApproveApplicant + applicantId, JSON.stringify(applicantId),{
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       }),
@@ -31,15 +27,16 @@ export class ViewApplicantsService {
   }
 
   postRejectApplicant(applicantId: number): Observable<string> {
-    return this.httpCli.post<string>(this.urlRejectApplicant + applicantId, {
+    var urlRejectApplicant = "http://localhost:9025/application/reject/";
+    return this.httpCli.post<string>(urlRejectApplicant + applicantId, JSON.stringify(applicantId),{
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       }),
       responseType: 'text' as 'json'
     });
   }
-  
-  
+
+
 
 
 }
