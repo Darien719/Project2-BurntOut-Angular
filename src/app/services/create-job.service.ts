@@ -9,8 +9,10 @@ import { Observable } from "rxjs";
 export class CreateJobService {
   
   private url = "http://localhost:9025/jobpostings";
+  private urlGetCompanyId = "http://localhost:9025/jobpostings/company-id/"
 
   constructor(private httpCli: HttpClient) { }
+
 
   postJob(job:JobPosting): Observable<String>{
     return this.httpCli.post<String>(this.url, JSON.stringify(job), {
@@ -18,6 +20,10 @@ export class CreateJobService {
           responseType: 'text' as 'json'
         }),
     });
+}
+
+getCompanyId(name: String): Observable<String>{
+  return this.httpCli.get<String>(this.urlGetCompanyId+name);
 }
 
 

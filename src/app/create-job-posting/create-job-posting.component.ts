@@ -12,12 +12,15 @@ import { SessionService } from '../services/session.service';
 })
 export class CreateJobPostingComponent implements OnInit {
 
+
+
   company_id:number;
-  poster_id:number;
+  poster_id:number = JSON.parse(localStorage.getItem('user')).userId;
   title:string;
   location_id:number;
   industry_id:number;
   description:string;
+
   jobPosting:JobPosting = {'company_id': 1,
   'poster_id': 0,
   'title': '',
@@ -57,17 +60,25 @@ export class CreateJobPostingComponent implements OnInit {
 
   }
 
-
-
-
-
   ngOnInit(): void {
     if(this.sessServ.verifySession()){
 
     } else {
       window.location.href = '/login';
     }
-   
+    var name = JSON.parse(localStorage.getItem('user')).companyName;
+    this.getJobId(name);
   }
+
+  getJobId(jobName: String): void {
+   
+    console.log(jobName);
+    this.createJobServ.getCompanyId(jobName).subscribe (
+      response => {
+       this.company_id =  Number.parseInt(response.toString());
+      }
+    )
+  }
+ 
 
 }

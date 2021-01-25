@@ -86,7 +86,7 @@ performFilter(filterBy:string) : Job[] {
       console.log(typeof(response[0]));
       thisArray = Object.values(response);
       
-      console.log(thisArray);
+
       this.jobs = thisArray;
       }
     )
