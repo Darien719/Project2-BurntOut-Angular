@@ -8,8 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApplicationFormPageComponent } from './application-form-page/application-form-page.component';
 import { BlogComponent } from './blog/blog.component';
-import { CandidateDashboardComponent } from './candidate-dashboard/candidate-dashboard.component';
-import { CompanyDashboardComponent } from './company-dashboard/company-dashboard.component';
 import { CreateJobPostingComponent } from './create-job-posting/create-job-posting.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoggedInCompanyNavbarComponent } from './logged-in-company-navbar/logged-in-company-navbar.component';
@@ -34,8 +32,6 @@ import { ViewSelfJobpostingsComponent } from './view-self-jobpostings/view-self-
 @NgModule({
   declarations: [
     AppComponent,
-    CompanyDashboardComponent,
-    CandidateDashboardComponent,
     SearchForJobComponent,
     LoginComponent,
     HomePageComponent,
@@ -56,8 +52,6 @@ import { ViewSelfJobpostingsComponent } from './view-self-jobpostings/view-self-
   imports: [
     BrowserModule, RouterModule.forRoot([
 
-      { path: "company-dashboard", component: CompanyDashboardComponent },
-      { path: "candidate-dashboard", component: CandidateDashboardComponent },
       { path: "jobs", component: SearchForJobComponent },
       { path: "login", component: LoginComponent },
       { path: "recover", component: AccountRecoveryComponent },
