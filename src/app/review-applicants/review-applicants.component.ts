@@ -19,7 +19,6 @@ export class ReviewApplicantsComponent implements OnInit {
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
       this.postingId = +params['id']; // (+) converts string 'id' to a number
-      console.log(this.postingId);
       this.getAllApplicants();
    });
   }

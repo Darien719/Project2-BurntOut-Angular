@@ -8,10 +8,15 @@ import { Job } from './job';
 })
 export class JobService {
   private allJobsUrl = "http://localhost:9025/jobpostings/all";
+  private companyJobsUrl = "http://localhost:9025/jobpostings/company/name/";
 
   constructor(private httpCli: HttpClient) { }
 
   retrieveAllJobs(): Observable<Job> {
     return this.httpCli.get<Job>(this.allJobsUrl);
+  }
+
+  retrieveJobsByCompany(companyName: String): Observable<Job> { 
+    return this.httpCli.get<Job>(this.companyJobsUrl + companyName);
   }
 }
