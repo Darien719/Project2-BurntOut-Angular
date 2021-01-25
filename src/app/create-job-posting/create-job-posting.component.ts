@@ -41,8 +41,8 @@ export class CreateJobPostingComponent implements OnInit {
 
   jobPost(jobgroup :FormGroup){
 
-    this.jobPosting.company_id = jobgroup.get('company_id').value;
-    this.jobPosting.poster_id = jobgroup.get('poster_id').value;
+    this.jobPosting.company_id = this.company_id;
+    this.jobPosting.poster_id = this.poster_id;
     this.jobPosting.title = jobgroup.get('title').value;
     this.jobPosting.location_id = jobgroup.get('location').value;
     this.jobPosting.industry_id = jobgroup.get('industry').value;
@@ -50,11 +50,9 @@ export class CreateJobPostingComponent implements OnInit {
 
     this.createJobServ.postJob(this.jobPosting).subscribe(
       response=>{
-        console.log("In response");
-        console.log(response);
+          window.alert("Job Posting created");
       },error=>{
-          console.log("Problem posting job");
-          console.log(error);
+          window.alert("Could not create posting");
       }
     );
 

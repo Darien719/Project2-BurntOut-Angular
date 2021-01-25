@@ -15,10 +15,11 @@ export class CreateJobService {
 
 
   postJob(job:JobPosting): Observable<String>{
+    console.log(job);
     return this.httpCli.post<String>(this.url, JSON.stringify(job), {
         headers: new HttpHeaders({
-          responseType: 'text' as 'json'
-        }),
+          'Content-Type':'application/json'
+        }),responseType: 'text' as 'json'
     });
 }
 
