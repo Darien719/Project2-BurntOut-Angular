@@ -28,6 +28,7 @@ import { ReviewApplicantsComponent } from './review-applicants/review-applicants
 import { ViewApplicantsService } from './services/view-applicants.service';
 import { AccountRecoveryComponent } from './account-recovery/account-recovery.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { ViewApplicationsComponent } from './view-applications/view-applications.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
     ReviewApplicantsComponent,
     AccountRecoveryComponent,
     PasswordResetComponent,
+    ViewApplicationsComponent,
 
 
   ],
@@ -65,6 +67,7 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
       { path: "blog", component: BlogComponent },
       { path: "jobs/application", component: ApplicationFormPageComponent },
       { path: "jobs/review-applicants/:id", component: ReviewApplicantsComponent },
+      { path: "view-applications", component : ViewApplicationsComponent},
       { path: "**", component: HomePageComponent },
 
     ]), HttpClientModule, FormsModule, ReactiveFormsModule,
