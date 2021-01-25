@@ -192,3 +192,11 @@ hr{
     background-attachment: fixed;
     background-image:url('https://blackmainstreet.net/wp-content/uploads/2015/11/directory-background.jpg');
 }
+
+a{
+   color:black; 
+}
+
+a:hover{
+    text-decoration: none;
+}

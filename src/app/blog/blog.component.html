@@ -3,7 +3,7 @@
     <div *ngFor="let post of posts">
         <br><br>
         <div class="container-post">
-            <p id="username">@{{post.owner}} </p>
+            <p id="username"><a href="http://localhost:4200/profile/@{{post.owner}}">@{{post.owner}}</a></p>
             <hr>
             <p id="title">{{post.blogTitle}}</p>
             <p id="content">
