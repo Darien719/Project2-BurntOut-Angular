@@ -71,12 +71,12 @@ export class BlogComponent implements OnInit {
 
     if (this.blogTitleText != "") {
       var titleField = document.getElementById("title-field");
-      titleField.style.backgroundColor = '#535c66';
+      titleField.style.backgroundColor = 'rgb(211, 211, 211)';
     }
 
     if (this.blogMessageText != "") {
       var titleField = document.getElementById("blog-message");
-      titleField.style.backgroundColor = '#535c66';
+      titleField.style.backgroundColor = 'rgb(211, 211, 211)';
     }
 
     if (this.blogMessageText === "") {
