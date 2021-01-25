@@ -17,6 +17,7 @@ import { LoggedInUserNavBarComponent } from './logged-in-user-navbar/navigation-
 import { LoggedOutNavbarComponent } from './logged-out-navbar/logged-out-navbar.component';
 import { LoginComponent } from './login/login.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { ProfileComponent } from './profile/profile.component';
 import { ReviewApplicantsComponent } from './review-applicants/review-applicants.component';
 import { SearchForJobComponent } from './search-for-job/search-for-job.component';
 import { BlogService } from './services/blog.service';
@@ -24,6 +25,7 @@ import { CreateJobService } from './services/create-job.service';
 import { JobService } from './services/job.service';
 import { LogOutServService } from './services/log-out-serv.service';
 import { LoginService } from './services/login.service';
+import { ProfileService } from './services/profile.service';
 import { ViewApplicantsService } from './services/view-applicants.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ViewApplicationsComponent } from './view-applications/view-applications.component';
@@ -48,7 +50,8 @@ import { ViewSelfJobpostingsComponent } from './view-self-jobpostings/view-self-
     AccountRecoveryComponent,
     PasswordResetComponent,
     ViewSelfJobpostingsComponent,
-    ViewApplicationsComponent
+    ViewApplicationsComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule, RouterModule.forRoot([
@@ -66,6 +69,7 @@ import { ViewSelfJobpostingsComponent } from './view-self-jobpostings/view-self-
       { path: "jobs/review-applicants/:id", component: ReviewApplicantsComponent },
       { path: "company/view-postings", component: ViewSelfJobpostingsComponent},
       { path: "view-applications", component : ViewApplicationsComponent},
+      { path: "profile/:username", component : ProfileComponent},
       { path: "**", component: HomePageComponent },
 
     ]), HttpClientModule, FormsModule, ReactiveFormsModule,
