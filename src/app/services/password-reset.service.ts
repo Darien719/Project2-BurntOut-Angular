@@ -18,6 +18,7 @@ export class PasswordResetService {
             headers: new HttpHeaders({
                 'Content-Type':'application/json'               
             }),
+            responseType:'text' as 'json'
         });
     }
 }
