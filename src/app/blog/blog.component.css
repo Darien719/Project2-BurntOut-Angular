@@ -5,7 +5,7 @@
 	left: 85%;
     width: 450px;
 	height: 425px;
-	background-color: #343a40;
+	background-color: white;
 	border-radius: 10px;
 	box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
 	transform: translate(-50%, -50%);
@@ -16,8 +16,8 @@
     position: fixed;
     top: 80px;
     left:10px;
-    background-color: #535c66;
-    color: white;
+    background-color: rgb(211, 211, 211);
+    color: gray;
     height: 280px;
     width: calc(100% - 20px);
     border-radius: 10px;
@@ -30,8 +30,8 @@
     position: absolute;
     top: 10px;
     left:10px;
-    background-color: #535c66;
-    color: white;
+    background-color: rgb(211, 211, 211);
+    color: gray;
     width: calc(50%);
     border: none;
     border-radius: 10px;
@@ -43,11 +43,11 @@
     outline: none;
 }
 #blog-message::placeholder{
-    color: lightgray;
+    color: gray;
 }
 
 #title-field::placeholder{
-    color: lightgray;
+    color: gray;
 }
 
 #post-btn{
@@ -57,8 +57,8 @@
     text-align: center;
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
-    color: white;
+    background-color: lightgray;
+    color: gray;
     font-size: 1rem;
     font-weight: 400;
     top: 380px;
@@ -72,8 +72,8 @@
     text-align: center;
     border: none;
     border-radius: 5px;
-    background-color: #025cbd;
-    color: white;
+    background-color: rgb(165, 165, 165);
+    color: gray;
     font-size: 1rem;
     font-weight: 400;
     top: 380px;
@@ -147,8 +147,8 @@ hr{
     font-size: 25px;
     text-align: center;
     font-weight: bolder;
-    background-color: #007bff;
-    color: white;
+    background-color: white;
+    color: grey;
     padding: 0px;
     padding-bottom: 5px;
 }
@@ -162,8 +162,8 @@ hr{
     width: 30px;
     border-radius: 50%;
     border:none;
-    background-color: #535c66;
-    color:white;
+    background-color: lightgray;
+    color:gray;
     padding:0px;
     padding-bottom: 5px;
 }
@@ -173,7 +173,7 @@ hr{
 }
 
 #close:hover{
-    background-color: rgb(70, 77, 87);
+    background-color: rgb(182, 181, 181);
 }
 
 #post-blog:focus{
@@ -181,7 +181,7 @@ hr{
  }
 
  #post-blog:hover{
-    background-color: #0155af;
+    background-color: lightgray;
  }
 
  .image{
