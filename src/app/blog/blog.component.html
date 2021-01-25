@@ -3,7 +3,7 @@
 <div *ngFor="let post of posts">
     <br><br>
     <div class="container-post">
-        <p id="username">@{{post.owner}}</p>
+        <p id="username">@{{post.owner}} </p>
         <hr>
         <p id="title">{{post.blogTitle}}</p>
         <p id="content">
@@ -14,7 +14,6 @@
     </div>
     <br><br><br><br><br>
 </div>
-
 <button *ngIf="isNewPostVisible" id="post-blog" (click)="newPostClicked()">+</button>
 <div *ngIf="isNewPostFormVisible" class="container">
     <button id="close" (click)="closeButtonClicked()">x</button>
