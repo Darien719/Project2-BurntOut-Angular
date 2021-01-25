@@ -1,35 +1,33 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { AccountRecoveryComponent } from './account-recovery/account-recovery.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CompanyDashboardComponent } from './company-dashboard/company-dashboard.component';
-import { RouterModule } from '@angular/router';
-import { CandidateDashboardComponent } from './candidate-dashboard/candidate-dashboard.component';
-import { SearchForJobComponent } from './search-for-job/search-for-job.component';
-import { JobService } from './services/job.service';
-import { LogOutServService } from './services/log-out-serv.service';
-
-import { HttpClientModule } from '@angular/common/http'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './login/login.component';
-import { LoginService } from './services/login.service';
-import { HomePageComponent } from './home-page/home-page.component';
-import { LoggedInUserNavBarComponent } from './logged-in-user-navbar/navigation-bar.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { CreateJobPostingComponent } from './create-job-posting/create-job-posting.component';
+import { ApplicationFormPageComponent } from './application-form-page/application-form-page.component';
 import { BlogComponent } from './blog/blog.component';
+import { CandidateDashboardComponent } from './candidate-dashboard/candidate-dashboard.component';
+import { CompanyDashboardComponent } from './company-dashboard/company-dashboard.component';
+import { CreateJobPostingComponent } from './create-job-posting/create-job-posting.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { LoggedInCompanyNavbarComponent } from './logged-in-company-navbar/logged-in-company-navbar.component';
+import { LoggedInUserNavBarComponent } from './logged-in-user-navbar/navigation-bar.component';
+import { LoggedOutNavbarComponent } from './logged-out-navbar/logged-out-navbar.component';
+import { LoginComponent } from './login/login.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { ReviewApplicantsComponent } from './review-applicants/review-applicants.component';
+import { SearchForJobComponent } from './search-for-job/search-for-job.component';
 import { BlogService } from './services/blog.service';
 import { CreateJobService } from './services/create-job.service';
-import { ApplicationFormPageComponent } from './application-form-page/application-form-page.component';
-import { LoggedOutNavbarComponent } from './logged-out-navbar/logged-out-navbar.component';
-import { LoggedInCompanyNavbarComponent } from './logged-in-company-navbar/logged-in-company-navbar.component';
-import { ReviewApplicantsComponent } from './review-applicants/review-applicants.component';
+import { JobService } from './services/job.service';
+import { LogOutServService } from './services/log-out-serv.service';
+import { LoginService } from './services/login.service';
 import { ViewApplicantsService } from './services/view-applicants.service';
-import { AccountRecoveryComponent } from './account-recovery/account-recovery.component';
-import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { ViewApplicationsComponent } from './view-applications/view-applications.component';
-
+import { ViewSelfJobpostingsComponent } from './view-self-jobpostings/view-self-jobpostings.component';
 
 @NgModule({
   declarations: [
@@ -49,9 +47,8 @@ import { ViewApplicationsComponent } from './view-applications/view-applications
     ReviewApplicantsComponent,
     AccountRecoveryComponent,
     PasswordResetComponent,
-    ViewApplicationsComponent,
-
-
+    ViewSelfJobpostingsComponent,
+    ViewApplicationsComponent
   ],
   imports: [
     BrowserModule, RouterModule.forRoot([
@@ -67,6 +64,7 @@ import { ViewApplicationsComponent } from './view-applications/view-applications
       { path: "blog", component: BlogComponent },
       { path: "jobs/application", component: ApplicationFormPageComponent },
       { path: "jobs/review-applicants/:id", component: ReviewApplicantsComponent },
+      { path: "company/view-postings", component: ViewSelfJobpostingsComponent},
       { path: "view-applications", component : ViewApplicationsComponent},
       { path: "**", component: HomePageComponent },
 
