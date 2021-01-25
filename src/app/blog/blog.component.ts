@@ -61,16 +61,38 @@ export class BlogComponent implements OnInit {
     let user = localStorage.getItem("user");
     user = JSON.parse(user);
     this.bInfo.blogId = user["userId"];
-    this.bInfo.message = this.blogMessageText;
-    this.bInfo.title = this.blogTitleText;
+
     this.bInfo.username = user["username"];
 
-    this.blogService.postBlog(this.bInfo).subscribe(
-      response => {
-        window.location.reload();
-      }
-    );
+    if (this.blogTitleText === "") {
+      var titleField = document.getElementById("title-field");
+      titleField.style.backgroundColor = '#9f0000';
+    }
 
+    if (this.blogTitleText != "") {
+      var titleField = document.getElementById("title-field");
+      titleField.style.backgroundColor = '#535c66';
+    }
+
+    if (this.blogMessageText != "") {
+      var titleField = document.getElementById("blog-message");
+      titleField.style.backgroundColor = '#535c66';
+    }
+
+    if (this.blogMessageText === "") {
+      var messageField = document.getElementById("blog-message");
+      messageField.style.backgroundColor = '#9f0000';
+    }
+
+    if (this.blogTitleText != "" && this.blogMessageText != "") {
+      this.bInfo.message = this.blogMessageText;
+      this.bInfo.title = this.blogTitleText;
+      this.blogService.postBlog(this.bInfo).subscribe(
+        response => {
+          window.location.reload();
+        }
+      );
+    }
   }
 
   getallPosts(): void {
