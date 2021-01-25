@@ -16,21 +16,35 @@
                     <div class="form-group col-md-8">
                     </div>
                     <div class="form-group col-md-12">
-                        <label for="username_textbox">Username</label>
-                        <input type="text" class="form-control" id="username_textbox" formControlName="username">
+                        <label for="fN" style="color: red"><b>Your First Name</b></label>
+                        <input type="text" class="form-control" placeholder = "{{firstName}}" 
+                        id="fN" formControlName="firstName" readonly>
+                        <label for="lN" style="color: red"><b>Your Last Name</b></label>
+                        <input type="text" class="form-control" placeholder = "{{lastName}}" 
+                        id="lN" formControlName="lastName" readonly>
                     </div>
                 </div>
                 <div class="form-row" display = "table-row">
                     <div class="form-group col-md-8">
                     </div>
                     <div class="form-group col-md-8">
-                        <label for="posting_id">Posting ID</label>
-                        <input type="text" class="form-control" id="posting_id" formControlName="posting_id">
+                        <label for="posting_id"style="color: red"><b>Posting ID</b></label>
+                        <input type="text" class="form-control" id="posting_id" formControlName="posting_id"
+                        placeholder = "{{posting_id}}" readonly>
                     </div>
                 </div>
-                
+
+                <div>
+                    <label for="choose_file"style="color: red"><b>Upload your resume</b></label>
+                    <br>
+                    <input type="file" (change)="onChange($event)" id="choose_file">
+                  </div>
+                  <br>
+                  <!-- <div>
+                  <button class="btn btn-secondary"(click)="submit()">Upload Resume</button>
+                </div> -->
                 <br>
-                <button class="btn btn-primary" (click)="submitApplication(applicationgroup)">Submit</button>
+                <button class="btn btn-primary" (click)="submitApplication(applicationgroup)">Submit Application</button>
             </form>
         </div>
         <div class="col-md-5">

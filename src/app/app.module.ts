@@ -24,7 +24,10 @@ import { CreateJobService } from './services/create-job.service';
 import { ApplicationFormPageComponent } from './application-form-page/application-form-page.component';
 import { LoggedOutNavbarComponent } from './logged-out-navbar/logged-out-navbar.component';
 import { LoggedInCompanyNavbarComponent } from './logged-in-company-navbar/logged-in-company-navbar.component';
-import { PostComponent } from './post/post.component';
+import { ReviewApplicantsComponent } from './review-applicants/review-applicants.component';
+import { ViewApplicantsService } from './services/view-applicants.service';
+import { AccountRecoveryComponent } from './account-recovery/account-recovery.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 
 @NgModule({
@@ -42,8 +45,10 @@ import { PostComponent } from './post/post.component';
     ApplicationFormPageComponent,
     LoggedOutNavbarComponent,
     LoggedInCompanyNavbarComponent,
-    PostComponent,
-    
+    ReviewApplicantsComponent,
+    AccountRecoveryComponent,
+    PasswordResetComponent,
+
 
   ],
   imports: [
@@ -53,16 +58,19 @@ import { PostComponent } from './post/post.component';
       { path: "candidate-dashboard", component: CandidateDashboardComponent },
       { path: "jobs", component: SearchForJobComponent },
       { path: "login", component: LoginComponent },
+      { path: "recover", component: AccountRecoveryComponent },
+      { path: "passwordreset", component: PasswordResetComponent },
       { path: "sign-up", component: SignUpComponent },
       { path: "create-posting", component: CreateJobPostingComponent },
       { path: "blog", component: BlogComponent },
       { path: "jobs/application", component: ApplicationFormPageComponent },
+      { path: "jobs/review-applicants/:id", component: ReviewApplicantsComponent },
       { path: "**", component: HomePageComponent },
 
     ]), HttpClientModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [JobService, LoginService, BlogService, CreateJobService, LogOutServService],
+  providers: [JobService, LoginService, BlogService, CreateJobService, LogOutServService, ViewApplicantsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

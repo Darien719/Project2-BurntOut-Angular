@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Job } from '../services/job';
 import { JobService } from '../services/job.service';
@@ -9,8 +9,14 @@ import { SessionService } from '../services/session.service';
   templateUrl: './search-for-job.component.html',
   styleUrls: ['./search-for-job.component.css']
 })
-export class SearchForJobComponent implements OnInit {
+export class SearchForJobComponent implements OnInit, OnDestroy {
   pageTitle = "Search for a job";
+  firstName : string = "";
+  lastName : string = "";
+  username : string = "";
+
+  @Input()
+  jobPostingId : number;
 
   jobs : Job [];
 
@@ -18,6 +24,18 @@ export class SearchForJobComponent implements OnInit {
 
   constructor(private router : Router, private jobServ : JobService, private sessServ: SessionService) {
     //this.jobsFilteredByName = this.jobs;
+   }
+  ngOnDestroy(): void {
+    console.log(this.jobPostingId);
+    console.log(this.username);
+  }
+
+   get postingId() : number {
+     return this.jobPostingId;
+   }
+
+   set postingId(temp : number) {
+     this.jobPostingId = temp;
    }
 
  
@@ -45,6 +63,12 @@ performFilter(filterBy:string) : Job[] {
 
   ngOnInit(): void {
     if(this.sessServ.verifySession()){
+      this.firstName = localStorage.getItem("firstName");
+      this.lastName = localStorage.getItem("lastName");
+      this.username = localStorage.getItem("username");
+      console.log(this.firstName);
+      console.log(this.lastName);
+      console.log(this.username);
 
     } else {
       window.location.href = '/login';
@@ -68,7 +92,10 @@ performFilter(filterBy:string) : Job[] {
     )
   }
 
-  goToAppFormPage() : void {
+  goToAppFormPage(pId) : void {
+    this.jobPostingId = pId;
+    localStorage.setItem("postingId", JSON.stringify(this.jobPostingId));
     this.router.navigate(['jobs/application']);
   }
+
 }

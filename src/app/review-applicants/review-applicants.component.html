@@ -1,0 +1,40 @@
+<br><br>
+<h3 style="text-align: center;">Applicants</h3>
+<br><br>
+<div class = 'table responsive'>
+    <table class = 'table table-dark'>
+        <thead>
+            <tr>
+                <th>Application ID</th>
+                <th>Applicant Name</th>
+                <th>Resume</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let temp of applicants">
+                <td>
+                    <p>{{temp.applicationId}}</p>
+                </td>
+                <td>
+                    <p>{{temp.applicantName}}</p>
+                </td>
+                <td>
+                    <p>temp</p>
+                </td>
+                <td>
+                    <p>{{temp.applicationStatus}}</p>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success" (click)="approveApplicant(temp.applicationId)"
+                    >Approve</button>
+                    <button type="button" class="btn btn-danger" (click)="rejectApplicant(temp.applicationId)"
+                    >Decline</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    </div>
+    
