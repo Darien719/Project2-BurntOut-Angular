@@ -12,8 +12,6 @@ import { SessionService } from '../services/session.service';
 })
 export class CreateJobPostingComponent implements OnInit {
 
-
-
   company_id:number;
   poster_id:number = JSON.parse(localStorage.getItem('user')).userId;
   title:string;

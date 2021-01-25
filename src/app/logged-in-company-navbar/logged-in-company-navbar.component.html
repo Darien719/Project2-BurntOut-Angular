@@ -12,37 +12,25 @@
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="">Button</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" routerLink="/blog">Blog</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Jobs
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink="/jobs">View Jobs</a>
-            <a class="dropdown-item" routerLink="/create-posting">Create Posting</a>
-          </div>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/jobs">View Jobs</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/create-posting">Create Posting</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/company/view-postings">View Postings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/view-applications">View Applications</a>
         </li>
         <p style="color: white;">I am here temporarily to say this is the signed in company navbar</p>
       </ul>
       <span class="navbar-text">
+        <button routerLink='/profile/{{username}}' type="button" class="button button1" id="profile-button" >Profile</button>
         <button routerLink="/" type="button" class="btn btn-primary mr-1" id="sign-out-button" (click)="logOut()">Sign Out</button>
       </span>
     </div>
-  </nav>
+  </nav> 
