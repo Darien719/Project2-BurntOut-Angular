@@ -8,14 +8,11 @@ import { Application } from './application';
 })
 export class ViewApplicationsService {
 
-  "http://localhost:9025/users/login";
-
-
-  private urlGetApplications = "http://localhost:9025/application/user/";
   constructor(private httpCli: HttpClient) { }
 
   retrieveAllApplicantions(username: string): Observable<Application> {
-    this.urlGetApplications = this.urlGetApplications + username;
-    return this.httpCli.get<Application>(this.urlGetApplications);
+    let urlGetApplications = "http://localhost:9025/application/user/";
+    urlGetApplications = urlGetApplications + username;
+    return this.httpCli.get<Application>(urlGetApplications);
   }
 }
