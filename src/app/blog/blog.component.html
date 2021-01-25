@@ -1,24 +1,25 @@
-<br><br>
-
-<div *ngFor="let post of posts">
+<div class="image">
     <br><br>
-    <div class="container-post">
-        <p id="username">@{{post.owner}} </p>
-        <hr>
-        <p id="title">{{post.blogTitle}}</p>
-        <p id="content">
-            {{post.blogContent}}
-        </p>
-        <hr id="bottom">
-        <p id="date">Posted on: {{post.date}}</p>
+    <div *ngFor="let post of posts">
+        <br><br>
+        <div class="container-post">
+            <p id="username">@{{post.owner}} </p>
+            <hr>
+            <p id="title">{{post.blogTitle}}</p>
+            <p id="content">
+                {{post.blogContent}}
+            </p>
+            <hr id="bottom">
+            <p id="date">Posted on: {{post.date}}</p>
+        </div>
+        <br><br><br><br><br>
     </div>
-    <br><br><br><br><br>
-</div>
-<button *ngIf="isNewPostVisible" id="post-blog" (click)="newPostClicked()">+</button>
-<div *ngIf="isNewPostFormVisible" class="container">
-    <button id="close" (click)="closeButtonClicked()">x</button>
-    <input type="text" [(ngModel)]="blogTitle" id="title-field" placeholder="Insert title...">
-    <textarea [(ngModel)]="blogMessage" id="blog-message" cols="30" rows="10"
-        placeholder="Insert your message..."></textarea>
-    <button (click)="sendData()" id="post-btn">Post</button>
+    <button *ngIf="isNewPostVisible" id="post-blog" (click)="newPostClicked()">+</button>
+    <div *ngIf="isNewPostFormVisible" class="container">
+        <button id="close" (click)="closeButtonClicked()">x</button>
+        <input type="text" [(ngModel)]="blogTitle" id="title-field" placeholder="Insert title...">
+        <textarea [(ngModel)]="blogMessage" id="blog-message" cols="30" rows="10"
+            placeholder="Insert your message..."></textarea>
+        <button (click)="sendData()" id="post-btn">Post</button>
+    </div>
 </div>
