@@ -1,0 +1,31 @@
+<br><br>
+<h3 style="text-align: center;">Applications</h3>
+<br><br>
+<div class = 'table responsive'>
+    <table class = 'table table-dark'>
+        <thead>
+            <tr>
+                <th>Application ID</th>
+                <th>Job Posting Title</th>
+                <th>Application Date</th>
+                <th>Application Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let temp of applications">
+                <td>
+                    <p>{{temp.applicationId}}</p>
+                </td>
+                <td>
+                    <p>{{temp.jobPostingTitle}}</p>
+                </td>
+                <td>
+                    <p>{{temp.appDate}}</p>
+                </td>
+                <td>
+                    <p>{{temp.applicationStatus}}</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
