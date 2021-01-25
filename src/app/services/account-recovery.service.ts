@@ -17,6 +17,7 @@ export class AccountRecoveryService {
             headers: new HttpHeaders({
                 'Content-Type':'application/json'               
             }),
+            responseType: 'text' as 'json'
         });
     }
 }

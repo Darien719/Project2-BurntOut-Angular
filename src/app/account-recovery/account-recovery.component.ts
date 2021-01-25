@@ -25,6 +25,7 @@ export class AccountRecoveryComponent implements OnInit {
         console.log('all good');
       },
       error =>{
+        console.log(error);
         console.log('an error has occured');
       }
     )
