@@ -10,4 +10,5 @@ export interface Job {
     locationName: string;
     companyName: string;
     industryName: string;
+    poster_id: number;
 }
