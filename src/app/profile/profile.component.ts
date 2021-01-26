@@ -39,9 +39,6 @@ export class ProfileComponent implements OnInit {
 
     if(this.sessServ.verifySession()){
       this.route.params.subscribe(params => {
-        console.log(JSON.parse(localStorage.getItem("user")).username);
-        console.log(this.currentUser);
-        console.log(params['username']);
         if(JSON.parse(localStorage.getItem("user")).username == params['username']){
           this.isUser = true;
         }
@@ -77,7 +74,7 @@ export class ProfileComponent implements OnInit {
     this.user.username = this.username;
     this.user.company = this.company;
     this.user.userRole = this.userRole;
-console.log("hello");
+
     this.profServ.putUpdatedUser(this.user).subscribe(
       response => {
         if(response != null){
@@ -92,7 +89,7 @@ console.log("hello");
         this.usernameExists = false;
         this.emailExists = false;
         this.userNotFound = false;
-        console.log("hey", error.status);
+
         if(error.status == 406) {
           this.usernameExists = true;
           this.errorMessage = "User with that username already exists";
