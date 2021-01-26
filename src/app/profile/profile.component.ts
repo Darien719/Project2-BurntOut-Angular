@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
     this.usernameExists = false;
     this.emailExists = false;
     this.userNotFound = false;
-
+    
     if(this.sessServ.verifySession()){
       this.route.params.subscribe(params => {
         if(JSON.parse(localStorage.getItem("user")).username == params['username']){

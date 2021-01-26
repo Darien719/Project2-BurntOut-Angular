@@ -8,7 +8,7 @@
         <button class="right btn btn-danger" *ngIf="isUser && isInEditMode"
             style="font-family:serif; width:40px; margin-left: 5px;" (click)="editMode(); cancelUpdate()">&#88;</button>
         <button class="right btn btn-success" *ngIf="isUser && isInEditMode" style="font-family:serif; width:40px;"
-            (click)="updateInfo()" [disabled]="firstName == '' || lastName == '' || (company == '' || 
+            (click)="updateInfo()" [disabled]="firstName == '' || lastName == '' || (company == '' && 
             userRole != 'Candidate') || email == '' || username == ''">&#10003;</button>
         <span class="span-error" [hidden]="!usernameExists && !emailExists && !userNotFound">
             <small [hidden]="!usernameExists">
