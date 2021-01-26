@@ -10,6 +10,9 @@ export class LoggedInCompanyNavbarComponent implements OnInit {
 
   constructor(private logoutServ: LogOutServService) { }
 
+  username: string = JSON.parse(localStorage.getItem('user')).username;;
+
+
   logOut(){
     this.logoutServ.logOut();
   }

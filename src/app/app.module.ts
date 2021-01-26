@@ -8,8 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApplicationFormPageComponent } from './application-form-page/application-form-page.component';
 import { BlogComponent } from './blog/blog.component';
-import { CandidateDashboardComponent } from './candidate-dashboard/candidate-dashboard.component';
-import { CompanyDashboardComponent } from './company-dashboard/company-dashboard.component';
 import { CreateJobPostingComponent } from './create-job-posting/create-job-posting.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoggedInCompanyNavbarComponent } from './logged-in-company-navbar/logged-in-company-navbar.component';
@@ -30,12 +28,11 @@ import { ViewApplicantsService } from './services/view-applicants.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ViewApplicationsComponent } from './view-applications/view-applications.component';
 import { ViewSelfJobpostingsComponent } from './view-self-jobpostings/view-self-jobpostings.component';
+import { NgxPaginationModule } from "ngx-pagination"
 
 @NgModule({
   declarations: [
     AppComponent,
-    CompanyDashboardComponent,
-    CandidateDashboardComponent,
     SearchForJobComponent,
     LoginComponent,
     HomePageComponent,
@@ -54,10 +51,8 @@ import { ViewSelfJobpostingsComponent } from './view-self-jobpostings/view-self-
     ProfileComponent,
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot([
+    BrowserModule, NgxPaginationModule, RouterModule.forRoot([
 
-      { path: "company-dashboard", component: CompanyDashboardComponent },
-      { path: "candidate-dashboard", component: CandidateDashboardComponent },
       { path: "jobs", component: SearchForJobComponent },
       { path: "login", component: LoginComponent },
       { path: "recover", component: AccountRecoveryComponent },
@@ -67,9 +62,9 @@ import { ViewSelfJobpostingsComponent } from './view-self-jobpostings/view-self-
       { path: "blog", component: BlogComponent },
       { path: "jobs/application", component: ApplicationFormPageComponent },
       { path: "jobs/review-applicants/:id", component: ReviewApplicantsComponent },
-      { path: "company/view-postings", component: ViewSelfJobpostingsComponent},
-      { path: "view-applications", component : ViewApplicationsComponent},
-      { path: "profile/:username", component : ProfileComponent},
+      { path: "company/view-postings", component: ViewSelfJobpostingsComponent },
+      { path: "view-applications", component: ViewApplicationsComponent },
+      { path: "profile/:username", component: ProfileComponent },
       { path: "**", component: HomePageComponent },
 
     ]), HttpClientModule, FormsModule, ReactiveFormsModule,

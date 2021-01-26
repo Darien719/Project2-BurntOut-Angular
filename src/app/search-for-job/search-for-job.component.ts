@@ -9,7 +9,7 @@ import { SessionService } from '../services/session.service';
   templateUrl: './search-for-job.component.html',
   styleUrls: ['./search-for-job.component.css']
 })
-export class SearchForJobComponent implements OnInit, OnDestroy {
+export class SearchForJobComponent implements OnInit {
   pageTitle = "Search for a job";
   firstName : string = "";
   lastName : string = "";
@@ -25,10 +25,10 @@ export class SearchForJobComponent implements OnInit, OnDestroy {
   constructor(private router : Router, private jobServ : JobService, private sessServ: SessionService) {
     //this.jobsFilteredByName = this.jobs;
    }
-  ngOnDestroy(): void {
+  /* ngOnDestroy(): void {
     console.log(this.jobPostingId);
     console.log(this.username);
-  }
+  } */
 
    get postingId() : number {
      return this.jobPostingId;
@@ -86,7 +86,6 @@ performFilter(filterBy:string) : Job[] {
       console.log(typeof(response[0]));
       thisArray = Object.values(response);
       
-
       this.jobs = thisArray;
       }
     )
