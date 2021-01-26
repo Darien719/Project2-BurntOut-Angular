@@ -18,10 +18,15 @@
                     <p>{{temp.applicationId}}</p>
                 </td>
                 <td>
-                    <p>{{temp.applicantName}}</p>
+                    <a href="http://localhost:4200/profile/{{temp.applicantUsername}}">
+                   
+                        
+                        
+                        {{temp.applicantFirstName}} {{temp.applicantLastName}}</a>
                 </td>
                 <td>
-                    <p>temp</p>
+                   <a href="{{getUrl(temp.applicantFirstName, temp.applicantLastName,
+                    temp.jobPostingId)}}">View / Download Resume</a>
                 </td>
                 <td>
                     <p>{{temp.applicationStatus}}</p>

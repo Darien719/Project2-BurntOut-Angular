@@ -15,16 +15,19 @@ export class CreateJobPostingComponent implements OnInit {
   company_id:number;
   poster_id:number = JSON.parse(localStorage.getItem('user')).userId;
   title:string;
-  location_id:number;
-  industry_id:number;
+  location_id:string;
+  industry_id:string;
   description:string;
 
   jobPosting:JobPosting = {'company_id': 1,
   'poster_id': 0,
   'title': '',
+  'location_name': '',
+  'industry_name': '',
+  'description': '',
   'location_id': 0,
   'industry_id': 0,
-  'description': ''};
+};
 
   jobgroup = new FormGroup({
     company_id: new FormControl(''),
@@ -42,9 +45,10 @@ export class CreateJobPostingComponent implements OnInit {
     this.jobPosting.company_id = this.company_id;
     this.jobPosting.poster_id = this.poster_id;
     this.jobPosting.title = jobgroup.get('title').value;
-    this.jobPosting.location_id = jobgroup.get('location').value;
-    this.jobPosting.industry_id = jobgroup.get('industry').value;
+    this.jobPosting.location_name = jobgroup.get('location').value;
+    this.jobPosting.industry_name = jobgroup.get('industry').value;
     this.jobPosting.description = jobgroup.get('description').value;
+
 
     this.createJobServ.postJob(this.jobPosting).subscribe(
       response=>{
@@ -68,7 +72,6 @@ export class CreateJobPostingComponent implements OnInit {
 
   getJobId(jobName: String): void {
    
-    console.log(jobName);
     this.createJobServ.getCompanyId(jobName).subscribe (
       response => {
        this.company_id =  Number.parseInt(response.toString());

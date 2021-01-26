@@ -1,11 +1,12 @@
-import { APP_BASE_HREF } from '@angular/common';
-import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
+
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Application } from '../services/application';
 import { JobService } from '../services/job.service';
 import { JobPosting } from '../services/jobPosting';
 import { SessionService } from '../services/session.service';
 import { ViewApplicantsService } from '../services/view-applicants.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-review-applicants',
@@ -14,13 +15,14 @@ import { ViewApplicantsService } from '../services/view-applicants.service';
 })
 export class ReviewApplicantsComponent implements OnInit {
 
-  constructor(private router: Router, private viewAppServ: ViewApplicantsService, private route: ActivatedRoute, private sessServ:SessionService, private jobServ:JobService) { }
+  constructor(private router: Router, private viewAppServ: ViewApplicantsService, private route: ActivatedRoute,
+    private route: ActivatedRoute, private sessServ:SessionService, private jobServ:JobService, @Inject(DOCUMENT) private document: Document) { }
  
   applicants: Application[];
   postingId: Number;
   private sub: any;
   posterId: number;
-  verification: boolean;
+  private url: string;
 
   ngOnInit(): void {
     this.verification=false;
@@ -38,6 +40,11 @@ export class ReviewApplicantsComponent implements OnInit {
       this.applicants = thisArray;
       }
     )
+  }
+
+  getUrl(firstName, lastName, postingId) : string {
+    this.url = "https://burntout.s3.amazonaws.com/" + firstName + lastName+ "JobId" + postingId;
+    return this.url;
   }
 
   approveApplicant(applicationId: number): void{

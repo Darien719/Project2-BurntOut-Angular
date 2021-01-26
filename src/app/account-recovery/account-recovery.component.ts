@@ -21,12 +21,8 @@ export class AccountRecoveryComponent implements OnInit {
     this.email = details.get('email').value;
     this.accServ.accRecover(this.email).subscribe(
       response =>{
-        console.log(response);
-        console.log('all good');
       },
       error =>{
-        console.log(error);
-        console.log('an error has occured');
       }
     )
   }

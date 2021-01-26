@@ -10,3 +10,8 @@
     float: right;
     padding: 10px;
   }
+
+  .span-error {
+    display:inline-block; 
+    text-align: center;
+  }

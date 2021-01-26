@@ -12,9 +12,7 @@ export class LogOutServService {
 
   logOut(){
     localStorage.removeItem('user');
-    console.log("Logged out");
-
     this.router.navigate(['login']);    
-
+    window.location.reload();
   }
 }

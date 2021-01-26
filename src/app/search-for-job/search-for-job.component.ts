@@ -62,17 +62,6 @@ performFilter(filterBy:string) : Job[] {
 }
 
   ngOnInit(): void {
-    if(this.sessServ.verifySession()){
-      this.firstName = localStorage.getItem("firstName");
-      this.lastName = localStorage.getItem("lastName");
-      this.username = localStorage.getItem("username");
-      console.log(this.firstName);
-      console.log(this.lastName);
-      console.log(this.username);
-
-    } else {
-      window.location.href = '/login';
-    }
     this.getAllJobs();
   }
 
@@ -80,10 +69,6 @@ performFilter(filterBy:string) : Job[] {
     let thisArray : Job [];
     this.jobServ.retrieveAllJobs().subscribe (
       response => {
-      console.log(response[0]);
-      console.log(response);
-      console.log(typeof(response));
-      console.log(typeof(response[0]));
       thisArray = Object.values(response);
       
       this.jobs = thisArray;

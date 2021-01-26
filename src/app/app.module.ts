@@ -29,6 +29,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { ViewApplicationsComponent } from './view-applications/view-applications.component';
 import { ViewSelfJobpostingsComponent } from './view-self-jobpostings/view-self-jobpostings.component';
 import { NgxPaginationModule } from "ngx-pagination"
+import { DateFormatPipe } from './pipes/date.format.pipe'
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { NgxPaginationModule } from "ngx-pagination"
     ViewSelfJobpostingsComponent,
     ViewApplicationsComponent,
     ProfileComponent,
+    DateFormatPipe
   ],
   imports: [
     BrowserModule, NgxPaginationModule, RouterModule.forRoot([

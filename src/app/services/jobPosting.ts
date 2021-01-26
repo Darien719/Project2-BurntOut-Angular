@@ -4,5 +4,7 @@ export interface JobPosting {
     title: string;
     location_id: number;
     industry_id: number;
+    location_name: string;
+    industry_name: string;
     description: string;
 }

@@ -28,23 +28,17 @@ export class SignUpComponent implements OnInit {
   constructor(private router: Router, private signUpServ: SignupService) { }
 
   signUpPost(){
-    console.log(this.newUser.firstName);
-    console.log(this.newUser.lastName);
-    console.log(this.newUser.email);
-    console.log(this.newUser.company);
-    console.log(this.newUser.userRole);
-    console.log(this.newUser.username);
-    console.log(this.newUser.password);
+    
 
     this.signUpServ.postNewUser(this.newUser).subscribe(
       response =>{
-        console.log(response);
+       
         let substr = "User Successfully Created!";
          if(response.includes(substr)){
-           console.log("status is cool");
+           
            this.goHome();
          } else{
-           console.log('issue');
+          
          }
       },
       error =>{
