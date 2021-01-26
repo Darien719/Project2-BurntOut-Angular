@@ -3,13 +3,31 @@
 <br>
 <div class="card">
     <div class="card-body">
-        <span class="right btn btn-secondary" *ngIf="isUser && !isInEditMode" style="font-family:serif; width:40px;"
-            (click)="editMode()">&#9998;</span>
-            <span class="right btn btn-danger" *ngIf="isUser && isInEditMode" style="font-family:serif; width:40px; margin-left: 5px;"
-                (click)="editMode()">&#88;</span>
-        <span class="right btn btn-success" *ngIf="isUser && isInEditMode" style="font-family:serif; width:40px;"
-            (click)="editMode()">&#10003;</span>
-        <br><br><br>
+        <button class="right btn btn-secondary" *ngIf="isUser && !isInEditMode" style="font-family:serif; width:40px;"
+            (click)="editMode()">&#9998;</button>
+        <button class="right btn btn-danger" *ngIf="isUser && isInEditMode"
+            style="font-family:serif; width:40px; margin-left: 5px;" (click)="editMode(); cancelUpdate()">&#88;</button>
+        <button class="right btn btn-success" *ngIf="isUser && isInEditMode" style="font-family:serif; width:40px;"
+            (click)="updateInfo()" [disabled]="firstName == '' || lastName == '' || (company == '' || 
+            userRole != 'Candidate') || email == '' || username == ''">&#10003;</button>
+        <span class="span-error" [hidden]="!usernameExists && !emailExists && !userNotFound">
+            <small [hidden]="!usernameExists">
+                <div class="alert alert-danger">
+                    {{errorMessage}}
+                </div>
+            </small>
+            <small [hidden]="!emailExists">
+                <div class="alert alert-danger">
+                    {{errorMessage}}
+                </div>
+            </small>
+            <small [hidden]="!userNotFound">
+                <div class="alert alert-danger">
+                    {{errorMessage}}
+                </div>
+            </small>
+        </span>
+        <br><br>
         <h1 style="text-align: center;">{{firstName}} {{lastName}}</h1>
         <br>
         <hr>
@@ -90,7 +108,7 @@
                         <td>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="email" placeholder="Enter email" required
-                                    minlength=1 [(ngModel)]="email" name="email">
+                                    minlength=1 [(ngModel)]="email" name="email" ngModel pattern="[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}">
                                 <small>
                                     <div [hidden]="!email == ''" class="alert alert-danger">
                                         Email is required.
