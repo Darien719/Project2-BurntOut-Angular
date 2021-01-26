@@ -61,8 +61,15 @@
             </div>
             <div class="form-group">
                 <label for="company">Which company are you affiliated with?</label>
-                <input type="text" class="form-control" id="company" placeholder="Enter company" required
-                    [(ngModel)]="newUser.company" name="company" #company="ngModel">
+                <input type="text" class="form-control" id="company" placeholder="Enter company (employers only)"
+                    required minlength=1 [(ngModel)]="newUser.company" name="company" #company="ngModel"
+                    [disabled]="newUser.userRole != 'Company'">
+                <small>
+                    <div [hidden]="newUser.userRole != 'Company' || (company.valid || company.pristine)"
+                        class="alert alert-danger">
+                        Company is required.
+                    </div>
+                </small>
             </div>
             <div class="form-group">
                 <label for="username">Username</label>
@@ -85,7 +92,7 @@
                 </small>
             </div>
             <button type="submit" class="btn btn-primary" [disabled]="!firstName.valid || !lastName.valid || !email.valid || 
-                            !userRole.valid || !username.valid || !password.valid"
+                            !userRole.valid || !username.valid || !password.valid || (newUser.userRole == 'Company' && !company.valid)"
                 (click)="signUpPost()">Submit</button>
         </form>
     </div>
