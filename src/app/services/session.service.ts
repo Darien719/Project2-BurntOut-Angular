@@ -16,6 +16,17 @@ export class SessionService {
         }
         console.log('session not found');
         return false;
+    }
+
+    verifyUser(correctId:number):boolean {
+      console.log(JSON.parse(localStorage.getItem('user')))
+      console.log(correctId);
+      if (JSON.parse(localStorage.getItem('user')).userId==correctId){
+        console.log('Correct Session');
+        return true;
       }
+      console.log('Incorrect Session Information');
+      return false;
+    }
 
 }
