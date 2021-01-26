@@ -48,7 +48,7 @@ export class CreateJobPostingComponent implements OnInit {
     this.jobPosting.location_name = jobgroup.get('location').value;
     this.jobPosting.industry_name = jobgroup.get('industry').value;
     this.jobPosting.description = jobgroup.get('description').value;
-    console.log(this.jobPosting);
+
 
     this.createJobServ.postJob(this.jobPosting).subscribe(
       response=>{
@@ -72,7 +72,6 @@ export class CreateJobPostingComponent implements OnInit {
 
   getJobId(jobName: String): void {
    
-    console.log(jobName);
     this.createJobServ.getCompanyId(jobName).subscribe (
       response => {
        this.company_id =  Number.parseInt(response.toString());

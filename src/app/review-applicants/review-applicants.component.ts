@@ -31,7 +31,6 @@ export class ReviewApplicantsComponent implements OnInit {
     this.viewAppServ.retrieveAllApplicants(this.postingId).subscribe (
       response => {
       thisArray = Object.values(response);
-      console.log(thisArray);
       this.applicants = thisArray;
       }
     )

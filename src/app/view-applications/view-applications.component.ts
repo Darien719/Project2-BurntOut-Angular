@@ -21,7 +21,7 @@ export class ViewApplicationsComponent implements OnInit {
   ngOnInit(): void {
       if(this.sessServ.verifySession()){
           this.username = localStorage.getItem("username");
-          console.log(this.username);
+       
 
       } else {
         window.location.href = '/login';
@@ -30,11 +30,6 @@ export class ViewApplicationsComponent implements OnInit {
   }
 
 
-    /* this.sub = this.route.params.subscribe(params => {
-      this.username = +params['id']; // (+) converts string 'id' to a number
-      console.log(this.username);
-      this.getAllMyApplications();
-   }); */
   
 
   getAllMyApplications() : void {
@@ -43,7 +38,7 @@ export class ViewApplicationsComponent implements OnInit {
       response => {
       thisArray = Object.values(response);
       this.applications = thisArray;
-      console.log(this.applications);
+    
       }
     )
   }

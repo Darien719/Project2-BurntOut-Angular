@@ -46,11 +46,6 @@ export class ApplicationFormPageComponent implements OnInit {
           this.lastName = localStorage.getItem("lastName");
           this.posting_id = localStorage.getItem("postingId");
           this.username = localStorage.getItem("username");
-          console.log(this.firstName);
-          console.log(this.lastName);
-          console.log(this.posting_id);
-          console.log(this.username);
-
       } else {
         window.location.href = '/login';
       }
@@ -63,11 +58,7 @@ export class ApplicationFormPageComponent implements OnInit {
     this.submit();
     this.createAppServ.postApplication(this.application).subscribe(
       response=>{
-        console.log("In response");
-        console.log(response);
       },error=>{
-          console.log("Problem posting application");
-          console.log(error);
       }
     )
   }

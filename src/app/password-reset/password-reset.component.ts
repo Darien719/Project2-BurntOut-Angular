@@ -26,13 +26,9 @@ export class PasswordResetComponent implements OnInit {
     this.userCred.password = info.get('password').value;
     this.passServ.resetPass(this.userCred).subscribe(
       response =>{
-        console.log(response);
-        console.log('successful reset');
         window.location.href='/login';
       },
       error =>{
-        console.log(error);
-        console.log('issues');
         window.location.href='/login'
       }
     )
