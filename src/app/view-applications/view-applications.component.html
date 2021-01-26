@@ -5,8 +5,8 @@
     <table class = 'table table-dark'>
         <thead>
             <tr>
-                <th>Application ID</th>
                 <th>Job Posting Title</th>
+                <th>Company Name</th>
                 <th>Application Date</th>
                 <th>Application Status</th>
             </tr>
@@ -14,13 +14,13 @@
         <tbody>
             <tr *ngFor = "let temp of applications">
                 <td>
-                    <p>{{temp.applicationId}}</p>
-                </td>
-                <td>
                     <p>{{temp.jobPostingTitle}}</p>
                 </td>
                 <td>
-                    <p>{{temp.appDate}}</p>
+                    <p>{{temp.companyName}}</p>
+                </td>
+                <td>
+                    <p>{{temp.appDate | dateFormat}}</p>
                 </td>
                 <td>
                     <p>{{temp.applicationStatus}}</p>
