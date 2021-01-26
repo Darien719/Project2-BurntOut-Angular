@@ -18,10 +18,17 @@ export class ProfileComponent implements OnInit {
   email: string;
   company: string;
   userRole: string;
+  isUser: boolean;
+  isInEditMode: boolean;
 
   ngOnInit(): void {
+    this.isUser = false;
+    this.isInEditMode = false;
     if(this.sessServ.verifySession()){
       this.route.params.subscribe(params => {
+        if(localStorage.getItem("username") == params['username']){
+          this.isUser = true;
+        }
         this.username = params['username'];
         this.profServ.retrieveUser(this.username).subscribe (
           response => {
@@ -34,7 +41,12 @@ export class ProfileComponent implements OnInit {
           }
         )
       });
+
     }
+  }
+
+  editMode(): void {
+    this.isInEditMode = !this.isInEditMode;
   }
 
 }

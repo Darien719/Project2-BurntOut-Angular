@@ -3,12 +3,125 @@
 <br>
 <div class="card">
     <div class="card-body">
-        <p>First name: {{firstName}}</p>
-        <p>Last name: {{lastName}}</p>
-        <p>Username: {{username}}</p>
-        <p>Company: {{company}}</p>
-        <p>Email: {{email}}</p>
-        <p>Role: {{userRole}}</p>
+        <span class="right btn btn-secondary" *ngIf="isUser && !isInEditMode" style="font-family:serif; width:40px;"
+            (click)="editMode()">&#9998;</span>
+            <span class="right btn btn-danger" *ngIf="isUser && isInEditMode" style="font-family:serif; width:40px; margin-left: 5px;"
+                (click)="editMode()">&#88;</span>
+        <span class="right btn btn-success" *ngIf="isUser && isInEditMode" style="font-family:serif; width:40px;"
+            (click)="editMode()">&#10003;</span>
+        <br><br><br>
+        <h1 style="text-align: center;">{{firstName}} {{lastName}}</h1>
+        <br>
+        <hr>
+        <table *ngIf="!isInEditMode" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{username}}</td>
+                    <td>{{company}}</td>
+                    <td>{{email}}</td>
+                    <td>{{userRole}}</td>
+                </tr>
+        </table>
 
+        <form *ngIf="isInEditMode">
+            <h3>Edit your info below: </h3>
+            <br>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">First name</th>
+                        <th scope="col">Last name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="firstName" placeholder="Enter first name"
+                                    [(ngModel)]="firstName" name="firstName">
+                                <small>
+                                    <div [hidden]="!firstName == ''" class="alert alert-danger">
+                                        First name is required.
+                                    </div>
+                                </small>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="lastName" placeholder="Enter last name"
+                                    [(ngModel)]="lastName" name="lastName">
+                                <small>
+                                    <div [hidden]="!lastName == ''" class="alert alert-danger">
+                                        Last name is required.
+                                    </div>
+                                </small>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th scope="col">Company</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="company" placeholder="Enter company name"
+                                    [(ngModel)]="company" name="company" [disabled]="userRole == 'Candidate'">
+                                <small>
+                                    <div [hidden]="!company == '' || userRole == 'Candidate'"
+                                        class="alert alert-danger">
+                                        Company is required.
+                                    </div>
+                                </small>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="email" placeholder="Enter email" required
+                                    minlength=1 [(ngModel)]="email" name="email">
+                                <small>
+                                    <div [hidden]="!email == ''" class="alert alert-danger">
+                                        Email is required.
+                                    </div>
+                                </small>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th scope="col">Username</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="username" placeholder="Enter username"
+                                    [(ngModel)]="username" name="username">
+                                <small>
+                                    <div [hidden]="!username == ''" class="alert alert-danger">
+                                        username is required.
+                                    </div>
+                                </small>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <br>
     </div>
 </div>

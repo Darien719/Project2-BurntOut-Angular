@@ -200,3 +200,14 @@ a{
 a:hover{
     text-decoration: none;
 }
+.text{
+    position: absolute;
+    left: 30%;
+    text-align: center;
+    color:white
+}
+
+.text:hover{
+    background-color: transparent;
+    color: gray;
+}

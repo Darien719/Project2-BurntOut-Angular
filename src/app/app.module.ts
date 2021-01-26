@@ -28,6 +28,7 @@ import { ViewApplicantsService } from './services/view-applicants.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ViewApplicationsComponent } from './view-applications/view-applications.component';
 import { ViewSelfJobpostingsComponent } from './view-self-jobpostings/view-self-jobpostings.component';
+import { NgxPaginationModule } from "ngx-pagination"
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { ViewSelfJobpostingsComponent } from './view-self-jobpostings/view-self-
     ProfileComponent,
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot([
+    BrowserModule, NgxPaginationModule, RouterModule.forRoot([
 
       { path: "jobs", component: SearchForJobComponent },
       { path: "login", component: LoginComponent },
@@ -61,9 +62,9 @@ import { ViewSelfJobpostingsComponent } from './view-self-jobpostings/view-self-
       { path: "blog", component: BlogComponent },
       { path: "jobs/application", component: ApplicationFormPageComponent },
       { path: "jobs/review-applicants/:id", component: ReviewApplicantsComponent },
-      { path: "company/view-postings", component: ViewSelfJobpostingsComponent},
-      { path: "view-applications", component : ViewApplicationsComponent},
-      { path: "profile/:username", component : ProfileComponent},
+      { path: "company/view-postings", component: ViewSelfJobpostingsComponent },
+      { path: "view-applications", component: ViewApplicationsComponent },
+      { path: "profile/:username", component: ProfileComponent },
       { path: "**", component: HomePageComponent },
 
     ]), HttpClientModule, FormsModule, ReactiveFormsModule,
