@@ -1,6 +1,10 @@
+
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Application } from '../services/application';
+import { JobService } from '../services/job.service';
+import { JobPosting } from '../services/jobPosting';
+import { SessionService } from '../services/session.service';
 import { ViewApplicantsService } from '../services/view-applicants.service';
 import { DOCUMENT } from '@angular/common';
 
@@ -12,17 +16,19 @@ import { DOCUMENT } from '@angular/common';
 export class ReviewApplicantsComponent implements OnInit {
 
   constructor(private router: Router, private viewAppServ: ViewApplicantsService, private route: ActivatedRoute,
-    @Inject(DOCUMENT) private document: Document) { }
+    private route: ActivatedRoute, private sessServ:SessionService, private jobServ:JobService, @Inject(DOCUMENT) private document: Document) { }
  
   applicants: Application[];
   postingId: Number;
   private sub: any;
+  posterId: number;
   private url: string;
 
   ngOnInit(): void {
+    this.verification=false;
     this.sub = this.route.params.subscribe(params => {
       this.postingId = +params['id']; // (+) converts string 'id' to a number
-      this.getAllApplicants();
+      this.getSessionInfo(this.postingId);
    });
   }
 
@@ -60,6 +66,25 @@ export class ReviewApplicantsComponent implements OnInit {
     )
   }
 
- 
+  getSessionInfo(postingId:Number){
+     this.jobServ.retrieveJobByPostingId(postingId).subscribe(
+      response=>{
+        console.log(response);
+        this.posterId = response.poster_id;
+        console.log(this.posterId);
+        if(this.sessServ.verifyUser(this.posterId)){
+          this.getAllApplicants();
+        } else{
+          window.alert('You do not have access to this page')
+  //        location.href='/'
+        }
+        },
+      error=>{
+        console.log(error);
+        return false;
+      }
+    )
+  }
+
 }
  

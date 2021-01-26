@@ -10,4 +10,5 @@ export interface Job {
     applicationList : Application [];
     companyName: string;
     industryName: string;
+    poster_id: number;
 }
