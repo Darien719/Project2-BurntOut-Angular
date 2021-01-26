@@ -18,13 +18,13 @@
                     <p>{{temp.applicationId}}</p>
                 </td>
                 <td>
-                    <p>{{temp.applicantFirstName}} {{temp.applicantLastName}}</p>
+                    <a href="http://localhost:4200/profile/{{temp.applicantUsername}}">
+                   
+                        
+                        
+                        {{temp.applicantFirstName}} {{temp.applicantLastName}}</a>
                 </td>
                 <td>
-                    <!-- <button type="button" (click)="getUrl(olgamelnikoff, 4)">Download Resume</button> -->
-                   <!--  <a [routerLink] = "getUrl()">Download Resume</a> -->
-                   <!--  <a href = "https://burntout.s3.amazonaws.com/olgamelnikoff+4">Download Resume2</a>
-                   -->  
                    <a href="{{getUrl(temp.applicantFirstName, temp.applicantLastName,
                     temp.jobPostingId)}}">View / Download Resume</a>
                 </td>
