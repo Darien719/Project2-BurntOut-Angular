@@ -23,9 +23,12 @@ export class SearchForJobComponent implements OnInit {
   jobsFilteredByName : Job [] = [];
 
   constructor(private router : Router, private jobServ : JobService, private sessServ: SessionService) {
-
+    //this.jobsFilteredByName = this.jobs;
    }
-
+  /* ngOnDestroy(): void {
+    console.log(this.jobPostingId);
+    console.log(this.username);
+  } */
 
    get postingId() : number {
      return this.jobPostingId;
