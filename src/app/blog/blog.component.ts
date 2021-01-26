@@ -12,7 +12,8 @@ export class BlogComponent implements OnInit {
   pageTitle = "Blog";
   isNewPostVisible = true;
   isNewPostFormVisible = false;
-  bInfo: blogInfo = { "blogId": null, "date": null, "message": "", "title": "", "username": "" }
+  bInfo: blogInfo = { "blogId": null, "date": null, "message": "", "title": "", "username": "" };
+  page: Number = 1;
 
   constructor(private blogService: BlogService, private sessServ: SessionService) { }
 
