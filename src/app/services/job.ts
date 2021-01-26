@@ -4,10 +4,10 @@ import { Tag } from "./tag";
 export interface Job {
     title : string;
     description : string;
-    tagList : Tag [];
+    tagsList : Tag [];
+    tagNames: string;
     postingId : number;
     locationName: string;
-    applicationList : Application [];
     companyName: string;
     industryName: string;
 }

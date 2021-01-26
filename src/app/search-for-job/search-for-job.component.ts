@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Job } from '../services/job';
 import { JobService } from '../services/job.service';
 import { SessionService } from '../services/session.service';
+import { Tag } from '../services/tag';
 
 @Component({
   selector: 'app-search-for-job',
@@ -23,12 +24,11 @@ export class SearchForJobComponent implements OnInit {
   jobsFilteredByName : Job [] = [];
 
   constructor(private router : Router, private jobServ : JobService, private sessServ: SessionService) {
-    //this.jobsFilteredByName = this.jobs;
    }
-  /* ngOnDestroy(): void {
-    console.log(this.jobPostingId);
-    console.log(this.username);
-  } */
+
+   ngOnInit(): void {
+    this.getAllJobs();
+  }
 
    get postingId() : number {
      return this.jobPostingId;
@@ -54,24 +54,34 @@ export class SearchForJobComponent implements OnInit {
 performFilter(filterBy:string) : Job[] {
     filterBy = filterBy.toLowerCase();
     return this.jobs.filter((job:Job)=> {
+      if (job.tagsList.length > 0) {
+        job.tagNames = "";
+        job.tagsList.forEach(tag => {
+          let thisName = tag.tag;
+          job.tagNames = job.tagNames + thisName;
+        });
+      }
+
+    else {
+      job.tagNames = "";
+    }
+    
         return (job.title.toLowerCase().indexOf(filterBy) !==-1) 
                 || (job.locationName.toLowerCase().indexOf(filterBy) !==-1)
                 || (job.companyName.toLowerCase().indexOf(filterBy) !==-1)
-                || (job.industryName.toLowerCase().indexOf(filterBy) !==-1);
+                || (job.industryName.toLowerCase().indexOf(filterBy) !==-1)
+                || (job.tagNames.toLowerCase().indexOf(filterBy) !==-1)              
     });
 }
 
-  ngOnInit(): void {
-    this.getAllJobs();
-  }
 
   getAllJobs() : void {
     let thisArray : Job [];
     this.jobServ.retrieveAllJobs().subscribe (
       response => {
-      thisArray = Object.values(response);
-      
-      this.jobs = thisArray;
+        thisArray = Object.values(response);
+        this.jobs = thisArray;
+        console.log(this.jobs);
       }
     )
   }

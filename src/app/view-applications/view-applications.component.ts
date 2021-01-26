@@ -38,11 +38,7 @@ export class ViewApplicationsComponent implements OnInit {
       response => {
       thisArray = Object.values(response);
       this.applications = thisArray;
-      console.log(this.applications);
-    
       }
     )
   }
-
-
 }
