@@ -7,12 +7,13 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class ProfileService {
-  private getUser = "http://localhost:9025/users/username/";
+
 
   constructor(private httpCli: HttpClient) { }
 
   retrieveUser(username: string): Observable<any> {
-    this.getUser += username;
-    return this.httpCli.get<any>(this.getUser);
+    var getUser = "http://localhost:9025/users/username/";
+    getUser += username;
+    return this.httpCli.get<any>(getUser);
   }
 }
