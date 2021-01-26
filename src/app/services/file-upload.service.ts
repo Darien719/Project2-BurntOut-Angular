@@ -15,7 +15,16 @@ export class FileUploadService {
     throw new Error('Method not implemented.');
   }
 
-  uploadFile(file, firstName, lastName, postingId) {
+  static getS3Bucket(): any {
+    return new S3(
+      {
+        accessKeyId: 'AKIAZTURDFD45TH2H4MC',
+        secretAccessKey: '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',
+        region: 'us-east-1'
+      }
+    );
+  }
+  uploadFile(file, firstName, lastName, postingId, username) {
     const contentType = file.type;
     const bucket = new S3(
           {
@@ -26,7 +35,10 @@ export class FileUploadService {
       );
       const params = {
           Bucket: 'burntout',
-          Key: 'Resume of ' + firstName + '  ' + lastName + ', job posting Id: ' + postingId,
+          Key: firstName + lastName + "JobId" + postingId,
+          //username + " " + postingId,
+          Id1: postingId,
+          Id2: username,
           Body: file,
           ACL: 'public-read',
           ContentType: contentType

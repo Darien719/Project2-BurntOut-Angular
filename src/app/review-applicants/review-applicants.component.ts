@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Application } from '../services/application';
 import { ViewApplicantsService } from '../services/view-applicants.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-review-applicants',
@@ -10,11 +11,13 @@ import { ViewApplicantsService } from '../services/view-applicants.service';
 })
 export class ReviewApplicantsComponent implements OnInit {
 
-  constructor(private router: Router, private viewAppServ: ViewApplicantsService, private route: ActivatedRoute) { }
+  constructor(private router: Router, private viewAppServ: ViewApplicantsService, private route: ActivatedRoute,
+    @Inject(DOCUMENT) private document: Document) { }
  
   applicants: Application[];
   postingId: Number;
   private sub: any;
+  private url: string;
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
@@ -28,9 +31,15 @@ export class ReviewApplicantsComponent implements OnInit {
     this.viewAppServ.retrieveAllApplicants(this.postingId).subscribe (
       response => {
       thisArray = Object.values(response);
+      console.log(thisArray);
       this.applicants = thisArray;
       }
     )
+  }
+
+  getUrl(firstName, lastName, postingId) : string {
+    this.url = "https://burntout.s3.amazonaws.com/" + firstName + lastName+ "JobId" + postingId;
+    return this.url;
   }
 
   approveApplicant(applicationId: number): void{

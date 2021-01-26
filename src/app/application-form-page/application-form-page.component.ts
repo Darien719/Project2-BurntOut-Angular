@@ -74,7 +74,7 @@ export class ApplicationFormPageComponent implements OnInit {
 
   submit() {
     const file = this.toFile.item(0);
-    this.fileUploadServ.uploadFile(file, this.firstName, this.lastName, this.posting_id);
+    this.fileUploadServ.uploadFile(file, this.firstName, this.lastName, this.posting_id, this.username);
   }
 
   onChange(event) {
