@@ -31,7 +31,10 @@ export class ApplicationFormPageComponent implements OnInit {
   'status' : 'Pending',
   'resume' : null, 
   firstName : '',
-  lastName : ''
+  lastName : '',
+  jobPostingTitle : '',
+  companyName : '',
+  date : ''
 };
 
   applicationgroup = new FormGroup({
