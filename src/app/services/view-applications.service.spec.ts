@@ -9,7 +9,7 @@ const dummyApplicationData = {
   companyName : "GreatCompany",
   status : "Pending",
   date : "2021-01-31",
-  username : "cheerful"
+  username : "olgamelnikoff"
 }
 
 describe('ViewApplicationsService', () => {
@@ -34,11 +34,11 @@ describe('ViewApplicationsService', () => {
   });
 
   it ('should have retrieveAllApplicantions(username) return data', () => {
-    service.retrieveAllApplicantions("cheerful").subscribe((res) => {
+    service.retrieveAllApplicantions("olgamelnikoff").subscribe((res) => {
       expect(res.toString()).toEqual(dummyApplicationData.toString());
     })
 
-    const req = httpMock.expectOne("http://localhost:9025/application/cheerful");
+    const req = httpMock.expectOne("http://localhost:9025/application/user/olgamelnikoff");
     expect(req.request.method).toBe('GET');
     req.flush(dummyApplicationData);
 
