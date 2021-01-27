@@ -1,6 +1,6 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormControlDirective, FormGroup } from '@angular/forms';
 import { CreateJobService } from '../services/create-job.service';
 import { JobPosting } from '../services/jobPosting';
 import { SessionService } from '../services/session.service';
@@ -27,6 +27,7 @@ export class CreateJobPostingComponent implements OnInit {
   'description': '',
   'location_id': 0,
   'industry_id': 0,
+  'tagsList' : []
 };
 
   jobgroup = new FormGroup({
@@ -35,6 +36,7 @@ export class CreateJobPostingComponent implements OnInit {
     title: new FormControl(''),
     location: new FormControl(''),
     industry: new FormControl(''),
+    tags: new FormControl(''),
     description: new FormControl(''),
   })
 
@@ -49,7 +51,6 @@ export class CreateJobPostingComponent implements OnInit {
     this.jobPosting.industry_name = jobgroup.get('industry').value;
     this.jobPosting.description = jobgroup.get('description').value;
 
-
     this.createJobServ.postJob(this.jobPosting).subscribe(
       response=>{
           window.alert("Job Posting created");
@@ -59,6 +60,13 @@ export class CreateJobPostingComponent implements OnInit {
     );
 
   }
+
+/*   get getTags() : Tag [] {
+
+
+  } */
+
+ /*  set setTags(tags : string []) */ 
 
   ngOnInit(): void {
     if(this.sessServ.verifySession()){
