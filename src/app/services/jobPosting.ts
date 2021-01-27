@@ -1,3 +1,5 @@
+import { Tag } from "./tag";
+
 export interface JobPosting {
     company_id: number;
     poster_id: number;
@@ -7,4 +9,5 @@ export interface JobPosting {
     location_name: string;
     industry_name: string;
     description: string;
+    tagsList : Tag [];
 }
