@@ -8,7 +8,7 @@ import { ProfileService } from '../services/profile.service';
 
 import { ProfileComponent } from './profile.component';
 
-fdescribe('ProfileComponent', () => {
+describe('ProfileComponent', () => {
   
   class MockService {
     retrieveUser(username: string) { }
