@@ -7,7 +7,7 @@ import { BlogService } from '../services/blog.service';
 import { BlogComponent } from './blog.component';
 import { observable, Observable } from 'rxjs';
 
-fdescribe('BlogComponent', () => {
+describe('BlogComponent', () => {
 
   class MockService {
     postBlog() { }
