@@ -16,7 +16,7 @@ import { DOCUMENT } from '@angular/common';
 export class ReviewApplicantsComponent implements OnInit {
 
   constructor(private router: Router, private viewAppServ: ViewApplicantsService, private route: ActivatedRoute,
-    private route: ActivatedRoute, private sessServ:SessionService, private jobServ:JobService, @Inject(DOCUMENT) private document: Document) { }
+  private sessServ:SessionService, private jobServ:JobService, @Inject(DOCUMENT) private document: Document) { }
  
   applicants: Application[];
   postingId: Number;
@@ -25,7 +25,6 @@ export class ReviewApplicantsComponent implements OnInit {
   private url: string;
 
   ngOnInit(): void {
-    this.verification=false;
     this.sub = this.route.params.subscribe(params => {
       this.postingId = +params['id']; // (+) converts string 'id' to a number
       this.getSessionInfo(this.postingId);
