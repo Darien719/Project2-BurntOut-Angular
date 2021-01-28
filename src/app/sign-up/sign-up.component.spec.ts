@@ -25,7 +25,6 @@ describe('SignUpComponent', () => {
     password: 'password',
   }
 
-
   let router: Router;
   let signUpServ: SignupService;
   let component: SignUpComponent;
@@ -82,9 +81,7 @@ describe('SignUpComponent', () => {
   });
 
   it("should submit a new user", waitForAsync(() => {
-    
     let submitButton = fixture.debugElement.query(By.css("button[type=submit]")).nativeElement;
-    // triggering it 
     spyOn(component, "signUpPost");
     submitButton.click();
 
@@ -92,6 +89,5 @@ describe('SignUpComponent', () => {
       expect(component.signUpPost).toHaveBeenCalled();
     });
   }));
-
   
 });

@@ -30,14 +30,10 @@ export class SignUpComponent implements OnInit {
   signUpPost(){
     this.signUpServ.postNewUser(this.newUser).subscribe(
       response =>{
-       
         let substr = "User Successfully Created!";
          if(response.includes(substr)){
            this.goHome();
          } 
-         
-         else{
-         }
       },
       error =>{
         this.errorOccurred = true;
