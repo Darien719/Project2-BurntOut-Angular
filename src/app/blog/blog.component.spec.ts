@@ -1,31 +1,38 @@
 import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { of } from 'rxjs/internal/observable/of';
 import { BlogService } from '../services/blog.service';
 import { BlogComponent } from './blog.component';
-import { observable, Observable, of } from 'rxjs';
-import { blogInfo } from '../services/blogInfo';
+
 
 
 fdescribe('BlogComponent', () => {
-
-  class MockService {
-    postBlog() { }
-    retrieveAllPosts() { }
-  }
-
-  let mockData;
-  let mockedService;
-
   let router: Router;
   let component: BlogComponent;
   let fixture: ComponentFixture<BlogComponent>;
   let blogService: BlogService;
   let mockClient: { get: jasmine.Spy, post: jasmine.Spy, put: jasmine.Spy, delete: jasmine.Spy };
 
+  let mockedPost = [
+    {
+      blogId: 1,
+      blogTitle: "Hello",
+      date: "2020-01-04",
+      owner: "cocoa"
+    }
+  ]
 
+
+  let mockService = {
+    retrieveAllPosts: <Observable>() => {
+      return of(mockedPost);
+    },
+    postBlog() { }
+  }
   // beforeEach(async () => {
   //   await TestBed.configureTestingModule({
   //     declarations: [BlogComponent]
@@ -34,26 +41,18 @@ fdescribe('BlogComponent', () => {
   // });
 
   beforeEach(() => {
-    mockData = {
-      blogId: 1,
-      title: "",
-      date: null,
-      message: "",
-      username: ""
-    }
-    mockedService = jasmine.createSpyObj("", ['retrieveAllPosts']);
     TestBed.configureTestingModule({
       imports: [NgxPaginationModule, RouterTestingModule.withRoutes([])],
       declarations: [BlogComponent],
       providers: [
-        { provide: BlogService, useValue: mockedService },
+        { provide: BlogService, useValue: mockService },
         { provide: HttpClient, useValue: mockClient }
       ],
     })
       .compileComponents();
     fixture = TestBed.createComponent(BlogComponent);
     component = fixture.componentInstance;
-    mockedService.retrieveAllPosts.and.returnValue(of(mockData));
+
     router = TestBed.inject(Router);
     mockClient = TestBed.get(HttpClient);
     component.isNewPostFormVisible = false;
@@ -62,6 +61,15 @@ fdescribe('BlogComponent', () => {
 
   it('should create', () => {
     fixture.detectChanges();
+    spyOn(mockService, 'retrieveAllPosts').and.returnValue(of(mockedPost));
     expect(component).toBeTruthy();
   });
+
+  it("should have 'blog' at the top of the screen", () => {
+    fixture.detectChanges();
+    spyOn(mockService, 'retrieveAllPosts').and.returnValue(of(mockedPost));
+    let pageTitle = fixture.debugElement.query(By.css("h3")).nativeElement;
+    expect(pageTitle.innerHTML).toBe("Blog");
+  });
+
 });
