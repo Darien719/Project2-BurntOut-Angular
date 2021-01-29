@@ -26,7 +26,7 @@ export class SearchForJobComponent implements OnInit {
   constructor(private router : Router, private jobServ : JobService, private sessServ: SessionService) {
    }
 
-   ngOnInit(): void {
+   ngOnInit() {
     this.getAllJobs();
   }
 
