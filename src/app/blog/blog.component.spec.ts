@@ -5,7 +5,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BlogService } from '../services/blog.service';
 import { BlogComponent } from './blog.component';
-import { observable, Observable } from 'rxjs';
+import { observable, Observable, of } from 'rxjs';
+import { blogInfo } from '../services/blogInfo';
+
 
 fdescribe('BlogComponent', () => {
 
@@ -13,6 +15,9 @@ fdescribe('BlogComponent', () => {
     postBlog() { }
     retrieveAllPosts() { }
   }
+
+  let mockData;
+  let mockedService;
 
   let router: Router;
   let component: BlogComponent;
@@ -29,27 +34,34 @@ fdescribe('BlogComponent', () => {
   // });
 
   beforeEach(() => {
+    mockData = {
+      blogId: 1,
+      title: "",
+      date: null,
+      message: "",
+      username: ""
+    }
+    mockedService = jasmine.createSpyObj("", ['retrieveAllPosts']);
     TestBed.configureTestingModule({
       imports: [NgxPaginationModule, RouterTestingModule.withRoutes([])],
       declarations: [BlogComponent],
       providers: [
-        { provide: BlogService, useClass: MockService },
+        { provide: BlogService, useValue: mockedService },
         { provide: HttpClient, useValue: mockClient }
       ],
     })
       .compileComponents();
     fixture = TestBed.createComponent(BlogComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-
+    mockedService.retrieveAllPosts.and.returnValue(of(mockData));
     router = TestBed.inject(Router);
-    blogService = TestBed.inject(BlogService);
     mockClient = TestBed.get(HttpClient);
     component.isNewPostFormVisible = false;
     component.isNewPostVisible = true;
   });
 
   it('should create', () => {
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });
