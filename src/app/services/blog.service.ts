@@ -6,8 +6,8 @@ import { blogInfo } from "./blogInfo";
   providedIn: 'root'
 })
 export class BlogService {
-  private url = "http://localhost:9025/blogs/add";
-  private allPostsurl = "http://localhost:9025/blogs/all";
+  private url = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/blogs/add";
+  private allPostsurl = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/blogs/all";
 
   constructor(private httpCli: HttpClient) {
   }

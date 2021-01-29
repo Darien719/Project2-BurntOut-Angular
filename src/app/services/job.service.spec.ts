@@ -41,7 +41,7 @@ describe('JobService', () => {
       expect(res.toString()).toEqual(dummyJobPostingData.toString());
     })
 
-    const req = httpMock.expectOne("http://localhost:9025/jobpostings/all");
+    const req = httpMock.expectOne("http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/jobpostings/all");
     expect(req.request.method).toBe('GET');
     req.flush(dummyJobPostingData);
   });
