@@ -1,6 +1,7 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormControlDirective, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CreateJobService } from '../services/create-job.service';
 import { JobPosting } from '../services/jobPosting';
 import { SessionService } from '../services/session.service';
@@ -40,7 +41,7 @@ export class CreateJobPostingComponent implements OnInit {
     description: new FormControl(''),
   })
 
-  constructor(private createJobServ: CreateJobService, private sessServ: SessionService) { }
+  constructor(private createJobServ: CreateJobService, private sessServ: SessionService, private router:Router) { }
 
   jobPost(jobgroup :FormGroup){
 
@@ -70,7 +71,7 @@ export class CreateJobPostingComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.sessServ.verifySession()){
-
+      this.getSessionInfo('Company');
     } else {
       window.location.href = '/login';
     }
@@ -87,5 +88,11 @@ export class CreateJobPostingComponent implements OnInit {
     )
   }
  
+  getSessionInfo(userRole:string) {
+    if(!this.sessServ.verifyUserRole(userRole)){
+      window.alert('You do not have access to this page');
+      this.router.navigate(['/']);
+    }
+  }
 
 }

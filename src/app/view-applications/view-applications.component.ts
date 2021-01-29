@@ -20,6 +20,7 @@ export class ViewApplicationsComponent implements OnInit {
 
   ngOnInit(): void {
       if(this.sessServ.verifySession()){
+          this.getSessionInfo('Company');
           this.username = localStorage.getItem("username");
       } else {
         window.location.href = '/login';
@@ -27,8 +28,15 @@ export class ViewApplicationsComponent implements OnInit {
       this.getAllMyApplications();
   }
 
+  getSessionInfo(userRole:string){
+    if(!this.sessServ.verifyUserRole(userRole)){
+      window.alert('You do not have access to this page');
+      this.router.navigate(['/']);
+    }
+  }
+  
 
-getAllMyApplications() : void {
+  getAllMyApplications() : void {
     let thisArray : Application [];
     this.viewAppServ.retrieveAllApplicantions(this.username).subscribe (
       response => {
