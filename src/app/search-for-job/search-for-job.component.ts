@@ -27,8 +27,13 @@ export class SearchForJobComponent implements OnInit {
     this.getAllJobs();
   }
 
-   ngOnInit() {
-    //this.getAllJobs();
+   ngOnInit(): void {
+     if(this.sessServ.verifySession()){
+       this.getSessionInfo('Candidate');
+       
+     } else{
+       window.location.href = '/login';
+     }
   }
 
    get postingId() : number {
@@ -92,4 +97,10 @@ performFilter(filterBy:string) : Job[] {
     this.router.navigate(['jobs/application']);
   }
 
+  getSessionInfo(userRole:string){
+    if(!this.sessServ.verifyUserRole(userRole)){
+      window.alert('You do not have access to this page');
+      this.router.navigate(['/']);
+    }
+  }
 }

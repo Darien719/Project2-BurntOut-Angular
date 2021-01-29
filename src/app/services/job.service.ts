@@ -8,7 +8,7 @@ import { JobPosting } from './jobPosting';
   providedIn: 'root'
 })
 export class JobService {
-  private allJobsUrl = "http://localhost:9025/jobpostings/all";
+  private allJobsUrl = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/jobpostings/all";
 
   constructor(private httpCli: HttpClient) { }
 
@@ -17,12 +17,12 @@ export class JobService {
   }
 
   retrieveJobsByCompany(companyName: String): Observable<Job> { 
-    let companyJobsUrl = "http://localhost:9025/jobpostings/company/name/"
+    let companyJobsUrl = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/jobpostings/company/name/"
     return this.httpCli.get<Job>(companyJobsUrl + companyName);
   }
 
   retrieveJobByPostingId(postingId:Number): Observable<Job> {
-    let singleJobUrl = "http://localhost:9025/jobpostings/posting-id/"
+    let singleJobUrl = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/jobpostings/posting-id/"
     return this.httpCli.get<Job>(singleJobUrl+postingId);
   }
 

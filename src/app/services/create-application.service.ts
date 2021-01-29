@@ -8,7 +8,7 @@ import { Application } from './application';
 })
 export class CreateApplicationService {
 
-  private url = "http://localhost:9025/application";
+  private url = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/application";
 
   constructor(private httpCli: HttpClient) { }
 

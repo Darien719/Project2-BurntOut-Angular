@@ -73,7 +73,7 @@
             </div>
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter password" required
+                <input type="text" class="form-control" id="username" placeholder="Enter username" required
                     [(ngModel)]="newUser.username" name="username" minlength=6 #username="ngModel">
                 <small>
                     <div [hidden]="username.valid || username.pristine" class="alert alert-danger">

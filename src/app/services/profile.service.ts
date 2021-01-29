@@ -12,13 +12,13 @@ export class ProfileService {
   constructor(private httpCli: HttpClient) { }
 
   retrieveUser(username: string): Observable<any> {
-    var getUser = "http://localhost:9025/users/username/";
+    var getUser = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/users/username/";
     getUser += username;
     return this.httpCli.get<any>(getUser);
   }
 
   putUpdatedUser(user: User): Observable<any> {
-    var getUser = "http://localhost:9025/users";
+    var getUser = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/users";
       return this.httpCli.put<string>(getUser, JSON.stringify(user), {
           headers: new HttpHeaders({
               'Content-Type':'application/json'

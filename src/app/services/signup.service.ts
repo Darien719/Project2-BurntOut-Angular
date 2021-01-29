@@ -7,7 +7,7 @@ import { User } from "./user";
   providedIn: 'root'
 })
 export class SignupService {
-  private createUserURL = "http://localhost:9025/users/newuser";
+  private createUserURL = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/users/newuser";
 
   constructor(private httpCli: HttpClient) { }
 

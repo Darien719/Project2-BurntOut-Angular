@@ -74,8 +74,8 @@ export class ReviewApplicantsComponent implements OnInit {
         if(this.sessServ.verifyUser(this.posterId)){
           this.getAllApplicants();
         } else{
-          window.alert('You do not have access to this page')
-  //        location.href='/'
+          window.alert('You do not have access to this page');
+          this.router.navigate(['company/view-postings'])
         }
         },
       error=>{

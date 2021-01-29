@@ -13,6 +13,5 @@ export class LogOutServService {
   logOut(){
     localStorage.removeItem('user');
     this.router.navigate(['login']);    
-    window.location.reload();
   }
 }
