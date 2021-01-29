@@ -18,15 +18,18 @@ fdescribe('ViewSelfJobpostingsComponent', () => {
 
 
 
-  let mockedJob = {
-    title: 'Job title',
-    description: 'Description',
-    postingId: 1,
-    locationName: 'Miami FL',
-    companyName: 'Revature',
-    industryName: 'IT',
-    poster_id: 1
-  }
+  let mockedJob = [
+    {
+      postingId: "1",
+      title: "Title1",
+      description: "Description1"
+    },
+    {
+      postingId: "2",
+      title: "Title2",
+      description: "Description2"
+    }
+  ]
 
   //Mocking the jobServ 
   let MockService = {
@@ -83,7 +86,7 @@ fdescribe('ViewSelfJobpostingsComponent', () => {
 
   it('retrieveJobsByCompany should get a job array and populate the table', () => {
     spyOn(MockService, 'retrieveJobsByCompany').and.returnValue(of(mockedJob));
-    expect(true);
+    expect(component.jobs.toString() == mockedJob.toString());
   });
 
 });
