@@ -34,18 +34,18 @@
         <table *ngIf="!isInEditMode" class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th scope="col" id="usernameHeader">Username</th>
-                    <th scope="col" id="companyHeader">Company</th>
-                    <th scope="col" id="emailHeader">Email</th>
-                    <th scope="col" id="roleHeader">Role</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{username}}</td>
-                    <td>{{company}}</td>
-                    <td>{{email}}</td>
-                    <td>{{userRole}}</td>
+                    <td id="usernameHeader">{{username}}</td>
+                    <td id="companyHeader">{{company}}</td>
+                    <td id="emailHeader">{{email}}</td>
+                    <td id="roleHeader">{{userRole}}</td>
                 </tr>
         </table>
 
