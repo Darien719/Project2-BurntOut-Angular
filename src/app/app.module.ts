@@ -28,7 +28,7 @@ import { ViewApplicantsService } from './services/view-applicants.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ViewApplicationsComponent } from './view-applications/view-applications.component';
 import { ViewSelfJobpostingsComponent } from './view-self-jobpostings/view-self-jobpostings.component';
-import { NgxPaginationModule, PaginatePipe } from "ngx-pagination"
+import { NgxPaginationModule } from "ngx-pagination"
 import { DateFormatPipe } from './pipes/date.format.pipe'
 
 @NgModule({

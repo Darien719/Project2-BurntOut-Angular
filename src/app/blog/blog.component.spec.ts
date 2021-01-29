@@ -8,11 +8,6 @@ import { of } from 'rxjs/internal/observable/of';
 import { BlogService } from '../services/blog.service';
 import { BlogComponent } from './blog.component';
 
-<<<<<<< HEAD
-=======
-describe('BlogComponent', () => {
->>>>>>> 6edfcc78c256f2353509fabb1903a680ec222acd
-
 
 fdescribe('BlogComponent', () => {
   let router: Router;
