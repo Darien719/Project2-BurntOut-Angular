@@ -1,6 +1,7 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormControlDirective, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CreateJobService } from '../services/create-job.service';
 import { JobPosting } from '../services/jobPosting';
 import { SessionService } from '../services/session.service';
@@ -40,7 +41,7 @@ export class CreateJobPostingComponent implements OnInit {
     description: new FormControl(''),
   })
 
-  constructor(private createJobServ: CreateJobService, private sessServ: SessionService) { }
+  constructor(private createJobServ: CreateJobService, private sessServ: SessionService, private router: Router) { }
 
   jobPost(jobgroup :FormGroup){
 
@@ -53,7 +54,7 @@ export class CreateJobPostingComponent implements OnInit {
 
     this.createJobServ.postJob(this.jobPosting).subscribe(
       response=>{
-          window.alert("Job Posting created");
+          this.router.navigate(['company/view-postings']);
       },error=>{
           window.alert("Could not create posting");
       }
