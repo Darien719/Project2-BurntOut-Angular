@@ -27,7 +27,12 @@ export class SearchForJobComponent implements OnInit {
    }
 
    ngOnInit(): void {
-    this.getAllJobs();
+     if(this.sessServ.verifySession()){
+       this.getSessionInfo('Candidate');
+       this.getAllJobs();
+     } else{
+       window.location.href = '/login';
+     }
   }
 
    get postingId() : number {
@@ -46,9 +51,9 @@ export class SearchForJobComponent implements OnInit {
   }
 
   set jobsByNameFilter(temp:string) {
-    this.jobsByNameFilterString = temp;
-    this.jobsFilteredByName = this.jobsByNameFilterString ? 
-    this.performFilter(this.jobsByNameFilterString) : this.jobs;
+      this.jobsByNameFilterString = temp;
+      this.jobsFilteredByName = this.jobsByNameFilterString ? 
+      this.performFilter(this.jobsByNameFilterString) : this.jobs;
 }
 
 performFilter(filterBy:string) : Job[] {
@@ -81,7 +86,6 @@ performFilter(filterBy:string) : Job[] {
       response => {
         thisArray = Object.values(response);
         this.jobs = thisArray;
-        console.log(this.jobs);
       }
     )
   }
@@ -92,4 +96,10 @@ performFilter(filterBy:string) : Job[] {
     this.router.navigate(['jobs/application']);
   }
 
+  getSessionInfo(userRole:string){
+    if(!this.sessServ.verifyUserRole(userRole)){
+      window.alert('You do not have access to this page');
+      this.router.navigate(['/']);
+    }
+  }
 }
