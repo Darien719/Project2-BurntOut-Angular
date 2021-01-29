@@ -24,10 +24,11 @@ export class SearchForJobComponent implements OnInit {
   jobsFilteredByName : Job [] = [];
 
   constructor(private router : Router, private jobServ : JobService, private sessServ: SessionService) {
-   }
+    this.getAllJobs();
+  }
 
    ngOnInit() {
-    this.getAllJobs();
+    //this.getAllJobs();
   }
 
    get postingId() : number {
@@ -39,7 +40,7 @@ export class SearchForJobComponent implements OnInit {
    }
 
  
-  jobsByNameFilterString = "";
+  jobsByNameFilterString : string;
 
   get jobsByNameFilter() : string {
     return this.jobsByNameFilterString;
