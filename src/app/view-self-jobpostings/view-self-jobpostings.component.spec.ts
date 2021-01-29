@@ -14,10 +14,10 @@ fdescribe('ViewSelfJobpostingsComponent', () => {
   let fixture: ComponentFixture<ViewSelfJobpostingsComponent>;
   let router: Router;
   let jobServ: JobService;
-  let mockClient: {get: jasmine.Spy, post: jasmine.Spy, put:jasmine.Spy, delete: jasmine.Spy};
-  
- 
-  
+  let mockClient: { get: jasmine.Spy, post: jasmine.Spy, put: jasmine.Spy, delete: jasmine.Spy };
+
+
+
   let mockedJob = [
     {
       postingId: "1",
@@ -31,8 +31,8 @@ fdescribe('ViewSelfJobpostingsComponent', () => {
     }
   ]
 
-   //Mocking the jobServ 
-   let MockService = {
+  //Mocking the jobServ 
+  let MockService = {
     retrieveJobsByCompany: <Observable>() => {
       return of(mockedJob);
     }
@@ -41,7 +41,7 @@ fdescribe('ViewSelfJobpostingsComponent', () => {
   let user = {
     companyName: 'Revature'
   }
-  
+
 
   // beforeEach(async () => {
   //   await TestBed.configureTestingModule({
@@ -56,20 +56,20 @@ fdescribe('ViewSelfJobpostingsComponent', () => {
         //We can make fake routes in here
         RouterTestingModule.withRoutes([]),
       ],
-      declarations: [ ViewSelfJobpostingsComponent ],
-      providers:[
+      declarations: [ViewSelfJobpostingsComponent],
+      providers: [
         //Providing the mocks for the services being used, when you inject the left service, really inect the right service
-        {provide: JobService, useValue: MockService},
-        {provide: HttpClient, useValue: mockClient}
+        { provide: JobService, useValue: MockService },
+        { provide: HttpClient, useValue: mockClient }
       ]
-      
+
     })
-    .compileComponents();
+      .compileComponents();
 
 
     fixture = TestBed.createComponent(ViewSelfJobpostingsComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+
     router = TestBed.inject(Router);
     jobServ = TestBed.inject(JobService);
     mockClient = TestBed.get(HttpClient);
@@ -84,9 +84,9 @@ fdescribe('ViewSelfJobpostingsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('retrieveJobsByCompany should get a job array and populate the table', ()=>{
+  it('retrieveJobsByCompany should get a job array and populate the table', () => {
     spyOn(MockService, 'retrieveJobsByCompany').and.returnValue(of(mockedJob));
-    expect(component.jobs.toString()==mockedJob.toString());
+    expect(component.jobs.toString() == mockedJob.toString());
   });
 
 });
