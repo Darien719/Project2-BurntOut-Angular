@@ -24,12 +24,13 @@ export class SearchForJobComponent implements OnInit {
   jobsFilteredByName : Job [] = [];
 
   constructor(private router : Router, private jobServ : JobService, private sessServ: SessionService) {
-   }
+    this.getAllJobs();
+  }
 
    ngOnInit(): void {
      if(this.sessServ.verifySession()){
        this.getSessionInfo('Candidate');
-       this.getAllJobs();
+       
      } else{
        window.location.href = '/login';
      }
@@ -44,7 +45,7 @@ export class SearchForJobComponent implements OnInit {
    }
 
  
-  jobsByNameFilterString = "";
+  jobsByNameFilterString : string;
 
   get jobsByNameFilter() : string {
     return this.jobsByNameFilterString;
