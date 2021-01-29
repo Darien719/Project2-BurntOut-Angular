@@ -9,7 +9,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs/internal/observable/of';
 
-fdescribe('ViewSelfJobpostingsComponent', () => {
+describe('ViewSelfJobpostingsComponent', () => {
   let component: ViewSelfJobpostingsComponent;
   let fixture: ComponentFixture<ViewSelfJobpostingsComponent>;
   let router: Router;
