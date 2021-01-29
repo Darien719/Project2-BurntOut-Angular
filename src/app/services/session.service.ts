@@ -23,19 +23,26 @@ export class SessionService {
 //      console.log(JSON.parse(localStorage.getItem('user')))
 //      console.log(correctId);
       if (JSON.parse(localStorage.getItem('user')).userId==correctId){
-        console.log('Correct Session');
+
         return true;
       }
-      console.log('Incorrect Session Information');
+
       return false;
     }
 
     verifyUserRole(correctRole:string):boolean {
       if(JSON.parse(localStorage.getItem('user')).userRoleName==correctRole){
-        console.log('Correct Session');
+
         return true;
       }
-      console.log('Incorrect Session Info');
+      
+      return false;
+    }
+
+    verifyUserCompany(correctCompany:string):boolean {
+      if(JSON.parse(localStorage.getItem('user')).companyName==correctCompany){
+        return true;
+      }
       return false;
     }
 

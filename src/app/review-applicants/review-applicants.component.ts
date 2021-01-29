@@ -22,12 +22,14 @@ export class ReviewApplicantsComponent implements OnInit {
   postingId: Number;
   private sub: any;
   posterId: number;
+  company: string;
   private url: string;
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
       this.postingId = +params['id']; // (+) converts string 'id' to a number
       this.getSessionInfo(this.postingId);
+
    });
   }
 
@@ -68,10 +70,9 @@ export class ReviewApplicantsComponent implements OnInit {
   getSessionInfo(postingId:Number){
      this.jobServ.retrieveJobByPostingId(postingId).subscribe(
       response=>{
-        console.log(response);
-        this.posterId = response.poster_id;
+        this.company = response.companyName;
         console.log(this.posterId);
-        if(this.sessServ.verifyUser(this.posterId)){
+        if(this.sessServ.verifyUserCompany(this.company)){
           this.getAllApplicants();
         } else{
           window.alert('You do not have access to this page');
