@@ -19,8 +19,13 @@ export class ViewSelfJobpostingsComponent implements OnInit {
   }
 
   getAllApplicants() : void {
+    let user = localStorage.getItem('user');
+    let companyName = "";
+    if(user!=null){
+    companyName =  JSON.parse(user).companyName;
+    }
     let thisArray : Job [];
-    this.jobServ.retrieveJobsByCompany(JSON.parse(localStorage.getItem('user')).companyName).subscribe (
+    this.jobServ.retrieveJobsByCompany(companyName).subscribe (
       response => {
       thisArray = Object.values(response);
       this.jobs = thisArray;
