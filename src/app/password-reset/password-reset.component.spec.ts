@@ -52,7 +52,6 @@ describe('PasswordResetComponent', () => {
   it('should have h3 say greeting', () =>{
     fixture.detectChanges();
     let resetHead = fixture.debugElement.query(By.css('h3')).nativeElement;
-    console.log(resetHead);
     expect(resetHead.innerHTML).toBe('Please Enter Your Security Code and New Password');
   });
 

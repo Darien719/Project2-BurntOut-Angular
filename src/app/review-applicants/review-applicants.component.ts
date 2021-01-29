@@ -71,7 +71,6 @@ export class ReviewApplicantsComponent implements OnInit {
      this.jobServ.retrieveJobByPostingId(postingId).subscribe(
       response=>{
         this.company = response.companyName;
-        console.log(this.posterId);
         if(this.sessServ.verifyUserCompany(this.company)){
           this.getAllApplicants();
         } else{
@@ -80,7 +79,7 @@ export class ReviewApplicantsComponent implements OnInit {
         }
         },
       error=>{
-        console.log(error);
+
         return false;
       }
     )
