@@ -6,6 +6,7 @@ import { UserRole } from "./userRole";
     providedIn:'root'
 })
 
+//Provides an injectable class that can be used to get session info and manage it.
 export class SessionService {
     
     constructor(private router:Router) { }

@@ -7,7 +7,7 @@ import { UserCreds } from "./usercreds";
 @Injectable({
     providedIn: 'root'
 })
-
+//Provides an injectable class that can be used to reset password
 export class PasswordResetService {
     private url = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/users/passwordreset";
 
