@@ -54,7 +54,7 @@ export class CreateJobPostingComponent implements OnInit {
 
     this.createJobServ.postJob(this.jobPosting).subscribe(
       response=>{
-          window.alert("Job Posting created");
+          this.router.navigate(['company/view-postings']);
       },error=>{
           window.alert("Could not create posting");
       }
