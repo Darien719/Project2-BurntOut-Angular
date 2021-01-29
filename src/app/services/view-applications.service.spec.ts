@@ -1,7 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-
 import { ViewApplicationsService } from './view-applications.service';
-
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 const dummyApplicationData = {
@@ -38,7 +36,7 @@ describe('ViewApplicationsService', () => {
       expect(res.toString()).toEqual(dummyApplicationData.toString());
     })
 
-    const req = httpMock.expectOne("http://localhost:9025/application/user/olgamelnikoff");
+    const req = httpMock.expectOne("http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/application/user/olgamelnikoff");
     expect(req.request.method).toBe('GET');
     req.flush(dummyApplicationData);
 

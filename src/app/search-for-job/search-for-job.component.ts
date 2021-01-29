@@ -51,9 +51,9 @@ export class SearchForJobComponent implements OnInit {
   }
 
   set jobsByNameFilter(temp:string) {
-    this.jobsByNameFilterString = temp;
-    this.jobsFilteredByName = this.jobsByNameFilterString ? 
-    this.performFilter(this.jobsByNameFilterString) : this.jobs;
+      this.jobsByNameFilterString = temp;
+      this.jobsFilteredByName = this.jobsByNameFilterString ? 
+      this.performFilter(this.jobsByNameFilterString) : this.jobs;
 }
 
 performFilter(filterBy:string) : Job[] {
@@ -86,7 +86,6 @@ performFilter(filterBy:string) : Job[] {
       response => {
         thisArray = Object.values(response);
         this.jobs = thisArray;
-        console.log(this.jobs);
       }
     )
   }

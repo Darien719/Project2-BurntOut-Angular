@@ -11,13 +11,13 @@ export class ViewApplicantsService {
   constructor(private httpCli: HttpClient) { }
 
   retrieveAllApplicants(postingId: Number): Observable<Application> {
-    var urlGetApplicants = "http://localhost:9025/application/jobposting/";
+    var urlGetApplicants = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/application/jobposting/";
     urlGetApplicants = urlGetApplicants + postingId;
     return this.httpCli.get<Application>(urlGetApplicants);
   }
 
   postApproveApplicant(applicantId: number): Observable<string> {
-    var urlApproveApplicant = "http://localhost:9025/application/approve/";
+    var urlApproveApplicant = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/application/approve/";
     return this.httpCli.post<string>(urlApproveApplicant + applicantId, JSON.stringify(applicantId),{
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ export class ViewApplicantsService {
   }
 
   postRejectApplicant(applicantId: number): Observable<string> {
-    var urlRejectApplicant = "http://localhost:9025/application/reject/";
+    var urlRejectApplicant = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/application/reject/";
     return this.httpCli.post<string>(urlRejectApplicant + applicantId, JSON.stringify(applicantId),{
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
