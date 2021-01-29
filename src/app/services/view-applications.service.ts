@@ -11,7 +11,7 @@ export class ViewApplicationsService {
   constructor(private httpCli: HttpClient) { }
 
   retrieveAllApplicantions(username: string): Observable<Application> {
-    let urlGetApplications = "http://localhost:9025/application/user/";
+    let urlGetApplications = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/application/user/";
     urlGetApplications = urlGetApplications + username;
     return this.httpCli.get<Application>(urlGetApplications);
   }

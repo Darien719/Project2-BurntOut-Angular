@@ -8,8 +8,8 @@ import { Observable } from "rxjs";
 })
 export class CreateJobService {
   
-  private url = "http://localhost:9025/jobpostings";
-  private urlGetCompanyId = "http://localhost:9025/jobpostings/company-id/"
+  private url = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/jobpostings";
+  private urlGetCompanyId = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/jobpostings/company-id/"
 
   constructor(private httpCli: HttpClient) { }
 
