@@ -1,5 +1,6 @@
 import { Tag } from "./tag";
 
+//Job posting object
 export interface JobPosting {
     company_id: number;
     poster_id: number;

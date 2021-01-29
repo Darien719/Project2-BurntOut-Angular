@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { JobPosting } from './jobPosting';
 import { Observable } from "rxjs";
 
+//Provides an injectable object that allows you to query the database to create an job posting.
 @Injectable({
   providedIn: 'root'
 })

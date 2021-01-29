@@ -1,6 +1,7 @@
 import { Application } from "./application";
 import { Tag } from "./tag";
 
+//Job posting object
 export interface Job {
     title : string;
     description : string;

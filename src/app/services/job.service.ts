@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Job } from './job';
 import { JobPosting } from './jobPosting';
 
+//Provides an injectable object that allows you to query the database to retrieve jobs from the database
 @Injectable({
   providedIn: 'root'
 })

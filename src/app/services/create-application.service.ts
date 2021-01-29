@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Application } from './application';
 
+//Provides an injectable object that allows you to query the database create an application
 @Injectable({
   providedIn: 'root'
 })
