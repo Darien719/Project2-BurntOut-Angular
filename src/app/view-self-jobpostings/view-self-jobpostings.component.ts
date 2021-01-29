@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Job } from '../services/job';
 import { JobService } from '../services/job.service';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-view-self-jobpostings',
@@ -10,12 +11,15 @@ import { JobService } from '../services/job.service';
 })
 export class ViewSelfJobpostingsComponent implements OnInit {
 
-  constructor(private router: Router, private jobServ: JobService) { }
+  constructor(private router: Router, private jobServ: JobService, private sessServ:SessionService) { }
 
   jobs : Job [];
 
   ngOnInit(): void {
-    this.getAllApplicants();
+    if(this.sessServ.verifySession()){
+      this.getSessionInfo('Company');
+      this.getAllApplicants();
+    }
   }
 
   getAllApplicants() : void {
@@ -34,6 +38,11 @@ export class ViewSelfJobpostingsComponent implements OnInit {
     )
   }
 
-
+  getSessionInfo(userRole:string){
+    if(!this.sessServ.verifyUserRole(userRole)){
+      window.alert('You do not have access to this page');
+      this.router.navigate(['/']);
+    }
+  }
 
 }

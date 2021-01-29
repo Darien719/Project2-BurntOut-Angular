@@ -4,6 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Application } from '../services/application';
 import { CreateApplicationService } from '../services/create-application.service';
 import {FileUploadService} from '../services/file-upload.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-application-form-page',
@@ -14,7 +15,7 @@ export class ApplicationFormPageComponent implements OnInit {
   pageTitle = "Application Form";
   toFile;
 
-  constructor(private createAppServ: CreateApplicationService, private sessServ:SessionService
+  constructor(private router:Router, private createAppServ: CreateApplicationService, private sessServ:SessionService
     
     , private fileUploadServ: FileUploadService) { }
 
@@ -45,6 +46,8 @@ export class ApplicationFormPageComponent implements OnInit {
 
   ngOnInit(): void {
       if(this.sessServ.verifySession()){
+        console.log(localStorage.getItem('user'));
+        this.getSessionInfo('Candidate');
           this.firstName = localStorage.getItem("firstName");
           this.lastName = localStorage.getItem("lastName");
           this.posting_id = localStorage.getItem("postingId");
@@ -74,5 +77,12 @@ export class ApplicationFormPageComponent implements OnInit {
   onChange(event) {
     this.toFile = event.target.files;
     this.resume = this.toFile;
+  }
+
+  getSessionInfo(userRole:string){
+    if(!this.sessServ.verifyUserRole(userRole)){
+      window.alert('You do not have access to this page');
+      this.router.navigate(['/']);
+    }
   }
 }
