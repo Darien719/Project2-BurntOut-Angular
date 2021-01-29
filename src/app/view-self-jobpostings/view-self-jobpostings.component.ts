@@ -29,11 +29,7 @@ export class ViewSelfJobpostingsComponent implements OnInit {
       response => {
       thisArray = Object.values(response);
       this.jobs = thisArray;
-    
       }
     )
   }
-
-
-
 }

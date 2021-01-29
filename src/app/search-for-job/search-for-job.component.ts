@@ -26,7 +26,7 @@ export class SearchForJobComponent implements OnInit {
   constructor(private router : Router, private jobServ : JobService, private sessServ: SessionService) {
    }
 
-   ngOnInit(): void {
+   ngOnInit() {
     this.getAllJobs();
   }
 
@@ -46,9 +46,9 @@ export class SearchForJobComponent implements OnInit {
   }
 
   set jobsByNameFilter(temp:string) {
-    this.jobsByNameFilterString = temp;
-    this.jobsFilteredByName = this.jobsByNameFilterString ? 
-    this.performFilter(this.jobsByNameFilterString) : this.jobs;
+      this.jobsByNameFilterString = temp;
+      this.jobsFilteredByName = this.jobsByNameFilterString ? 
+      this.performFilter(this.jobsByNameFilterString) : this.jobs;
 }
 
 performFilter(filterBy:string) : Job[] {
@@ -81,7 +81,6 @@ performFilter(filterBy:string) : Job[] {
       response => {
         thisArray = Object.values(response);
         this.jobs = thisArray;
-        console.log(this.jobs);
       }
     )
   }

@@ -1,7 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-
 import { ViewApplicationsService } from './view-applications.service';
-
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 const dummyApplicationData = {

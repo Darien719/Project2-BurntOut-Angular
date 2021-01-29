@@ -58,10 +58,15 @@ export class ApplicationFormPageComponent implements OnInit {
     this.application.posting_id = this.posting_id;
     this.application.username = this.username;
     this.application.resume = this.resume;
+    if (this.resume == null) {
+      window.alert("Please add a resume");
+    }
     this.submit();
     this.createAppServ.postApplication(this.application).subscribe(
       response=>{
+        window.alert("Your application was submitted");
       },error=>{
+        window.alert("Could not submit application");
       }
     )
   }

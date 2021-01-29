@@ -28,9 +28,7 @@ export class ViewApplicationsComponent implements OnInit {
   }
 
 
-  
-
-  getAllMyApplications() : void {
+getAllMyApplications() : void {
     let thisArray : Application [];
     this.viewAppServ.retrieveAllApplicantions(this.username).subscribe (
       response => {
