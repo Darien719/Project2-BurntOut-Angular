@@ -19,22 +19,12 @@ export class ViewApplicationsComponent implements OnInit {
   private sub: any;
 
   ngOnInit(): void {
-<<<<<<< HEAD
-    if (this.sessServ.verifySession()) {
-      this.getSessionInfo('Company');
-      this.username = localStorage.getItem("username");
-    } else {
-      window.location.href = '/login';
-    }
-    this.getAllMyApplications();
-=======
       if(this.sessServ.verifySession()){
           this.username = localStorage.getItem("username");
       } else {
         window.location.href = '/login';
       }
       this.getAllMyApplications();
->>>>>>> 95bc4520c4b9c62387ee704525bf2cd194ef3b1c
   }
 
   //Checks that the logged in user has access privileges to this component.
@@ -50,14 +40,8 @@ export class ViewApplicationsComponent implements OnInit {
     let thisArray: Application[];
     this.viewAppServ.retrieveAllApplicantions(this.username).subscribe(
       response => {
-<<<<<<< HEAD
-        thisArray = Object.values(response);
-        this.applications = thisArray;
-        console.log(this.applications);
-=======
       thisArray = Object.values(response);
       this.applications = thisArray;
->>>>>>> 95bc4520c4b9c62387ee704525bf2cd194ef3b1c
       }
     )
   }
