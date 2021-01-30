@@ -9,20 +9,21 @@ import { AccountRecoveryService } from '../services/account-recovery.service'
 })
 export class AccountRecoveryComponent implements OnInit {
 
-  email:string = '';
+  email: string = '';
 
   recovergroup = new FormGroup({
     email: new FormControl('')
   })
 
-  constructor(private accServ:AccountRecoveryService) { }
+  constructor(private accServ: AccountRecoveryService) { }
 
-  recoverAccount(details: FormGroup){
+  //Sends an email to recover an account.
+  recoverAccount(details: FormGroup) {
     this.email = details.get('email').value;
     this.accServ.accRecover(this.email).subscribe(
-      response =>{
+      response => {
       },
-      error =>{
+      error => {
       }
     )
   }
