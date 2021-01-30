@@ -12,10 +12,10 @@ import { UserCreds } from '../services/usercreds';
 })
 export class LoginComponent implements OnInit {
 
-  username:string;
-  password:string;
-  usercred:UserCreds = {'username':'', 'password':''};
-  userfName:string;
+  username: string;
+  password: string;
+  usercred: UserCreds = { 'username': '', 'password': '' };
+  userfName: string;
 
   logingroup = new FormGroup({
     username: new FormControl(''),
@@ -24,33 +24,32 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private loginserv: LoginService, private sessServ: SessionService) { }
 
-  
-  loginPost(login: FormGroup){
-    
+  // logs in the user with the provided credentials and manages sessions.
+  loginPost(login: FormGroup) {
+
     this.usercred.username = login.get('username').value;
-    this.usercred.password = login.get('password').value; 
+    this.usercred.password = login.get('password').value;
     this.loginserv.postLogin(this.usercred).subscribe(
-      response =>{
+      response => {
 
 
         localStorage.setItem('user', JSON.stringify(response));
         this.goHome();
       },
-      error =>{
+      error => {
         window.alert('Unable to find user with that Username and Password');
-      } 
+      }
     );
   }
 
-  goHome():void {
-    window.location.href='/';
+  goHome(): void {
+    window.location.href = '/';
   }
 
   ngOnInit(): void {
-    if(this.sessServ.verifySession()){
+    if (this.sessServ.verifySession()) {
       window.location.href = '/';
     }
   }
 
 }
- 

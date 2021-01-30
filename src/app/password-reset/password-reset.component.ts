@@ -10,9 +10,9 @@ import { UserCreds } from '../services/usercreds';
 })
 export class PasswordResetComponent implements OnInit {
 
-  username:string;
+  username: string;
   password: string;
-  userCred:UserCreds = {'username':'', 'password':''};
+  userCred: UserCreds = { 'username': '', 'password': '' };
 
   resetgroup = new FormGroup({
     username: new FormControl(''),
@@ -21,15 +21,16 @@ export class PasswordResetComponent implements OnInit {
 
   constructor(private passServ: PasswordResetService) { }
 
-  passReset(info: FormGroup){
+  //Resets the password of an account.
+  passReset(info: FormGroup) {
     this.userCred.username = info.get('username').value;
     this.userCred.password = info.get('password').value;
     this.passServ.resetPass(this.userCred).subscribe(
-      response =>{
-        window.location.href='/login';
+      response => {
+        window.location.href = '/login';
       },
-      error =>{
-        window.location.href='/login'
+      error => {
+        window.location.href = '/login'
       }
     )
   }

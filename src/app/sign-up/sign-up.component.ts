@@ -21,27 +21,31 @@ export class SignUpComponent implements OnInit {
   userRole: string;
   username: string;
   password: string;
-  newUser: User = {'id': -1, 'firstName':'', 'lastName':'', 
-                    'email':'', 'userRole':'', 'company':'',  
-                    'username':'', 'password':'', 'salt':''};
+  newUser: User = {
+    'id': -1, 'firstName': '', 'lastName': '',
+    'email': '', 'userRole': '', 'company': '',
+    'username': '', 'password': '', 'salt': ''
+  };
 
   constructor(private router: Router, private signUpServ: SignupService) { }
 
-  signUpPost(){
+  // creates a new user when the form is submitted and sends it tot he back-end to be added to the data base.
+  signUpPost() {
     this.signUpServ.postNewUser(this.newUser).subscribe(
-      response =>{
+      response => {
         let substr = "User Successfully Created!";
-         if(response.includes(substr)){
-           this.goHome();
-         } 
+        if (response.includes(substr)) {
+          this.goHome();
+        }
       },
-      error =>{
+      error => {
         this.errorOccurred = true;
-      } 
+      }
     );
   }
 
-  goHome():void {
+  //redirects to home.
+  goHome(): void {
     this.router.navigate([''])
   }
 

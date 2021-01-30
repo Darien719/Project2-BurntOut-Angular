@@ -25,9 +25,11 @@ export class ProfileComponent implements OnInit {
   userNotFound: boolean;
   errorMessage: string;
   currentUser = JSON.parse(localStorage.getItem("user"));
-  user: User = {'id': -1, 'firstName':'', 'lastName':'', 
-                    'email':'', 'userRole':'', 'company':'',  
-                    'username':'', 'password':'', 'salt':''};
+  user: User = {
+    'id': -1, 'firstName': '', 'lastName': '',
+    'email': '', 'userRole': '', 'company': '',
+    'username': '', 'password': '', 'salt': ''
+  };
 
   ngOnInit(): void {
     this.isUser = false;
@@ -35,15 +37,16 @@ export class ProfileComponent implements OnInit {
     this.usernameExists = false;
     this.emailExists = false;
     this.userNotFound = false;
-    
-    if(this.sessServ.verifySession()){
+
+    //verifies that the user logged in has access to this element
+    if (this.sessServ.verifySession()) {
       this.route.params.subscribe(params => {
-        if(JSON.parse(localStorage.getItem("user")).username == params['username']){
+        if (JSON.parse(localStorage.getItem("user")).username == params['username']) {
           this.isUser = true;
         }
 
         this.username = params['username'];
-        this.profServ.retrieveUser(this.username).subscribe (
+        this.profServ.retrieveUser(this.username).subscribe(
           response => {
             this.firstName = response.firstName;
             this.lastName = response.lastName;
@@ -51,7 +54,7 @@ export class ProfileComponent implements OnInit {
             this.username = response.username;
             this.company = response.companyName;
             this.userRole = response.userRoleName;
-            
+
             this.user.id = JSON.parse(localStorage.getItem("user"))["userId"];
             this.user.firstName = this.firstName;
             this.user.lastName = this.lastName;
@@ -66,6 +69,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  //Updates the profile of the currently logged in user.
   updateInfo() {
     this.user.firstName = this.firstName;
     this.user.lastName = this.lastName;
@@ -76,39 +80,40 @@ export class ProfileComponent implements OnInit {
 
     this.profServ.putUpdatedUser(this.user).subscribe(
       response => {
-        if(response != null){
+        if (response != null) {
           localStorage.setItem("user", response);
           localStorage.setItem("firstName", JSON.parse(response).firstName);
           localStorage.setItem("lastName", JSON.parse(response).lastName);
           localStorage.setItem("username", JSON.parse(response).username);
-          window.location.href='/profile/' + JSON.parse(localStorage.getItem("user")).username;
+          window.location.href = '/profile/' + JSON.parse(localStorage.getItem("user")).username;
         }
       },
-      error =>{
+      error => {
         this.usernameExists = false;
         this.emailExists = false;
         this.userNotFound = false;
 
-        if(error.status == 406) {
+        if (error.status == 406) {
           this.usernameExists = true;
           this.errorMessage = "User with that username already exists";
-        } 
-        
-        else if(error.status == 405) {
+        }
+
+        else if (error.status == 405) {
           this.emailExists = true;
           this.errorMessage = "User with that email already exists";
         }
-        
-        else if(error.status == 404) {
+
+        else if (error.status == 404) {
           this.userNotFound = true;
           this.errorMessage = "User not found";
         }
 
-        else{ }
+        else { }
       });
   }
 
-  cancelUpdate(){
+
+  cancelUpdate() {
     this.firstName = this.user.firstName;
     this.lastName = this.user.lastName;
     this.email = this.user.email;
