@@ -28,15 +28,7 @@ export class SearchForJobComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.sessServ.verifySession()) {
-      this.getAllJobs();
-    } else {
-      window.location.href = '/login';
-    }
-  }
-
-  get postingId(): number {
-    return this.jobPostingId;
+    this.getAllJobs();
   }
 
   set postingId(temp: number) {

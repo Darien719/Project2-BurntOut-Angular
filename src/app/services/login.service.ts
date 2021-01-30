@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { User } from "./user";
 import { UserCreds } from "./usercreds";
 
+//Provides an injectable object that allows you to query the database to see if the password and username match.
 @Injectable({
     providedIn: 'root'
 })

@@ -1,3 +1,4 @@
+//Model for application
 export interface Application {
     application_id: number;
     username: string;

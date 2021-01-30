@@ -46,7 +46,6 @@ export class ApplicationFormPageComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.sessServ.verifySession()) {
-      console.log(localStorage.getItem('user'));
       this.getSessionInfo('Candidate');
       this.firstName = localStorage.getItem("firstName");
       this.lastName = localStorage.getItem("lastName");

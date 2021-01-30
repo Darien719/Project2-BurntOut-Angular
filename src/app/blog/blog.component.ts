@@ -104,7 +104,6 @@ export class BlogComponent implements OnInit {
   //gets all of the blogs from the back-end to display on the front-end.
   getallPosts(): void {
     this.blogService.retrieveAllPosts().subscribe(response => {
-      console.log(response);
       this.posts = Object.values(response);
       this.posts = this.posts.reverse();
     })

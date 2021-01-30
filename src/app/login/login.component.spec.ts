@@ -69,7 +69,6 @@ describe('LoginComponent', () => {
   it('Should have h3 say Please Sign In', () =>{
     fixture.detectChanges();
     let loginHead = fixture.debugElement.query(By.css('h3')).nativeElement;
-    console.log(loginHead);
     expect(loginHead.innerHTML).toBe('Please Sign In');
   });
 

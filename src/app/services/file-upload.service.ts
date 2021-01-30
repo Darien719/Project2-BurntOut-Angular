@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as S3 from 'aws-sdk/clients/s3';
 
+//Provides an injectable object that allows you to upload files for an S3 bucket
 @Injectable({
   providedIn: 'root'
 })

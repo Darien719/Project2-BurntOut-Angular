@@ -51,7 +51,6 @@ describe('AccountRecoveryComponent', () => {
   it('Should have h3 say greeting', () =>{
     fixture.detectChanges();
     let recoverHead = fixture.debugElement.query(By.css('h3')).nativeElement;
-    console.log(recoverHead);
     expect(recoverHead.innerHTML).toBe('Please Enter the Email Associated with Your Account');
   });
 

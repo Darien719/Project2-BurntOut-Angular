@@ -7,6 +7,7 @@ import { Observable } from "rxjs";
     providedIn: 'root'
 })
 
+//Provides an injectable object that allows you to query the database to recover an account
 export class AccountRecoveryService {
     private url = "http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/users/recover";
 

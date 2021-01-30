@@ -20,8 +20,6 @@ export class SessionService {
     }
 
     verifyUser(correctId:number):boolean {
-//      console.log(JSON.parse(localStorage.getItem('user')))
-//      console.log(correctId);
       if (JSON.parse(localStorage.getItem('user')).userId==correctId){
 
         return true;
