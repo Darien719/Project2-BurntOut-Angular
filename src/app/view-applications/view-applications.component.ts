@@ -20,7 +20,6 @@ export class ViewApplicationsComponent implements OnInit {
 
   ngOnInit(): void {
       if(this.sessServ.verifySession()){
-          this.getSessionInfo('Company');
           this.username = localStorage.getItem("username");
       } else {
         window.location.href = '/login';
