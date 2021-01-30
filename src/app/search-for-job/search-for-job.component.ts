@@ -12,53 +12,54 @@ import { Tag } from '../services/tag';
 })
 export class SearchForJobComponent implements OnInit {
   pageTitle = "Search for a job";
-  firstName : string = "";
-  lastName : string = "";
-  username : string = "";
+  firstName: string = "";
+  lastName: string = "";
+  username: string = "";
 
   @Input()
-  jobPostingId : number;
+  jobPostingId: number;
 
-  jobs : Job [];
+  jobs: Job[];
 
-  jobsFilteredByName : Job [] = [];
+  jobsFilteredByName: Job[] = [];
 
-  constructor(private router : Router, private jobServ : JobService, private sessServ: SessionService) {
+  constructor(private router: Router, private jobServ: JobService, private sessServ: SessionService) {
     this.getAllJobs();
   }
 
-   ngOnInit(): void {
-     if(this.sessServ.verifySession()){
-       this.getAllJobs();
-     } else{
-       window.location.href = '/login';
-     }
+  ngOnInit(): void {
+    if (this.sessServ.verifySession()) {
+      this.getAllJobs();
+    } else {
+      window.location.href = '/login';
+    }
   }
 
-   get postingId() : number {
-     return this.jobPostingId;
-   }
+  get postingId(): number {
+    return this.jobPostingId;
+  }
 
-   set postingId(temp : number) {
-     this.jobPostingId = temp;
-   }
+  set postingId(temp: number) {
+    this.jobPostingId = temp;
+  }
 
- 
-  jobsByNameFilterString : string;
 
-  get jobsByNameFilter() : string {
+  jobsByNameFilterString: string;
+
+  get jobsByNameFilter(): string {
     return this.jobsByNameFilterString;
   }
 
-  set jobsByNameFilter(temp:string) {
-      this.jobsByNameFilterString = temp;
-      this.jobsFilteredByName = this.jobsByNameFilterString ? 
+  set jobsByNameFilter(temp: string) {
+    this.jobsByNameFilterString = temp;
+    this.jobsFilteredByName = this.jobsByNameFilterString ?
       this.performFilter(this.jobsByNameFilterString) : this.jobs;
-}
+  }
 
-performFilter(filterBy:string) : Job[] {
+  //filters the jobs and displays them accordingly.
+  performFilter(filterBy: string): Job[] {
     filterBy = filterBy.toLowerCase();
-    return this.jobs.filter((job:Job)=> {
+    return this.jobs.filter((job: Job) => {
       if (job.tagsList.length > 0) {
         job.tagNames = "";
         job.tagsList.forEach(tag => {
@@ -67,22 +68,22 @@ performFilter(filterBy:string) : Job[] {
         });
       }
 
-    else {
-      job.tagNames = "";
-    }
-    
-        return (job.title.toLowerCase().indexOf(filterBy) !==-1) 
-                || (job.locationName.toLowerCase().indexOf(filterBy) !==-1)
-                || (job.companyName.toLowerCase().indexOf(filterBy) !==-1)
-                || (job.industryName.toLowerCase().indexOf(filterBy) !==-1)
-                || (job.tagNames.toLowerCase().indexOf(filterBy) !==-1)              
+      else {
+        job.tagNames = "";
+      }
+
+      return (job.title.toLowerCase().indexOf(filterBy) !== -1)
+        || (job.locationName.toLowerCase().indexOf(filterBy) !== -1)
+        || (job.companyName.toLowerCase().indexOf(filterBy) !== -1)
+        || (job.industryName.toLowerCase().indexOf(filterBy) !== -1)
+        || (job.tagNames.toLowerCase().indexOf(filterBy) !== -1)
     });
-}
+  }
 
-
-  getAllJobs() : void {
-    let thisArray : Job [];
-    this.jobServ.retrieveAllJobs().subscribe (
+  //Gets all the jobs available in the db to be displayed.
+  getAllJobs(): void {
+    let thisArray: Job[];
+    this.jobServ.retrieveAllJobs().subscribe(
       response => {
         thisArray = Object.values(response);
         this.jobs = thisArray;
@@ -90,7 +91,8 @@ performFilter(filterBy:string) : Job[] {
     )
   }
 
-  goToAppFormPage(pId) : void {
+  //redirects to the page to submit a new form.
+  goToAppFormPage(pId): void {
     this.jobPostingId = pId;
     localStorage.setItem("postingId", JSON.stringify(this.jobPostingId));
     this.router.navigate(['jobs/application']);

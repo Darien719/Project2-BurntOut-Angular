@@ -3,7 +3,7 @@ import { SessionService } from '../services/session.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Application } from '../services/application';
 import { CreateApplicationService } from '../services/create-application.service';
-import {FileUploadService} from '../services/file-upload.service';
+import { FileUploadService } from '../services/file-upload.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,28 +15,28 @@ export class ApplicationFormPageComponent implements OnInit {
   pageTitle = "Application Form";
   toFile;
 
-  constructor(private router:Router, private createAppServ: CreateApplicationService, private sessServ:SessionService
-    
+  constructor(private router: Router, private createAppServ: CreateApplicationService, private sessServ: SessionService
+
     , private fileUploadServ: FileUploadService) { }
 
-  username:string;
-  posting_id:string;
-  status:string;
+  username: string;
+  posting_id: string;
+  status: string;
   resume: File;
-  firstName : string;
-  lastName : string;
-  application:Application = {
-  'application_id':0,
-  'posting_id': '',
-  'username': '',
-  'status' : 'Pending',
-  'resume' : null, 
-  firstName : '',
-  lastName : '',
-  jobPostingTitle : '',
-  companyName : '',
-  date : ''
-};
+  firstName: string;
+  lastName: string;
+  application: Application = {
+    'application_id': 0,
+    'posting_id': '',
+    'username': '',
+    'status': 'Pending',
+    'resume': null,
+    firstName: '',
+    lastName: '',
+    jobPostingTitle: '',
+    companyName: '',
+    date: ''
+  };
 
   applicationgroup = new FormGroup({
     posting_id: new FormControl(''),
@@ -45,19 +45,20 @@ export class ApplicationFormPageComponent implements OnInit {
   })
 
   ngOnInit(): void {
-      if(this.sessServ.verifySession()){
-        console.log(localStorage.getItem('user'));
-        this.getSessionInfo('Candidate');
-          this.firstName = localStorage.getItem("firstName");
-          this.lastName = localStorage.getItem("lastName");
-          this.posting_id = localStorage.getItem("postingId");
-          this.username = localStorage.getItem("username");
-      } else {
-        window.location.href = '/login';
-      }
+    if (this.sessServ.verifySession()) {
+      console.log(localStorage.getItem('user'));
+      this.getSessionInfo('Candidate');
+      this.firstName = localStorage.getItem("firstName");
+      this.lastName = localStorage.getItem("lastName");
+      this.posting_id = localStorage.getItem("postingId");
+      this.username = localStorage.getItem("username");
+    } else {
+      window.location.href = '/login';
+    }
   }
 
-  submitApplication(apgroup : FormGroup) : void {
+  //submits job application
+  submitApplication(apgroup: FormGroup): void {
     this.application.posting_id = this.posting_id;
     this.application.username = this.username;
     this.application.resume = this.resume;
@@ -66,14 +67,15 @@ export class ApplicationFormPageComponent implements OnInit {
     }
     this.submit();
     this.createAppServ.postApplication(this.application).subscribe(
-      response=>{
+      response => {
         window.alert("Your application was submitted");
-      },error=>{
+      }, error => {
         window.alert("Could not submit application");
       }
     )
   }
 
+  //uploads resume to s3 bucket.
   submit() {
     const file = this.toFile.item(0);
     this.fileUploadServ.uploadFile(file, this.firstName, this.lastName, this.posting_id, this.username);
@@ -84,8 +86,8 @@ export class ApplicationFormPageComponent implements OnInit {
     this.resume = this.toFile;
   }
 
-  getSessionInfo(userRole:string){
-    if(!this.sessServ.verifyUserRole(userRole)){
+  getSessionInfo(userRole: string) {
+    if (!this.sessServ.verifyUserRole(userRole)) {
       window.alert('You do not have access to this page');
       this.router.navigate(['/']);
     }
