@@ -20,7 +20,7 @@
             <th>Location</th>
             <th>Company</th>
             <th>Industry</th>
-            <th>Tags</th>
+            <!-- <th>Tags</th> -->
             <th>Apply</th>
         </tr>
     </thead>
@@ -41,12 +41,6 @@
             <td>
                 {{temp.industryName}}
             </td>
-            <td>
-                <ng-container *ngFor="let tag of temp.tagsList">
-                    {{tag.tag}}  
-                    <br /> <!-- Use br if you want to display the tags vertically -->
-                </ng-container>
-                </td>
             <td>
                 <button type="button" class="btn btn-warning" 
                 (click) = "goToAppFormPage(temp.postingId)" [id] = "temp.postingId">Apply</button>
