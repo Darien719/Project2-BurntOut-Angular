@@ -31,7 +31,6 @@ export class SearchForJobComponent implements OnInit {
     this.jobsByNameFilterString = "";
     this.getAllJobs();
     this.jobsFilteredByName = this.jobs;
-    console.log(this.jobs);
   }
 
   set postingId(temp: number) {
