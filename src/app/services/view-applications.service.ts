@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Application } from './application';
 
+//Provides an injectable class that can be used to get a users applications
 @Injectable({
   providedIn: 'root'
 })

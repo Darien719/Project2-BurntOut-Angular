@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './user';
 
+//Provides an injectable class that can be used to get profile info from the database.
 @Injectable({
   providedIn: 'root'
 })

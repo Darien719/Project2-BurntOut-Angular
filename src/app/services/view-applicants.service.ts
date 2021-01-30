@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { JobPosting } from './jobPosting';
 import { Observable } from "rxjs";
 import { Application } from '../services/application';
+
+
+//Provides an injectable class that can be used to get applications from the database and approve and deny them based on the job posting
 @Injectable({
   providedIn: 'root'
 })

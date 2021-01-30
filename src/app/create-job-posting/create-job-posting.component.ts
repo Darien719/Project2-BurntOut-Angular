@@ -13,23 +13,24 @@ import { SessionService } from '../services/session.service';
 })
 export class CreateJobPostingComponent implements OnInit {
 
-  company_id:number;
-  poster_id:number = JSON.parse(localStorage.getItem('user')).userId;
-  title:string;
-  location_id:string;
-  industry_id:string;
-  description:string;
+  company_id: number;
+  poster_id: number = JSON.parse(localStorage.getItem('user')).userId;
+  title: string;
+  location_id: string;
+  industry_id: string;
+  description: string;
 
-  jobPosting:JobPosting = {'company_id': 1,
-  'poster_id': 0,
-  'title': '',
-  'location_name': '',
-  'industry_name': '',
-  'description': '',
-  'location_id': 0,
-  'industry_id': 0,
-  'tagsList' : []
-};
+  jobPosting: JobPosting = {
+    'company_id': 1,
+    'poster_id': 0,
+    'title': '',
+    'location_name': '',
+    'industry_name': '',
+    'description': '',
+    'location_id': 0,
+    'industry_id': 0,
+    'tagsList': []
+  };
 
   jobgroup = new FormGroup({
     company_id: new FormControl(''),
@@ -41,9 +42,10 @@ export class CreateJobPostingComponent implements OnInit {
     description: new FormControl(''),
   })
 
-  constructor(private createJobServ: CreateJobService, private sessServ: SessionService, private router:Router) { }
+  constructor(private createJobServ: CreateJobService, private sessServ: SessionService, private router: Router) { }
 
-  jobPost(jobgroup :FormGroup){
+  //Creates a new job
+  jobPost(jobgroup: FormGroup) {
 
     this.jobPosting.company_id = this.company_id;
     this.jobPosting.poster_id = this.poster_id;
@@ -53,24 +55,24 @@ export class CreateJobPostingComponent implements OnInit {
     this.jobPosting.description = jobgroup.get('description').value;
 
     this.createJobServ.postJob(this.jobPosting).subscribe(
-      response=>{
-          this.router.navigate(['company/view-postings']);
-      },error=>{
-          window.alert("Could not create posting");
+      response => {
+        this.router.navigate(['company/view-postings']);
+      }, error => {
+        window.alert("Could not create posting");
       }
     );
 
   }
 
-/*   get getTags() : Tag [] {
+  /*   get getTags() : Tag [] {
+  
+  
+    } */
 
-
-  } */
-
- /*  set setTags(tags : string []) */ 
+  /*  set setTags(tags : string []) */
 
   ngOnInit(): void {
-    if(this.sessServ.verifySession()){
+    if (this.sessServ.verifySession()) {
       this.getSessionInfo('Company');
     } else {
       window.location.href = '/login';
@@ -80,16 +82,16 @@ export class CreateJobPostingComponent implements OnInit {
   }
 
   getJobId(jobName: String): void {
-   
-    this.createJobServ.getCompanyId(jobName).subscribe (
+
+    this.createJobServ.getCompanyId(jobName).subscribe(
       response => {
-       this.company_id =  Number.parseInt(response.toString());
+        this.company_id = Number.parseInt(response.toString());
       }
     )
   }
- 
-  getSessionInfo(userRole:string) {
-    if(!this.sessServ.verifyUserRole(userRole)){
+
+  getSessionInfo(userRole: string) {
+    if (!this.sessServ.verifyUserRole(userRole)) {
       window.alert('You do not have access to this page');
       this.router.navigate(['/']);
     }

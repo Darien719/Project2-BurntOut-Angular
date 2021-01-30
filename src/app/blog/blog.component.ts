@@ -18,7 +18,6 @@ export class BlogComponent implements OnInit {
   constructor(private blogService: BlogService, private sessServ: SessionService) { }
 
   ngOnInit(): void {
-
     this.getallPosts();
     if (this.sessServ.verifySession()) {
 
@@ -31,33 +30,39 @@ export class BlogComponent implements OnInit {
   blogMessageText = "";
   blogTitleText = "";
 
+  // toggles the add button on and off.
   newPostClicked() {
     this.isNewPostVisible = false;
     this.isNewPostFormVisible = true;
   }
 
+  // toggles the new post form.
   closeButtonClicked() {
     this.isNewPostFormVisible = false;
     this.isNewPostVisible = true;
   }
 
+  // getter for the blog Message also used for data binding
   get blogMessage(): string {
     return this.blogMessageText;
   }
 
+  // setter for the blog Message also used for data binding
   set blogMessage(temp: string) {
     this.blogMessageText = temp;
   }
 
+  // getter for the blog Message also used for data binding
   get blogTitle(): string {
     return this.blogTitleText;
   }
 
+  // setter for the blog Message also used for data binding
   set blogTitle(temp: string) {
     this.blogTitleText = temp;
   }
 
-
+  // Sends data to the back-end once the user fill the form and clicks the submit button.
   sendData() {
     let user = localStorage.getItem("user");
     user = JSON.parse(user);
@@ -96,6 +101,7 @@ export class BlogComponent implements OnInit {
     }
   }
 
+  //gets all of the blogs from the back-end to display on the front-end.
   getallPosts(): void {
     this.blogService.retrieveAllPosts().subscribe(response => {
       this.posts = Object.values(response);
