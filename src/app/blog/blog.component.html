@@ -4,7 +4,9 @@
     <div *ngFor="let post of posts | paginate:{itemsPerPage:5,currentPage: page}">
         <br><br>
         <div class="container-post">
-            <p id="username"><a href="http://ec2-13-52-246-229.us-west-1.compute.amazonaws.com:9025/profile/{{post.owner}}">@{{post.owner}}</a></p>
+            <p id="username"><a
+                    href="http://burntoutbucket.s3-website-us-east-1.amazonaws.com/profile/{{post.owner}}">@{{post.owner}}</a>
+            </p>
             <hr>
             <p id="title">{{post.blogTitle}}</p>
             <p id="content">
