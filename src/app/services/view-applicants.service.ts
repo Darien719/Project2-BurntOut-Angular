@@ -27,6 +27,7 @@ export class ViewApplicantsService {
       }),
       responseType: 'text' as 'json'
     });
+    window.location.reload();
   }
 
   postRejectApplicant(applicantId: number): Observable<string> {
@@ -37,6 +38,7 @@ export class ViewApplicantsService {
       }),
       responseType: 'text' as 'json'
     });
+    window.location.reload();
   }
 
 
