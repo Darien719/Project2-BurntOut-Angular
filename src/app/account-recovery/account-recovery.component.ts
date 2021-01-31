@@ -22,6 +22,7 @@ export class AccountRecoveryComponent implements OnInit {
     this.email = details.get('email').value;
     this.accServ.accRecover(this.email).subscribe(
       response => {
+        window.alert("Email reset has been sent");
       },
       error => {
       }
